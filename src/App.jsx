@@ -1,6 +1,6 @@
 import {BrowserRouter} from 'react-router-dom';
 
-import {About,Contact,Experience,Hero,Navbar,Tech,Works,StarsCanvas, Feedbacks} from './components';
+import {About,Contact,Education,Hero,Navbar,Tech,Works,StarsCanvas, Feedbacks} from './components';
  
 function App() {
   return(
@@ -12,7 +12,7 @@ function App() {
 
       </div>
       <About/>
-      <Experience/>
+      <Education/>
       <Tech/>
       <Works/>
       {/* <Feedbacks/> */}

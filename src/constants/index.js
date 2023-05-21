@@ -46,127 +46,143 @@ const services = [
     icon: web,
   },
   {
-    title: "React Native Developer",
+    title: "Flutter Developer",
     icon: mobile,
   },
   {
     title: "Backend Developer",
     icon: backend,
   },
-  {
-    title: "Content Creator",
-    icon: creator,
-  },
+  // {
+  //   title: "Content Creator",
+  //   icon: creator,
+  // },
 ];
 
 const technologies = [
   {
     name: "HTML 5",
     icon: html,
+    percentage: 80,
   },
   {
     name: "CSS 3",
     icon: css,
+    percentage: 80,
   },
   {
     name: "JavaScript",
     icon: javascript,
+    percentage: 70,
   },
   {
     name: "TypeScript",
     icon: typescript,
+    percentage: 30,
   },
   {
     name: "React JS",
     icon: reactjs,
+    percentage: 70,
   },
   {
     name: "Redux Toolkit",
     icon: redux,
+    percentage: 10,
   },
   {
     name: "Tailwind CSS",
     icon: tailwind,
+    percentage: 60,
   },
   {
     name: "Node JS",
     icon: nodejs,
+    percentage: 60,
   },
   {
     name: "MongoDB",
     icon: mongodb,
+    percentage: 60,
   },
   {
     name: "Three JS",
     icon: threejs,
+    percentage: 20,
   },
   {
-    name: "git",
+    name: "Git",
     icon: git,
+    percentage: 50,
   },
   {
-    name: "figma",
+    name: "Figma",
     icon: figma,
+    percentage: 0,
   },
   {
-    name: "docker",
+    name: "Docker",
     icon: docker,
+    percentage: 10,
   },
 ];
 
-const experiences = [
+const education = [
   {
-    title: "React.js Developer",
-    company_name: "Starbucks",
+    title: "Pursuing BTech in Computer Enginnering ",
+    company_name: "Dharmsinh Desai Institute of Technology, Nadiad(Gujarat)",
     icon: starbucks,
     iconBg: "#383E56",
-    date: "March 2020 - April 2021",
+    date: "2020 - Present",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "CPI-->7.34",
+      // "Developing and maintaining web applications using React.js and other related technologies.",
+      // "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+      // "Implementing responsive design and ensuring cross-browser compatibility.",
+      // "Participating in code reviews and providing constructive feedback to other developers.",
     ],
   },
   {
-    title: "React Native Developer",
-    company_name: "Tesla",
+    title: "Higher Secondary Education",
+    company_name: "Bright Day School,Vasna, Vadodara",
     icon: tesla,
     iconBg: "#E6DEDD",
-    date: "Jan 2021 - Feb 2022",
+    date: "Apr 2018 - March 2020",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Result-90%",
+      // "Developing and maintaining web applications using React.js and other related technologies.",
+      // "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+      // "Implementing responsive design and ensuring cross-browser compatibility.",
+      // "Participating in code reviews and providing constructive feedback to other developers.",
     ],
   },
   {
-    title: "Web Developer",
-    company_name: "Shopify",
+    title: "Secondary Education",
+    company_name: "Bright Day School,Vasna, Vadodara",
     icon: shopify,
     iconBg: "#383E56",
-    date: "Jan 2022 - Jan 2023",
+    date: "Apr 2016 - Mar 2018",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Result-86%",
+      // "Developing and maintaining web applications using React.js and other related technologies.",
+      // "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+      // "Implementing responsive design and ensuring cross-browser compatibility.",
+      // "Participating in code reviews and providing constructive feedback to other developers.",
     ],
   },
-  {
-    title: "Full stack Developer",
-    company_name: "Meta",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
+  // {
+  //   title: "Full stack Developer",
+  //   company_name: "Meta",
+  //   icon: meta,
+  //   iconBg: "#E6DEDD",
+  //   date: "Jan 2023 - Present",
+  //   points: [
+  //     "Developing and maintaining web applications using React.js and other related technologies.",
+  //     "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+  //     "Implementing responsive design and ensuring cross-browser compatibility.",
+  //     "Participating in code reviews and providing constructive feedback to other developers.",
+  //   ],
+  // },
 ];
 
 const testimonials = [
@@ -262,4 +278,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { services, technologies, education, testimonials, projects };
