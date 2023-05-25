@@ -8,6 +8,7 @@ import { services } from "../constants";
 import { textVariant, fadeIn } from "../utils/motion";
 
 import { SectionWrapper } from "../hoc";
+// import { resume } from "../assets/";
 
 const ServiceCard = ({ index, title, icon }) => {
   return (
@@ -55,11 +56,26 @@ const About = () => {
         variants={fadeIn("", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        I am a passionate software developer with experience in JavaScript, and 
-        discovered frameworks like React, Node.js, and Three.js. 
-        I am a quick learner and create efficient, scalable, and user-friendly 
-        solutions that solve real-world problems. Let's work together to bring your ideas to life!
+        I am a passionate software developer with experience in JavaScript, and
+        discovered frameworks like React, Node.js, and Three.js. I am a quick
+        learner and create efficient, scalable, and user-friendly solutions that
+        solve real-world problems. Let's work together to bring your ideas to
+        life!
       </motion.p>
+{/* 
+      <a
+        href={resume}
+        download="resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <button
+          className="bg-primary text-white font-medium py-2 px-4 rounded-lg mt-4 hover:bg-secondary transition-colors"
+          style={{ zIndex: 1 }}
+        >
+          Download Resume
+        </button>
+      </a> */}
 
       <div className="mt-20 flex flex-wrap gap-10">
         {services.map((service, index) => (

@@ -15,14 +15,16 @@ import {
   git,
   figma,
   docker,
-  meta,
-  starbucks,
-  tesla,
-  shopify,
+  school,
+  college,
   carrent,
   jobit,
   tripguide,
+  movie,
+  todolist,
+  dineout,
   threejs,
+  resume,
 } from "../assets";
 
 export const navLinks = [
@@ -118,7 +120,7 @@ const technologies = [
   {
     name: "Figma",
     icon: figma,
-    percentage: 0,
+    percentage: 5,
   },
   {
     name: "Docker",
@@ -131,7 +133,7 @@ const education = [
   {
     title: "Pursuing BTech in Computer Enginnering ",
     company_name: "Dharmsinh Desai Institute of Technology, Nadiad(Gujarat)",
-    icon: starbucks,
+    icon: college,
     iconBg: "#383E56",
     date: "2020 - Present",
     points: [
@@ -145,7 +147,7 @@ const education = [
   {
     title: "Higher Secondary Education",
     company_name: "Bright Day School,Vasna, Vadodara",
-    icon: tesla,
+    icon: school,
     iconBg: "#E6DEDD",
     date: "Apr 2018 - March 2020",
     points: [
@@ -159,7 +161,7 @@ const education = [
   {
     title: "Secondary Education",
     company_name: "Bright Day School,Vasna, Vadodara",
-    icon: shopify,
+    icon: school,
     iconBg: "#383E56",
     date: "Apr 2016 - Mar 2018",
     points: [
@@ -214,67 +216,72 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Car Rent",
+    name: "DineOut",
     description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+      "Web-based system allow customers to browse menus, place orders, and pay for food items online, all from the comfort of their own homes.",
     tags: [
       {
-        name: "react",
+        name: "reactjs",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "C#",
         color: "green-text-gradient",
       },
       {
         name: "tailwind",
         color: "pink-text-gradient",
       },
+      {
+        name: "SQL",
+        color: "purple-text-gradient",
+      },
     ],
-    image: carrent,
-    source_code_link: "https://github.com/",
+    image: dineout,
+    source_code_link: "https://github.com/SVK04/DineOutApp-API-NetCore-ReactJs",
   },
   {
-    name: "Job IT",
+    name: "Todo App",
     description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+      "Flutter-Based System to list everything that you have to do, with the most important tasks at the top of the list, and the least important tasks at the bottom to make sure that your tasks are written down all in one place so you don't forget anything important.",
     tags: [
       {
-        name: "react",
+        name: "Dart",
         color: "blue-text-gradient",
       },
       {
-        name: "restapi",
+        name: "Swift",
         color: "green-text-gradient",
       },
       {
-        name: "scss",
+        name: "flutter",
         color: "pink-text-gradient",
       },
     ],
-    image: jobit,
-    source_code_link: "https://github.com/",
+    image: todolist,
+    source_code_link:
+      "https://github.com/SVK04/CE152_CE148_SDP_Todo_App_Flutter/tree/master/final",
   },
   {
-    name: "Trip Guide",
+    name: "Movie Ticket Booking",
     description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      "A comprehensive Movie booking platform that allows users to book movies and offers curated recommendations for popular Theaters.",
     tags: [
       {
-        name: "nextjs",
+        name: ".NETCore",
         color: "blue-text-gradient",
       },
       {
-        name: "supabase",
+        name: "ASP.NET",
         color: "green-text-gradient",
       },
       {
-        name: "css",
+        name: "C#",
         color: "pink-text-gradient",
       },
     ],
-    image: tripguide,
-    source_code_link: "https://github.com/",
+    image: movie,
+    source_code_link: "#",
   },
 ];
 
