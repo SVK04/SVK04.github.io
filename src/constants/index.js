@@ -34,7 +34,11 @@ export const navLinks = [
   },
   {
     id: "work",
-    title: "Work",
+    title: "Education",
+  },
+  {
+    id: "project",
+    title: "Projects",
   },
   {
     id: "contact",
@@ -137,7 +141,7 @@ const education = [
     iconBg: "#383E56",
     date: "2020 - Present",
     points: [
-      "CPI-->7.34",
+      "CPI-->7.36",
       // "Developing and maintaining web applications using React.js and other related technologies.",
       // "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
       // "Implementing responsive design and ensuring cross-browser compatibility.",
