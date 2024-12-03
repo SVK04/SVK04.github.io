@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { styles } from "../style";
+import React, { useEffect, useState } from 'react';
+import { styles } from '../style';
 
-import { Link } from "react-router-dom";
-import { navLinks } from "../constants";
-import { menu, close } from "../assets";
+import { Link } from 'react-router-dom';
+import { navLinks } from '../constants';
+import { menu, close } from '../assets';
 
-import { default as logo } from "../assets/vklogo.svg";
+import { default as logo } from '../assets/vklogo.svg';
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
 
   return (
@@ -21,7 +21,7 @@ const Navbar = () => {
           to="/"
           className="flex items-center gap-2"
           onClick={() => {
-            setActive("");
+            setActive('');
             window.scrollTo(0, 0);
           }}
         >
@@ -32,12 +32,10 @@ const Navbar = () => {
           </p>
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-10">
-          {navLinks.map((Link) => (
+          {navLinks.map(Link => (
             <li
               key={Link.id}
-              className={`${
-                active === Link.title ? "text-white" : "text-secondary"
-              }
+              className={`${active === Link.title ? 'text-white' : 'text-secondary'}
             hover:text-white text-[18px]
             font-medium cursor-pointer
             `}
@@ -56,17 +54,15 @@ const Navbar = () => {
             onClick={() => setToggle(!toggle)}
           />
           <div
-            className={`${!toggle ? "hidden" : "flex"} p-6
+            className={`${!toggle ? 'hidden' : 'flex'} p-6
           black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px]
           z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-col gap-4">
-              {navLinks.map((Link) => (
+              {navLinks.map(Link => (
                 <li
                   key={Link.id}
-                  className={`${
-                    active === Link.title ? "text-white" : "text-secondary"
-                  }
+                  className={`${active === Link.title ? 'text-white' : 'text-secondary'}
            font-poppins font-medium cursor-pointer text-[16px]
             `}
                   onClick={() => {

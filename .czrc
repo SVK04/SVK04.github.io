@@ -1,0 +1,9 @@
+// This configuration file (.czrc) is used by Commitizen to specify the adapter 
+// for formatting commit messages. The specified adapter ensures that commit 
+// messages follow the Conventional Commits standard, which is widely used in 
+// semantic versioning and changelog generation. Commitizen simplifies writing 
+// consistent, meaningful commit messages through an interactive CLI prompt.
+
+{
+  "path": "./node_modules/cz-conventional-changelog"
+}
