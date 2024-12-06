@@ -1,9 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
-
 import { styles } from '../style';
-
+import axios from 'axios';
 import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
@@ -23,43 +21,38 @@ const Contact = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
 
-    //GVD_4Gj3-hANT9-tE
-    //template_2zzbvuk
-    //service_h5g42bf
-    emailjs
-      .send(
-        'service_h5g42bf',
-        'template_2zzbvuk',
-        {
-          from_name: form.name,
-          to_name: 'Vaibhav',
-          from_email: form.email,
-          to_email: 'vaibhavkaul18@gmail.com',
-          message: form.message,
-        },
-        'GVD_4Gj3-hANT9-tE'
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert('Thank you.I will get back to you as soon as possible.');
+    const googleSheetURL = import.meta.env.VITE_GOOGLE_SHEETS_URL;
 
-          setForm({
-            name: '',
-            email: '',
-            message: '',
-          });
-        },
-        error => {
-          setLoading(false);
-          console.log(error);
-          alert('Something went wrong.');
-        }
-      );
+    try {
+      const response = await axios.post(googleSheetURL, {
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      });
+
+      const result = response;
+      console.log('result', result);
+
+      if (result.status === 'SUCCESS') {
+        alert('Your message has been sent successfully! Thank you.');
+        setForm({
+          name: '',
+          email: '',
+          message: '',
+        });
+      } else {
+        alert('Failed to send your message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error sending data to Google Sheets:', error);
+      alert('An error occurred. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -86,7 +79,7 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="What is your name?"
               className="bg-tertiary py-4 px-6
-            placeholder:text-secondary text-white
+            placeholder:text-secondary text-black
             rounded-lg outlined-none border-none font-medium"
             />
           </label>
@@ -100,7 +93,7 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="What is your email?"
               className="bg-tertiary py-4 px-6
-            placeholder:text-secondary text-white
+            placeholder:text-secondary text-black
             rounded-lg outlined-none border-none font-medium"
             />
           </label>
@@ -114,14 +107,14 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="What do you want to say?"
               className="bg-tertiary py-4 px-6
-            placeholder:text-secondary text-white
+            placeholder:text-secondary text-black
             rounded-lg outlined-none border-none font-medium"
             />
           </label>
           <button
             type="submit"
-            className="bg-tertiary py-3 px-8
-          outline-none w-fit text-white font-bold
+            className="bg-black py-3 px-8
+          outline-none w-fit text-white font-bold hover:bg-gray-400
           shadow-md shadow-primary rounded-xl"
           >
             {loading ? 'Sending...' : 'Send'}
