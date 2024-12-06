@@ -7,4 +7,13 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 100000000,
   },
+  css: {
+    postcss: './postcss.config.json', 
+  },
+  server: {
+    open: true, 
+    port: process.env.PORT, 
+  },
 });
+
+
