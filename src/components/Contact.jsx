@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../style';
-import axios from 'axios';
 import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
+import { useNotification } from './Notify';
 
 const Contact = () => {
   const formRef = useRef();
@@ -13,6 +13,8 @@ const Contact = () => {
     email: '',
     message: '',
   });
+
+  const showNotification = useNotification();
 
   const [loading, setLoading] = useState(false);
   const handleChange = e => {
@@ -28,28 +30,34 @@ const Contact = () => {
     const googleSheetURL = import.meta.env.VITE_GOOGLE_SHEETS_URL;
 
     try {
-      const response = await axios.post(googleSheetURL, {
-        name: form.name,
-        email: form.email,
-        message: form.message,
+      const response = await fetch(googleSheetURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // redirect:'manual',
+        // mode:'no-cors',
+        body: JSON.stringify({
+          Name: form.name,
+          Email: form.email,
+          Message: form.message,
+        }),
       });
 
-      const result = response;
-      console.log('result', result);
+      const result = await response.json();
 
-      if (result.status === 'SUCCESS') {
-        alert('Your message has been sent successfully! Thank you.');
+      if (result.status === 200) {
+        showNotification.success('Your message has been sent successfully! Thank you.');
         setForm({
           name: '',
           email: '',
           message: '',
         });
       } else {
-        alert('Failed to send your message. Please try again.');
+        console.log('Failed to send your message. Please try again.');
       }
     } catch (error) {
-      console.error('Error sending data to Google Sheets:', error);
-      alert('An error occurred. Please try again later.');
+      showNotification.error('error', error?.message);
     } finally {
       setLoading(false);
     }
