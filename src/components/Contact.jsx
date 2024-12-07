@@ -4,7 +4,7 @@ import { styles } from '../style';
 import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
-import { useNotification } from './Notify';
+import { useNotification } from './Notification';
 
 const Contact = () => {
   const formRef = useRef();

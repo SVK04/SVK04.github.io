@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 import { About, Contact, Education, Hero, Navbar, Tech, Works, StarsCanvas, Feedbacks } from './components';
-import NotificationProvider from 'components/Notify';
+import NotificationProvider from 'components/Notification';
 
 function App() {
   return (
