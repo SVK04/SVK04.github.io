@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 100000,
     rollupOptions: {
-      input: 'src/main.jsx',
+      input: "index.html",
     },
   },
   css: {
