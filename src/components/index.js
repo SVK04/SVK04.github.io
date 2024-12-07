@@ -7,6 +7,7 @@ import Education from './Education';
 import Works from './Works';
 import Feedbacks from './Feedbacks';
 import Contact from './Contact';
+import { NotificationProvider } from './Notification';
 
 export {
   Hero,
@@ -21,4 +22,5 @@ export {
   BallCanvas,
   ComputersCanvas,
   StarsCanvas,
+  NotificationProvider,
 };
