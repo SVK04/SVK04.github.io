@@ -22,10 +22,10 @@ const Hero = () => {
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
             Hi,I am
-            <span className="text-[#915eff]"> Vaibhav</span>
+            <span className="text-[#915eff]"> Vaibhav Kaul</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I develop <br className="sm:block hidden" /> MERN web applications.
+            I develop <br className="sm:block hidden" /> PERN/MERN applications.
           </p>
         </div>
       </div>
@@ -38,7 +38,7 @@ const Hero = () => {
         <a href="#about">
           <div
             className="w-[35px] h-[64px]
-          rounded-3xl border-4 border-secondary flex
+          rounded-3xl border-4 border-gray-400 flex
           justify-center items-start p-2"
           >
             <motion.div
@@ -50,7 +50,7 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: 'loop',
               }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1"
+              className="w-3 h-3 bg-white rounded-full mb-1"
             />
           </div>
         </a>

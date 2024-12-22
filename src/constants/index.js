@@ -11,20 +11,16 @@ import {
   redux,
   tailwind,
   nodejs,
-  mongodb,
   git,
-  figma,
   docker,
   school,
   college,
-  carrent,
-  jobit,
-  tripguide,
   movie,
   todolist,
   dineout,
   threejs,
   resume,
+  postgresSql,
 } from '../assets';
 
 export const navLinks = [
@@ -92,9 +88,9 @@ const technologies = [
     percentage: 70,
   },
   {
-    name: 'Redux Toolkit',
+    name: 'Redux-Saga Redux',
     icon: redux,
-    percentage: 10,
+    percentage: 40,
   },
   {
     name: 'Tailwind CSS',
@@ -107,29 +103,29 @@ const technologies = [
     percentage: 60,
   },
   {
-    name: 'MongoDB',
-    icon: mongodb,
+    name: 'PostgresSQL',
+    icon: postgresSql,
     percentage: 60,
   },
   {
     name: 'Three JS',
     icon: threejs,
-    percentage: 20,
+    percentage: 30,
   },
   {
     name: 'Git',
     icon: git,
-    percentage: 50,
+    percentage: 60,
   },
-  {
-    name: 'Figma',
-    icon: figma,
-    percentage: 5,
-  },
+  // {
+  //   name: 'Figma',
+  //   icon: figma,
+  //   percentage: 5,
+  // },
   {
     name: 'Docker',
     icon: docker,
-    percentage: 10,
+    percentage: 50,
   },
 ];
 
@@ -139,7 +135,7 @@ const education = [
     company_name: 'Dharmsinh Desai Institute of Technology, Nadiad(Gujarat)',
     icon: college,
     iconBg: '#383E56',
-    date: 'November 2020 – May 2024',
+    date: 'Passed in 2024',
     points: [
       'CPI-->7.65',
       // "Developing and maintaining web applications using React.js and other related technologies.",
@@ -153,9 +149,9 @@ const education = [
     company_name: 'Bright Day School,Vasna, Vadodara',
     icon: school,
     iconBg: '#E6DEDD',
-    date: 'Apr 2018 - March 2020',
+    date: 'Passed in 2020',
     points: [
-      'Result-90%',
+      'Result-89.8%',
       // "Developing and maintaining web applications using React.js and other related technologies.",
       // "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
       // "Implementing responsive design and ensuring cross-browser compatibility.",
@@ -167,7 +163,7 @@ const education = [
     company_name: 'Bright Day School,Vasna, Vadodara',
     icon: school,
     iconBg: '#383E56',
-    date: 'Apr 2016 - Mar 2018',
+    date: 'Passed in 2018',
     points: [
       'Result-86%',
       // "Developing and maintaining web applications using React.js and other related technologies.",
@@ -223,19 +219,19 @@ const projects = [
     tags: [
       {
         name: 'reactjs',
-        color: 'blue-text-gradient',
+        color: 'bg-blue-600',
       },
       {
-        name: 'C#',
-        color: 'green-text-gradient',
+        name: 'C Sharp',
+        color: 'bg-green-600',
       },
       {
         name: 'tailwind',
-        color: 'pink-text-gradient',
+        color: 'bg-pink-600',
       },
       {
         name: 'SQL',
-        color: 'purple-text-gradient',
+        color: 'bg-purple-600',
       },
     ],
     image: dineout,
@@ -248,15 +244,15 @@ const projects = [
     tags: [
       {
         name: 'Dart',
-        color: 'blue-text-gradient',
+        color: 'bg-blue-600',
       },
       {
         name: 'Swift',
-        color: 'green-text-gradient',
+        color: 'bg-green-600',
       },
       {
         name: 'flutter',
-        color: 'pink-text-gradient',
+        color: 'bg-pink-600',
       },
     ],
     image: todolist,
@@ -269,15 +265,15 @@ const projects = [
     tags: [
       {
         name: '.NETCore',
-        color: 'blue-text-gradient',
+        color: 'bg-blue-600',
       },
       {
         name: 'ASP.NET',
-        color: 'green-text-gradient',
+        color: 'bg-green-600',
       },
       {
-        name: 'C#',
-        color: 'pink-text-gradient',
+        name: 'C Sharp',
+        color: 'bg-pink-600',
       },
     ],
     image: movie,

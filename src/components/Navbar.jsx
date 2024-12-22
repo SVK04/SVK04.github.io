@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { styles } from '../style';
-
 import { Link } from 'react-router-dom';
 import { navLinks } from '../constants';
 import { menu, close } from '../assets';
-
 import { default as logo } from '../assets/vklogo.svg';
 
 const Navbar = () => {
@@ -14,7 +12,7 @@ const Navbar = () => {
   return (
     <nav
       className={`${styles.paddingX} w-full flex
-    items-center py-5 fixed top-0 z-20 bg-primary`}
+    items-center py-5 fixed top-0 z-20 bg-gray-900`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
@@ -26,7 +24,7 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex">
+          <p className="text-white text-[1.125rem] font-bold cursor-pointer flex">
             Vaibhav&nbsp;
             <span className="sm:block hidden">| Portfolio</span>
           </p>
@@ -35,8 +33,8 @@ const Navbar = () => {
           {navLinks.map(Link => (
             <li
               key={Link.id}
-              className={`${active === Link.title ? 'text-white' : 'text-secondary'}
-            hover:text-white text-[18px]
+              className={`${active === Link.title ? 'text-white' : 'text-gray-400'}
+            hover:text-white text-[1.125rem]
             font-medium cursor-pointer
             `}
               onClick={() => setActive(Link.title)}
@@ -49,7 +47,7 @@ const Navbar = () => {
           <img
             src={toggle ? close : menu}
             alt="menu"
-            className="w-[28px] h-[28px] object-contain 
+            className="w-[1.75rem] h-[1.75rem] object-contain 
            cursor-pointer"
             onClick={() => setToggle(!toggle)}
           />
@@ -62,7 +60,7 @@ const Navbar = () => {
               {navLinks.map(Link => (
                 <li
                   key={Link.id}
-                  className={`${active === Link.title ? 'text-white' : 'text-secondary'}
+                  className={`${active === Link.title ? 'text-white' : 'text-gray-400'}
            font-poppins font-medium cursor-pointer text-[16px]
             `}
                   onClick={() => {

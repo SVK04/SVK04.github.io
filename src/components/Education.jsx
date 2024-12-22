@@ -1,10 +1,7 @@
 import React from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-
 import { motion } from 'framer-motion';
-
 import 'react-vertical-timeline-component/style.min.css';
-
 import { styles } from '../style';
 import { education } from '../constants';
 import { SectionWrapper } from '../hoc';
@@ -19,7 +16,7 @@ const EducationCard = ({ education }) => (
     icon={
       <div
         className="flex justify-center items-center
-    w-fuull h-full"
+    w-full h-full"
       >
         <img src={education.icon} alt={education.company_name} className="w-[60%] h-[60%] object-contain" />
       </div>
@@ -33,7 +30,7 @@ const EducationCard = ({ education }) => (
         {education.title}
       </h3>
       <p
-        className="text-secondary text-[16px]
+        className="text-gray-600 text-[16px]
       font-semibold"
       >
         {education.company_name}
