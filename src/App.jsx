@@ -3,7 +3,12 @@ import { About, Contact, Education, Hero, Navbar, Tech, Works, StarsCanvas, Noti
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <NotificationProvider>
         <div className="relative z-0">
           <div className="bg-cover bg-no-repeat bg-center">
