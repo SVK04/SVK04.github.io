@@ -2,13 +2,14 @@ import {
   About,
   Contact,
   Education,
-  ThemeToggle,
+  // ThemeToggle,
   Hero,
   Navbar,
-  Tech,
+  Skills,
   Works,
   StarsCanvas,
   NotificationProvider,
+  Footer,
 } from '../components';
 import React from 'react';
 
@@ -16,20 +17,19 @@ function Home() {
   return (
     <NotificationProvider>
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-        <ThemeToggle />
-        <div className="bg-cover bg-no-repeat bg-center">
-          <Navbar />
+        <Navbar />
+        {/* <ThemeToggle /> */}
+        <main>
           <Hero />
-        </div>
-        <About />
-        <Education />
-        <Tech />
-        <Works />
-        {/* <Feedbacks/> */}
-        <div className="relative z-0">
+          <About />
+          <Education />
+          <Skills />
+          <Works />
+          {/* <Feedbacks/> */}
           <Contact />
           <StarsCanvas />
-        </div>
+        </main>
+        <Footer />
       </div>
     </NotificationProvider>
   );

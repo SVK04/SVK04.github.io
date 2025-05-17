@@ -50,15 +50,21 @@ const About = () => {
         Three.js. With a knack for quick learning, I craft efficient, scalable, and user-centric solutions that tackle
         real-world challenges. Let's collaborate to turn your ideas into innovative, impactful solutions!
       </motion.p>
-
-      <a href={resume} download="resume.pdf" target="_blank" rel="noopener noreferrer">
-        <button
-          className="text-black bg-white font-medium py-2 px-4 rounded-lg mt-4 transition-colors"
-          style={{ zIndex: 1 }}
-        >
-          Download Resume
-        </button>
-      </a>
+      <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-start">
+        <a href={resume} download="resume.pdf" target="_blank" rel="noopener noreferrer">
+          <button
+            className="text-black bg-white font-medium py-2 px-4 rounded-lg mt-4 transition-colors"
+            style={{ zIndex: 1 }}
+          >
+            Download CV
+          </button>
+        </a>
+        <a href="#contact">
+          <button className="text-black bg-white font-medium py-2 px-4 rounded-lg mt-4 transition-colors">
+            Get In Touch
+          </button>
+        </a>
+      </div>
 
       <div className="mt-20 flex flex-wrap gap-10">
         {services.map((service, index) => (

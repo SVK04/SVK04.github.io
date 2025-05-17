@@ -21,8 +21,6 @@ import typescript from './tech/typescript.png';
 import threejs from './tech/threejs.svg';
 import school from './education/school.png';
 import college from './education/college.png';
-import jobit from './jobit.png';
-import tripguide from './tripguide.png';
 import movie from './movie.png';
 import todolist from './todolist.png';
 import dineout from './DineOut.png';
@@ -54,8 +52,6 @@ export {
   threejs,
   school,
   college,
-  jobit,
-  tripguide,
   movie,
   todolist,
   dineout,

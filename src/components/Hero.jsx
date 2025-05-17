@@ -35,7 +35,7 @@ const Hero = () => {
   }, [charIndex, isDeleting, textIndex]);
 
   return (
-    <section className="relative w-full h-screen mx-auto">
+    <section className="relative w-full h-screen mx-auto min-h-screen">
       <div
         className={`${styles.paddingX} absolute
       insert-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start
@@ -62,14 +62,14 @@ const Hero = () => {
 
       <ComputersCanvas />
       <div
-        className="absolute xs:bottom-10 bottom-32 
-      w-full flex justify-center items-center"
+        className="absolute xs:-bottom-1 bottom-24
+      w-full flex justify-center items-center cursor-pointers"
       >
         <a href="#about">
           <div
             className="w-[35px] h-[64px]
           rounded-3xl border-4 border-gray-400 flex
-          justify-center items-start p-2"
+          justify-center items-start p-2 cursor-pointer"
           >
             <motion.div
               animate={{
@@ -80,7 +80,7 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: 'loop',
               }}
-              className="w-3 h-3 bg-white rounded-full mb-1"
+              className="w-3 h-3 bg-white rounded-full mb-1 cursor-pointer"
             />
           </div>
         </a>
