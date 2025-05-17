@@ -8,6 +8,7 @@ import Works from './Works';
 import Feedbacks from './Feedbacks';
 import Contact from './Contact';
 import { NotificationProvider } from './Notification';
+import { ThemeToggle } from './ThemeToggle';
 
 export {
   Hero,
@@ -23,4 +24,5 @@ export {
   ComputersCanvas,
   StarsCanvas,
   NotificationProvider,
+  ThemeToggle,
 };

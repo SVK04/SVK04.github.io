@@ -1,10 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../style';
-
 import { ComputersCanvas } from './canvas';
 
+const texts = ['Node.js Developer.', 'React.js Developer.', 'JavaScript Developer.', 'React Native Developer.'];
+
 const Hero = () => {
+  const [dynamicText, setDynamicText] = useState('');
+  const [textIndex, setTextIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentText = texts[textIndex];
+    let typingSpeed = isDeleting ? 50 : 100;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && charIndex < currentText.length) {
+        setDynamicText(currentText.substring(0, charIndex + 1));
+        setCharIndex(prev => prev + 1);
+      } else if (isDeleting && charIndex > 0) {
+        setDynamicText(currentText.substring(0, charIndex - 1));
+        setCharIndex(prev => prev - 1);
+      } else if (!isDeleting && charIndex === currentText.length) {
+        // Pause before deleting
+        setTimeout(() => setIsDeleting(true), 1000);
+      } else if (isDeleting && charIndex === 0) {
+        setIsDeleting(false);
+        setTextIndex(prev => (prev + 1) % texts.length);
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, textIndex]);
+
   return (
     <section className="relative w-full h-screen mx-auto">
       <div
@@ -25,7 +54,8 @@ const Hero = () => {
             <span className="text-[#915eff]"> Vaibhav Kaul</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I develop <br className="sm:block hidden" /> PERN/MERN applications.
+            I am <span className="text-[#915eff]">{dynamicText}</span>
+            <span className="animate-blink">|</span>
           </p>
         </div>
       </div>

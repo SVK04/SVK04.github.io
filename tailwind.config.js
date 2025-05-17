@@ -8,6 +8,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        blink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
+      },
+      animation: {
+        blink: 'blink 1s step-start infinite',
+      },
       screens: {
         xs: '500px', // Custom breakpoint for 500px
       },
@@ -150,11 +159,10 @@ module.exports = {
         rounded10: '10px', // Add your custom border-radius value here
       },
 
-    
-        height: {
-          h13: '52px',
-        },
-      
+      height: {
+        h13: '52px',
+      },
+
       gridTemplateColumns: {
         'auto-fill-315': 'repeat(auto-fill, minmax(315px, 1fr))',
         'auto-fill-250': 'repeat(auto-fill, minmax(250px, 1fr))',
