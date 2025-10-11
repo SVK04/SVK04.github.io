@@ -7,19 +7,34 @@ permissions:
   checks: write
   contents: read
   pull-requests: write
+
 jobs:
   build_and_preview:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
+
     steps:
+      # 1. Checkout code
       - uses: actions/checkout@v4
+
+      # 2. Set Node.js version
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 22
           cache: 'yarn'
 
-      - run: "yarn install"
+      # 3. Set EmailJS environment variables
+      - name: Set EmailJS env variables
+        run: |
+          echo "VITE_EMAILJS_SERVICE_ID=${{ secrets.EMAILJS_SERVICE_ID }}" >> $GITHUB_ENV
+          echo "VITE_EMAILJS_TEMPLATE_ID=${{ secrets.EMAILJS_TEMPLATE_ID }}" >> $GITHUB_ENV
+          echo "VITE_EMAILJS_PUBLIC_KEY=${{ secrets.EMAILJS_PUBLIC_KEY }}" >> $GITHUB_ENV
+
+      # 4. Install dependencies
+      - run: yarn install
+
+      # 5. Deploy preview to Firebase Hosting
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
