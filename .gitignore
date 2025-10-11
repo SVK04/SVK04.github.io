@@ -36,7 +36,6 @@ dist
 dist-ssr
 *.local
 
-yarn.lock
 .env
 .vscode
 
@@ -50,7 +49,3 @@ yarn.lock
 *.njsproj
 *.sln
 *.sw?
-
-
-.yarn
-.yarnrc.yml
