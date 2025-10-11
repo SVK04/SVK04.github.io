@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { styles } from '../style';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { navLinks } from '../constants';
 import { menu, close } from '../assets';
 
@@ -34,6 +34,7 @@ const Navbar = () => {
         <ul className="list-none hidden sm:flex flex-row gap-10">
           {navLinks.map(({ id, title }) => (
             <li
+              role="presentation"
               key={id}
               className={`${
                 active === title ? 'text-white' : 'text-gray-400'
@@ -48,6 +49,7 @@ const Navbar = () => {
         {/* Mobile Menu Toggle */}
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
+            role="presentation"
             src={isMenuOpen ? close : menu}
             alt="menu"
             className="w-7 h-7 object-contain cursor-pointer"
@@ -61,6 +63,7 @@ const Navbar = () => {
             <ul className="list-none flex flex-col gap-4 items-start">
               {navLinks.map(({ id, title }) => (
                 <li
+                  role="presentation"
                   key={id}
                   className={`${
                     active === title ? 'text-white' : 'text-gray-400'

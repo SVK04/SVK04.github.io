@@ -1,6 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
+import { Link } from 'react-router';
 
 const NotFound = () => {
   return (

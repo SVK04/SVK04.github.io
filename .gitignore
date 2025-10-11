@@ -50,3 +50,7 @@ yarn.lock
 *.njsproj
 *.sln
 *.sw?
+
+
+.yarn
+.yarnrc.yml

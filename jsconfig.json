@@ -1,7 +1,17 @@
 {
-    "compilerOptions": {
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "baseUrl": "src"
-    }
-  }
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": ".",               // project root
+    "paths": {
+      "*": ["src/*"]              // map any import to src
+    },
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "ignoreDeprecations": "6.0"  // silences baseUrl deprecation waacrning
+  },
+  "include": ["src"]
+}

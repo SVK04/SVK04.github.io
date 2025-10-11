@@ -1,6 +1,5 @@
 import React from 'react';
-import { Tilt } from 'react-tilt';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { styles } from '../style';
 import { github } from '../assets';
 import { projects } from '../constants';
@@ -9,18 +8,12 @@ import { fadeIn, textVariant } from '../utils/motion';
 
 const ProjectCard = ({ index, name, description, tags, image, source_code_link }) => (
   <motion.div variants={fadeIn('up', 'spring', index * 0.5, 0.75)}>
-    <Tilt
-      options={{
-        max: 25,
-        scale: 1.05,
-        speed: 400,
-      }}
-      className="bg-[#1a1a1a] p-5 rounded-2xl sm:w-[360px] w-full hover:shadow-xl transition-all duration-300"
-    >
+    <div className="bg-[#1a1a1a] p-5 rounded-2xl sm:w-[360px] w-full hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1">
       <div className="relative w-full h-[230px] overflow-hidden rounded-2xl group">
         <img src={image} alt="project" className="w-full h-full object-cover rounded-2xl" />
         <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-end p-3">
           <div
+            role="presentation"
             onClick={() => window.open(source_code_link, '_blank')}
             className="bg-gradient-to-br from-primary to-secondary w-10 h-10 rounded-full flex justify-center items-center cursor-pointer shadow-lg"
           >
@@ -41,7 +34,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
           </span>
         ))}
       </div>
-    </Tilt>
+    </div>
   </motion.div>
 );
 

@@ -1,5 +1,4 @@
-import React from 'react';
-import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa6';
+import { IconBrandGithub, IconBrandLinkedinFilled, IconBrandInstagram } from '@tabler/icons-react';
 
 const Footer = () => {
   return (
@@ -17,7 +16,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="hover:text-white transition"
           >
-            <FaGithub />
+            <IconBrandGithub />
           </a>
           <a
             href="https://www.linkedin.com/in/vaibhav-kaul-448889246/"
@@ -25,7 +24,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="hover:text-white transition"
           >
-            <FaLinkedin />
+            <IconBrandLinkedinFilled />
           </a>
           <a
             href="https://www.instagram.com/kaul__vaibhav/"
@@ -33,7 +32,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="hover:text-white transition"
           >
-            <FaInstagram />
+            <IconBrandInstagram />
           </a>
         </div>
       </div>
