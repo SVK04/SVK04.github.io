@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import emailjs from '@emailjs/browser';
 import { styles } from '../style';
+import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 import { useNotification } from './Notification';
@@ -62,7 +63,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="John Doe"
-              className="bg-gray-100 py-3 px-4 rounded-lg text-gray-900"
+              className="bg-gray-100 py-3 px-4 rounded-lg text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition"
             />
           </label>
 
@@ -74,7 +75,7 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="johndoe@example.com"
-              className="bg-gray-100 py-3 px-4 rounded-lg text-gray-900"
+              className="bg-gray-100 py-3 px-4 rounded-lg text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition"
             />
           </label>
 
@@ -86,14 +87,21 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="What's on your mind?"
-              className="bg-gray-100 py-3 px-4 rounded-lg text-gray-900 resize-none"
+              className="bg-gray-100 py-3 px-4 rounded-lg text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition resize-none"
             />
           </label>
 
-          <button type="submit" className="bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg w-fit">
+          <button
+            type="submit"
+            className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-all duration-300 w-fit"
+          >
             {loading ? 'Sending...' : 'Send'}
           </button>
         </form>
+      </motion.div>
+
+      <motion.div variants={slideIn('right', 'tween', 0.2, 1)} className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]">
+        <EarthCanvas />
       </motion.div>
     </div>
   );
