@@ -25,7 +25,7 @@ import todolist from './todolist.png';
 import dineout from './DineOut.png';
 import postgresSql from './postgresql.svg';
 import resume from './resume/resume.pdf';
-import vkLogo from './vklogo.svg';
+import vkLogo from './vk-logo.png';
 
 export {
   logo,

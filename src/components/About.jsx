@@ -5,16 +5,26 @@ import { services } from '../constants';
 import { textVariant, fadeIn } from '../utils/motion';
 import { SectionWrapper } from '../hoc';
 import { resume } from '../assets/';
+import { IconBrowser, IconDeviceMobile, IconServer, IconCode } from '@tabler/icons-react';
+
+const iconMap = {
+  frontend: IconBrowser,
+  mobile: IconDeviceMobile,
+  backend: IconServer,
+  default: IconCode,
+};
 
 const ServiceCard = ({ index, title, icon }) => {
+  const Icon = iconMap[icon] || iconMap.default;
+
   return (
     <motion.div
       variants={fadeIn('right', 'spring', 0.5 * index, 0.75)}
       whileHover={{ scale: 1.05, rotate: [0, 2, -2, 0] }}
       className="xs:w-[250px] w-full p-[1px] rounded-[20px] shadow-card green-pink-gradient"
     >
-      <div className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex flex-col justify-evenly items-center">
-        <img src={icon} alt={title} className="w-16 h-16 object-contain" />
+      <div className="glass-card rounded-[20px] py-5 px-12 min-h-[280px] flex flex-col justify-evenly items-center">
+        <Icon size={64} className="text-brand-primary drop-shadow-lg" stroke={1.5} />
         <h3 className="text-text-primary text-[20px] font-bold text-center">{title}</h3>
       </div>
     </motion.div>

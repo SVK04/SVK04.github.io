@@ -12,6 +12,8 @@
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
   color-scheme: var(--color-scheme);
+  /* Smooth Theme Transition for all elements */
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
 }
 
 :root {
@@ -40,7 +42,7 @@
   --color-border: 229, 231, 235;
   /* gray-200 */
 
-  /* Gradient/Accent Base (can be used for gradients) */
+  /* Gradient/Accent Base */
   --color-accent-start: 63, 78, 184;
   --color-accent-end: 139, 92, 246;
   /* purple-500 */
@@ -55,21 +57,18 @@
 
   /* Core Colors - Dark Mode */
   --color-primary: 99, 102, 241;
-  /* indigo-500 (lighter for dark mode) */
+  /* indigo-500 */
   --color-secondary: 170, 170, 204;
   --color-tertiary: 35, 38, 49;
-  /* #232631 - Neutral Dark Gray-Blue */
+  /* #232631 */
 
   --color-background: 5, 8, 22;
   /* deep dark blue/black */
   --color-surface: 16, 13, 37;
-  /* slight lighter */
   --color-surface-dim: 28, 28, 55;
-  /* even lighter surface */
 
   --color-text-primary: 255, 255, 255;
   --color-text-secondary: 223, 217, 255;
-  /* #dfd9ff from style.js */
 
   --color-border: 53, 56, 73;
 
@@ -138,39 +137,15 @@
 
   0%,
   100% {
-    box-shadow:
-      0em -2.6em 0em 0em #ffffff,
-      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-      2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-      -2.6em 0em 0 0em rgba(255, 255, 255, 0.5),
-      -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
+    box-shadow: 0em -2.6em 0em 0em #ffffff, 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.5), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
   }
 
   12.5% {
-    box-shadow:
-      0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
-      1.8em -1.8em 0 0em #ffffff,
-      2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7), 1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
   }
 
   25% {
-    box-shadow:
-      0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
-      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7),
-      2.5em 0em 0 0em #ffffff,
-      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7), 2.5em 0em 0 0em #ffffff, 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -190,7 +165,92 @@
   animation: slideDown 0.3s ease forwards;
 }
 
-/* Glow + Gradient animation */
+/* Glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  /* Light mode default */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  transition: all 0.3s ease;
+}
+
+.dark .glass-card {
+  background: rgba(17, 25, 40, 0.7);
+  /* Dark mode default */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* More subtle border */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Vibrant Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-size: 200% auto;
+  animation: gradientTextAnim 5s ease infinite;
+}
+
+@keyframes gradientTextAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* New Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0% {
+    box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+  }
+
+  100% {
+    box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s infinite;
+}
+
+.animate-gradientPulse {
+  background-size: 100% 200%;
+  animation: gradientPulse 4s linear infinite;
+}
+
 @keyframes gradientPulse {
 
   0%,
@@ -201,9 +261,4 @@
   50% {
     background-position: 0% 100%;
   }
-}
-
-.animate-gradientPulse {
-  background-size: 100% 200%;
-  animation: gradientPulse 4s linear infinite;
 }

@@ -15,6 +15,8 @@ export const ThemeProvider = ({ children }) => {
     return 'dark'; // Default to dark as per original design
   });
 
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove('light', 'dark');
@@ -23,14 +25,25 @@ export const ThemeProvider = ({ children }) => {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+    // Start transition
+    setIsTransitioning(true);
+
+    // Wait for the "cover" animation to complete (e.g. 500ms) before changing theme
+    setTimeout(() => {
+      setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+    }, 500);
+
+    // End transition after total animation time (e.g. 1500ms)
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 1500);
   };
 
   const setLightTheme = () => setTheme('light');
   const setDarkTheme = () => setTheme('dark');
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setLightTheme, setDarkTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, isTransitioning, setLightTheme, setDarkTheme }}>
       {children}
     </ThemeContext.Provider>
   );
