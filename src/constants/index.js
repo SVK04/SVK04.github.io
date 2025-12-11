@@ -1,25 +1,4 @@
-import {
-  mobile,
-  backend,
-  web,
-  javascript,
-  typescript,
-  html,
-  css,
-  reactjs,
-  redux,
-  tailwind,
-  nodejs,
-  git,
-  docker,
-  school,
-  college,
-  movie,
-  todolist,
-  dineout,
-  threejs,
-  postgresSql,
-} from '../assets';
+import { movie, todolist, dineout } from '../assets';
 
 export const navLinks = [
   {
@@ -31,7 +10,11 @@ export const navLinks = [
     title: 'Skills',
   },
   {
-    id: 'work',
+    id: 'experience',
+    title: 'Experience',
+  },
+  {
+    id: 'education',
     title: 'Education',
   },
   {
@@ -47,20 +30,16 @@ export const navLinks = [
 const services = [
   {
     title: 'Frontend Developer',
-    icon: web,
+    icon: 'frontend',
   },
   {
     title: 'React Native Developer',
-    icon: mobile,
+    icon: 'mobile',
   },
   {
     title: 'Backend Developer',
-    icon: backend,
+    icon: 'backend',
   },
-  // {
-  //   title: "Content Creator",
-  //   icon: creator,
-  // },
 ];
 
 const skills = [
@@ -85,137 +64,37 @@ const skills = [
   { name: 'VS Code', level: 95, category: 'tools' },
 ];
 
-const technologies = [
-  {
-    name: 'HTML 5',
-    icon: html,
-    percentage: 80,
-  },
-  {
-    name: 'CSS 3',
-    icon: css,
-    percentage: 80,
-  },
-  {
-    name: 'JavaScript',
-    icon: javascript,
-    percentage: 70,
-  },
-  {
-    name: 'TypeScript',
-    icon: typescript,
-    percentage: 30,
-  },
-  {
-    name: 'React JS',
-    icon: reactjs,
-    percentage: 70,
-  },
-  {
-    name: 'Redux-Saga Redux',
-    icon: redux,
-    percentage: 40,
-  },
-  {
-    name: 'Tailwind CSS',
-    icon: tailwind,
-    percentage: 60,
-  },
-  {
-    name: 'Node JS',
-    icon: nodejs,
-    percentage: 60,
-  },
-  {
-    name: 'PostgresSQL',
-    icon: postgresSql,
-    percentage: 60,
-  },
-  {
-    name: 'Three JS',
-    icon: threejs,
-    percentage: 30,
-  },
-  {
-    name: 'Git',
-    icon: git,
-    percentage: 60,
-  },
-  // {
-  //   name: 'Figma',
-  //   icon: figma,
-  //   percentage: 5,
-  // },
-  {
-    name: 'Docker',
-    icon: docker,
-    percentage: 50,
-  },
-];
-
 const education = [
   {
     title: 'Completed BTech in Computer Enginnering ',
     company_name: 'Dharmsinh Desai Institute of Technology, Nadiad(Gujarat)',
-    icon: college,
+    icon: 'college',
     iconBg: '#383E56',
     date: 'Passed in 2024',
-    points: [
-      'CPI-->7.65',
-      // "Developing and maintaining web applications using React.js and other related technologies.",
-      // "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      // "Implementing responsive design and ensuring cross-browser compatibility.",
-      // "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
+    points: ['CPI-->7.65'],
   },
   {
     title: 'Higher Secondary Education',
     company_name: 'Bright Day School,Vasna, Vadodara',
-    icon: school,
+    icon: 'school',
     iconBg: '#E6DEDD',
     date: 'Passed in 2020',
-    points: [
-      'Result-89.8%',
-      // "Developing and maintaining web applications using React.js and other related technologies.",
-      // "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      // "Implementing responsive design and ensuring cross-browser compatibility.",
-      // "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
+    points: ['Result-89.8%'],
   },
   {
     title: 'Secondary Education',
     company_name: 'Bright Day School,Vasna, Vadodara',
-    icon: school,
+    icon: 'school',
     iconBg: '#383E56',
     date: 'Passed in 2018',
-    points: [
-      'Result-86%',
-      // "Developing and maintaining web applications using React.js and other related technologies.",
-      // "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      // "Implementing responsive design and ensuring cross-browser compatibility.",
-      // "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
+    points: ['Result-86%'],
   },
-  // {
-  //   title: "Full stack Developer",
-  //   company_name: "Meta",
-  //   icon: meta,
-  //   iconBg: "#E6DEDD",
-  //   date: "Jan 2023 - Present",
-  //   points: [
-  //     "Developing and maintaining web applications using React.js and other related technologies.",
-  //     "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-  //     "Implementing responsive design and ensuring cross-browser compatibility.",
-  //     "Participating in code reviews and providing constructive feedback to other developers.",
-  //   ],
-  // },
 ];
 
 const experiences = [
   {
     title: 'Junior Software Developer',
     company_name: 'eDelta Enterprise Solutions Pvt. Ltd.',
-    icon: backend,
     iconBg: '#383E56',
     date: 'June 2024 - Present',
     points: [
@@ -241,7 +120,6 @@ const experiences = [
   {
     title: 'Software Developer Intern',
     company_name: 'eDelta Enterprise Solutions Pvt. Ltd.',
-    icon: backend,
     iconBg: '#E6DEDD',
     date: 'Dec 2023 - May 2024',
     points: [
@@ -354,4 +232,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, education, testimonials, projects, skills, experiences };
+export { services, education, testimonials, projects, skills, experiences };

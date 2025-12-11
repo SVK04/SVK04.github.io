@@ -9,8 +9,8 @@ import Works from './Works';
 import Feedbacks from './Feedbacks';
 import Contact from './Contact';
 import { NotificationProvider } from './Notification';
-import { ThemeToggle } from './ThemeToggle';
 import Footer from './Footer';
+import ThemeTransition from './ThemeTransition';
 
 export {
   Hero,
@@ -26,5 +26,5 @@ export {
   BallCanvas,
   NotificationProvider,
   Footer,
-  ThemeToggle,
+  ThemeTransition,
 };

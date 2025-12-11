@@ -5,25 +5,44 @@ import { styles } from '../style';
 import { education } from '../constants';
 import { textVariant } from '../utils/motion';
 
-const EducationCard = ({ edu, index }) => (
-  <TimelineItem
-    date={edu.date}
-    icon={<img src={edu.icon} alt={edu.company_name} className="w-[60%] h-[60%] object-contain" />}
-    index={index}
-  >
-    <h3 className="text-text-primary text-[24px] font-bold">{edu.title}</h3>
-    <p className="text-text-secondary text-[16px] font-semibold" style={{ margin: 0 }}>
-      {edu.company_name}
-    </p>
-    <ul className="mt-5 list-disc ml-5 space-y-2">
-      {edu.points.map((point, i) => (
-        <li key={`education-point-${i}`} className="text-text-primary text-[14px] pl-1 tracking-wider">
-          {point}
-        </li>
-      ))}
-    </ul>
-  </TimelineItem>
-);
+import { IconSchool, IconBuildingArch } from '@tabler/icons-react';
+
+const iconMap = {
+  school: IconSchool,
+  college: IconBuildingArch,
+  default: IconSchool,
+};
+
+const EducationIcon = ({ iconName, ...props }) => {
+  const Icon = iconMap[iconName] || iconMap.default;
+  return <Icon {...props} />;
+};
+
+const EducationCard = ({ edu, index }) => {
+  return (
+    <TimelineItem
+      date={edu.date}
+      icon={
+        <div className="flex justify-center items-center w-full h-full">
+          <EducationIcon iconName={edu.icon} className="text-brand-primary w-[60%] h-[60%]" />
+        </div>
+      }
+      index={index}
+    >
+      <h3 className="text-text-primary text-[24px] font-bold">{edu.title}</h3>
+      <p className="text-text-secondary text-[16px] font-semibold" style={{ margin: 0 }}>
+        {edu.company_name}
+      </p>
+      <ul className="mt-5 list-disc ml-5 space-y-2">
+        {edu.points.map((point, i) => (
+          <li key={`education-point-${i}`} className="text-text-primary text-[14px] pl-1 tracking-wider">
+            {point}
+          </li>
+        ))}
+      </ul>
+    </TimelineItem>
+  );
+};
 
 const Education = () => {
   return (

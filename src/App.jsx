@@ -6,18 +6,18 @@ const NotFound = lazy(() => import('./pages/NotFound.jsx'));
 import { BrowserRouter, Route, Routes } from 'react-router';
 
 import { ThemeProvider } from './contexts/ThemeContext';
-import { ThemeToggle } from './components/ThemeToggle';
+import { ThemeTransition } from './components';
 
 function App() {
   return (
     <ThemeProvider>
+      <ThemeTransition />
       <BrowserRouter
         future={{
           v7_startTransition: true,
           v7_relativeSplatPath: true,
         }}
       >
-        <ThemeToggle />
         <Routes>
           <Route
             index
