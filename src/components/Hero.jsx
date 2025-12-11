@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { styles } from '../style';
-import { ComputersCanvas } from './canvas';
+const ComputersCanvas = React.lazy(() => import('./canvas/Computers.jsx'));
 
 const texts = ['Node.js Developer.', 'React.js Developer.', 'JavaScript Developer.', 'React Native Developer.'];
 
@@ -49,18 +49,21 @@ const Hero = () => {
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </div>
         <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>
+          <h1 className={`${styles.heroHeadText}`}>
             Hi,I am
-            <span className="text-[#915eff]"> Vaibhav Kaul</span>
+            <span className="text-brand-primary"> Vaibhav Kaul</span>
           </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I am <span className="text-[#915eff]">{dynamicText}</span>
+          <p className={`${styles.heroSubText} mt-2`}>
+            I am <span className="text-brand-primary">{dynamicText}</span>
             <span className="animate-blink">|</span>
           </p>
         </div>
       </div>
 
-      <ComputersCanvas />
+      <Suspense fallback={null}>
+        <ComputersCanvas />
+      </Suspense>
+
       <div
         className="absolute xs:-bottom-1 bottom-24
       w-full flex justify-center items-center cursor-pointers"
@@ -68,7 +71,7 @@ const Hero = () => {
         <a href="#about">
           <div
             className="w-[35px] h-[64px]
-          rounded-3xl border-4 border-gray-400 flex
+          rounded-3xl border-4 border-text-secondary flex
           justify-center items-start p-2 cursor-pointer"
           >
             <motion.div
@@ -80,7 +83,7 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: 'loop',
               }}
-              className="w-3 h-3 bg-white rounded-full mb-1 cursor-pointer"
+              className="w-3 h-3 bg-text-secondary rounded-full mb-1 cursor-pointer"
             />
           </div>
         </a>

@@ -20,7 +20,7 @@ const generateRandomPoints = (count, radius) => {
 
 const StarsComponent = props => {
   const ref = useRef();
-  const sphere = useMemo(() => generateRandomPoints(2000, 1.2), []);
+  const sphere = useMemo(() => generateRandomPoints(5000, 1.2), []);
 
   useFrame((state, delta) => {
     ref.current.rotation.x -= delta / 10;
@@ -41,7 +41,7 @@ Stars.displayName = 'Stars';
 
 const StarsCanvas = () => {
   return (
-    <div className="w-full h-auto absolute inset-0 z-[-1]">
+    <div className="w-full h-full fixed inset-0 z-[-1]">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
           <Stars />

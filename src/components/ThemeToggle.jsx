@@ -1,32 +1,30 @@
-import { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
 import { IconMoon, IconSun } from '@tabler/icons-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 export const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const storedTheme = localStorage.getItem('theme');
-    return storedTheme === 'dark';
-  });
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
-
-  const toggleTheme = () => {
-    setIsDarkMode(prev => !prev);
-  };
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
       onClick={toggleTheme}
-      className="fixed max-sm:hidden top-5 right-5 z-50 p-2 rounded-full transition-colors duration-300 focus:outline-hidden"
+      className={`
+        fixed bottom-10 right-10 z-50 p-4 rounded-full shadow-lg
+        transition-colors duration-300
+        ${isDark ? 'bg-surface text-yellow-400 border border-gray-700' : 'bg-surface text-brand-primary border border-gray-200'}
+      `}
+      aria-label="Toggle Theme"
     >
-      {isDarkMode ? <IconSun className="h-6 w-6 text-yellow-300" /> : <IconMoon className="h-6 w-6 text-blue-900" />}
-    </button>
+      <motion.div
+        initial={false}
+        animate={{ rotate: isDark ? 0 : 180 }}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
+      >
+        {isDark ? <IconSun size={24} /> : <IconMoon size={24} />}
+      </motion.div>
+    </motion.button>
   );
 };

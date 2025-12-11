@@ -211,6 +211,55 @@ const education = [
   // },
 ];
 
+const experiences = [
+  {
+    title: 'Junior Software Developer',
+    company_name: 'eDelta Enterprise Solutions Pvt. Ltd.',
+    icon: backend,
+    iconBg: '#383E56',
+    date: 'June 2024 - Present',
+    points: [
+      {
+        title: 'Voicenow AI (AI Voice Assistant Platform)',
+        description:
+          'Admin portal for dynamic LLM and voice service management, Python microservice for real-time STT/TTS, Node.js Serverless API backend with Twilio integration.',
+        tags: ['Python', 'Node.js', 'Twilio', 'LLM'],
+      },
+      {
+        title: 'E-Commerce Plugin Architecture',
+        description:
+          'Optimized BigCommerce plan sync (70% faster), developed high-performance Next.js SSR app, complex product mapping for CSV imports.',
+        tags: ['Next.js', 'BigCommerce', 'SSR'],
+      },
+      {
+        title: 'Serverless Voice Bot Architecture',
+        description: 'AWS Lambda + API Gateway, Twilio + Dialogflow integration, call logging in PostgreSQL.',
+        tags: ['AWS Lambda', 'AWS API Gateway', 'PostgreSQL', 'Dialogflow'],
+      },
+    ],
+  },
+  {
+    title: 'Software Developer Intern',
+    company_name: 'eDelta Enterprise Solutions Pvt. Ltd.',
+    icon: backend,
+    iconBg: '#E6DEDD',
+    date: 'Dec 2023 - May 2024',
+    points: [
+      {
+        title: 'No-Code AI Studio Platform',
+        description:
+          'Core backend for drag-and-drop bot building, node-and-edge graph system, foundational functional nodes.',
+        tags: ['Backend', 'No-Code', 'Graph Systems'],
+      },
+      {
+        title: 'Visual & UX Features',
+        description: 'Implemented node-and-edge visualization for complex bot flows.',
+        tags: ['UX', 'Visualization'],
+      },
+    ],
+  },
+];
+
 const testimonials = [
   {
     testimonial: 'I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.',
@@ -305,4 +354,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, education, testimonials, projects, skills };
+export { services, technologies, education, testimonials, projects, skills, experiences };
