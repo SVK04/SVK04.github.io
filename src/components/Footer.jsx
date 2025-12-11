@@ -2,10 +2,10 @@ import { IconBrandGithub, IconBrandLinkedinFilled, IconBrandInstagram } from '@t
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0f0f0f] text-gray-400 py-10 mt-20">
+    <footer className="bg-tertiary text-text-secondary py-10 mt-20 border-t border-border">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-center md:text-left">
-          <h2 className="text-xl font-semibold text-white">© {new Date().getFullYear()} Vaibhav Kaul</h2>
+          <h2 className="text-xl font-semibold text-text-primary">© {new Date().getFullYear()} Vaibhav Kaul</h2>
           <p className="text-sm mt-1">Built with ❤️ using React & TailwindCSS</p>
         </div>
 
@@ -14,7 +14,7 @@ const Footer = () => {
             href="https://github.com/SVK04"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition"
+            className="hover:text-text-primary transition"
           >
             <IconBrandGithub />
           </a>
@@ -22,7 +22,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/vaibhav-kaul-448889246/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition"
+            className="hover:text-text-primary transition"
           >
             <IconBrandLinkedinFilled />
           </a>
@@ -30,7 +30,7 @@ const Footer = () => {
             href="https://www.instagram.com/kaul__vaibhav/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition"
+            className="hover:text-text-primary transition"
           >
             <IconBrandInstagram />
           </a>

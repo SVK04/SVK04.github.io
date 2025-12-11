@@ -11,7 +11,75 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: var(--color-scheme);
+}
+
+:root {
+  --color-scheme: light;
+
+  /* Core Colors - Light Mode */
+  --color-primary: 63, 78, 184;
+  /* brand-primary #3F4EB8 */
+  --color-secondary: 102, 109, 128;
+  /* gray-600 */
+  --color-tertiary: 255, 255, 255;
+  /* white card for light mode */
+
+  --color-background: 248, 249, 251;
+  /* bg-light */
+  --color-surface: 255, 255, 255;
+  /* white */
+  --color-surface-dim: 243, 244, 246;
+  /* gray-100/tertiary */
+
+  --color-text-primary: 33, 37, 41;
+  /* dark */
+  --color-text-secondary: 75, 85, 99;
+  /* gray-600 */
+
+  --color-border: 229, 231, 235;
+  /* gray-200 */
+
+  /* Gradient/Accent Base (can be used for gradients) */
+  --color-accent-start: 63, 78, 184;
+  --color-accent-end: 139, 92, 246;
+  /* purple-500 */
+
+  /* Shadow */
+  --shadow-color: 0, 0, 0;
+  --shadow-opacity: 0.1;
+}
+
+.dark {
+  --color-scheme: dark;
+
+  /* Core Colors - Dark Mode */
+  --color-primary: 99, 102, 241;
+  /* indigo-500 (lighter for dark mode) */
+  --color-secondary: 170, 170, 204;
+  --color-tertiary: 35, 38, 49;
+  /* #232631 - Neutral Dark Gray-Blue */
+
+  --color-background: 5, 8, 22;
+  /* deep dark blue/black */
+  --color-surface: 16, 13, 37;
+  /* slight lighter */
+  --color-surface-dim: 28, 28, 55;
+  /* even lighter surface */
+
+  --color-text-primary: 255, 255, 255;
+  --color-text-secondary: 223, 217, 255;
+  /* #dfd9ff from style.js */
+
+  --color-border: 53, 56, 73;
+
+  /* Gradient/Accent Base */
+  --color-accent-start: 139, 92, 246;
+  --color-accent-end: 236, 72, 153;
+
+  /* Shadow */
+  --shadow-color: 0, 0, 0;
+  --shadow-opacity: 0.3;
 }
 
 /* Gradients */
@@ -67,6 +135,7 @@
 }
 
 @keyframes mulShdSpin {
+
   0%,
   100% {
     box-shadow:
@@ -79,6 +148,7 @@
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.5),
       -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
   }
+
   12.5% {
     box-shadow:
       0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
@@ -90,6 +160,7 @@
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
       -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
   }
+
   25% {
     box-shadow:
       0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
@@ -108,6 +179,7 @@
     opacity: 0;
     transform: translateY(-20px) translateX(-50%);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) translateX(-50%);
@@ -116,4 +188,22 @@
 
 .animate-slideDown {
   animation: slideDown 0.3s ease forwards;
+}
+
+/* Glow + Gradient animation */
+@keyframes gradientPulse {
+
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 0% 100%;
+  }
+}
+
+.animate-gradientPulse {
+  background-size: 100% 200%;
+  animation: gradientPulse 4s linear infinite;
 }
