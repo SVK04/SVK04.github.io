@@ -5,6 +5,10 @@ import { skills } from '../constants';
 import { motion } from 'motion/react';
 import { textVariant } from '../utils/motion';
 import {
+  IconBrandAngular,
+  IconBrandPython,
+  IconBrandAws,
+  IconBrandSocketIo,
   IconBrandHtml5,
   IconBrandCss3,
   IconBrandJavascript,
@@ -44,6 +48,10 @@ const getSkillIcon = skillName => {
   if (name.includes('git')) return IconBrandGit;
   if (name.includes('docker')) return IconBrandDocker;
   if (name.includes('vs code')) return IconBrandVscode;
+  if (name.includes('angular')) return IconBrandAngular;
+  if (name.includes('python')) return IconBrandPython;
+  if (name.includes('aws')) return IconBrandAws;
+  if (name.includes('socket')) return IconBrandSocketIo;
   if (name.includes('express')) return IconServer; // Generic for Express if brand missing
 
   return IconCode; // Default

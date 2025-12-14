@@ -40,9 +40,10 @@ const About = () => {
       </motion.div>
 
       <motion.p variants={fadeIn('', 0.1, 1)} className="mt-4 text-text-secondary text-[17px] max-w-3xl leading-[30px]">
-        I’m Vaibhav Kaul, a passionate software developer with hands-on experience in JavaScript, React, Node.js, and
-        Three.js. With a knack for quick learning, I craft efficient, scalable, and user-centric solutions that tackle
-        real-world challenges. Let&apos;s collaborate to turn your ideas into innovative, impactful solutions!
+        Full Stack Engineer with 2 years of experience architecting scalable AI-driven platforms and cross-platform
+        e-commerce solutions. Expert in building real-time voice infrastructure (WebSockets, VAD) and high-performance
+        serverless APIs. Proven track record of reducing integration times by 90% and optimizing bulk data processing
+        for enterprise clients.
       </motion.p>
       <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-start">
         <a href={resume} download="resume.pdf" target="_blank" rel="noopener noreferrer">

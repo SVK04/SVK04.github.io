@@ -29,15 +29,15 @@ export const navLinks = [
 
 const services = [
   {
-    title: 'Frontend Developer',
+    title: 'Full Stack Engineer',
     icon: 'frontend',
   },
   {
-    title: 'React Native Developer',
+    title: 'AI & Voice Architect',
     icon: 'mobile',
   },
   {
-    title: 'Backend Developer',
+    title: 'Cloud-Native Developer',
     icon: 'backend',
   },
 ];
@@ -46,32 +46,36 @@ const skills = [
   // Frontend
   { name: 'HTML/CSS', level: 95, category: 'frontend' },
   { name: 'JavaScript', level: 90, category: 'frontend' },
+  { name: 'TypeScript', level: 85, category: 'frontend' },
   { name: 'React', level: 90, category: 'frontend' },
-  { name: 'TypeScript', level: 70, category: 'frontend' },
+  { name: 'Next.js', level: 85, category: 'frontend' },
   { name: 'Tailwind CSS', level: 90, category: 'frontend' },
-  { name: 'Next.js', level: 75, category: 'frontend' },
+  // { name: 'Angular', level: 70, category: 'frontend' },
 
   // Backend
-  { name: 'Node.js', level: 80, category: 'backend' },
-  { name: 'Express', level: 75, category: 'backend' },
-  { name: 'MongoDB', level: 50, category: 'backend' },
-  { name: 'PostgreSQL', level: 65, category: 'backend' },
+  { name: 'Node.js', level: 85, category: 'backend' },
+  { name: 'Python', level: 85, category: 'backend' },
+  { name: 'Express', level: 80, category: 'backend' },
+  { name: 'Socket.IO', level: 80, category: 'backend' },
+  { name: 'PostgreSQL', level: 75, category: 'backend' },
+  // { name: 'MongoDB', level: 60, category: 'backend' },
   { name: 'GraphQL', level: 70, category: 'backend' },
 
   // Tools
   { name: 'Git/GitHub', level: 90, category: 'tools' },
-  { name: 'Docker', level: 70, category: 'tools' },
+  { name: 'Docker', level: 75, category: 'tools' },
+  { name: 'AWS', level: 75, category: 'tools' },
   { name: 'VS Code', level: 95, category: 'tools' },
 ];
 
 const education = [
   {
-    title: 'Completed BTech in Computer Enginnering ',
-    company_name: 'Dharmsinh Desai Institute of Technology, Nadiad(Gujarat)',
+    title: 'BTech in Computer Engineering',
+    company_name: 'Dharmsinh Desai University, Nadiad (Gujarat)',
     icon: 'college',
     iconBg: '#383E56',
     date: 'Passed in 2024',
-    points: ['CPI-->7.65'],
+    points: ['CPI: 7.65'],
   },
   {
     title: 'Higher Secondary Education',
@@ -96,69 +100,47 @@ const experiences = [
     title: 'Junior Software Developer',
     company_name: 'eDelta Enterprise Solutions Pvt. Ltd.',
     iconBg: '#383E56',
-    date: 'June 2024 - Present',
+    date: 'July 2023 - Present',
     points: [
       {
-        title: 'Voicenow AI (AI Voice Assistant Platform)',
+        title: 'E-commerce Protection Platforms (ProtectAllPlans)',
         description:
-          'Admin portal for dynamic LLM and voice service management, Python microservice for real-time STT/TTS, Node.js Serverless API backend with Twilio integration.',
-        tags: ['Python', 'Node.js', 'Twilio', 'LLM'],
+          'Designed and developed ProtectAllPlans, a cross-platform protection system for Shopify, BigCommerce, and WordPress. Built CSV-based import pipelines and implemented Shopify Cart Transformer logic.',
+        tags: ['Shopify', 'BigCommerce', 'WordPress', 'Next.js', 'CSV'],
       },
       {
-        title: 'E-Commerce Plugin Architecture',
+        title: 'VoiceNow AI Voice Platform & SDK',
         description:
-          'Optimized BigCommerce plan sync (70% faster), developed high-performance Next.js SSR app, complex product mapping for CSV imports.',
-        tags: ['Next.js', 'BigCommerce', 'SSR'],
+          'Built a full-stack AI voice assistant platform with Python WebSocket backend (VAD -> STT -> LLM -> TTS). Designed and published the framework-agnostic VoiceNow SDK.',
+        tags: ['Python', 'WebSockets', 'VAD', 'LLM', 'AI'],
       },
       {
-        title: 'Serverless Voice Bot Architecture',
-        description: 'AWS Lambda + API Gateway, Twilio + Dialogflow integration, call logging in PostgreSQL.',
-        tags: ['AWS Lambda', 'AWS API Gateway', 'PostgreSQL', 'Dialogflow'],
+        title: 'Omnichannel Engagement & Serverless Bots',
+        description:
+          'Engineered multi-channel communication APIs for WhatsApp, FB, Instagram. Designed Serverless Voice Bot architecture using AWS Lambda and API Gateway.',
+        tags: ['AWS Lambda', 'API Gateway', 'PostgreSQL', 'Twilio'],
       },
     ],
   },
   {
-    title: 'Software Developer Intern',
+    title: 'Software Engineering Intern',
     company_name: 'eDelta Enterprise Solutions Pvt. Ltd.',
     iconBg: '#E6DEDD',
-    date: 'Dec 2023 - May 2024',
+    date: 'Jan 2023 - June 2023',
     points: [
       {
         title: 'No-Code AI Studio Platform',
         description:
-          'Core backend for drag-and-drop bot building, node-and-edge graph system, foundational functional nodes.',
-        tags: ['Backend', 'No-Code', 'Graph Systems'],
+          'Designed core architecture of a no-code AI chatbot builder. Implemented a node-and-edge graph system enabling drag-and-drop flow creation.',
+        tags: ['Backend', 'No-Code', 'Graph Systems', 'System Design'],
       },
       {
-        title: 'Visual & UX Features',
-        description: 'Implemented node-and-edge visualization for complex bot flows.',
-        tags: ['UX', 'Visualization'],
+        title: 'Platform Automation',
+        description:
+          'Established backend support for node execution and flow validation, forming the base of the platform automation.',
+        tags: ['Automation', 'Backend', 'Validation'],
       },
     ],
-  },
-];
-
-const testimonials = [
-  {
-    testimonial: 'I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.',
-    name: 'Sara Lee',
-    designation: 'CFO',
-    company: 'Acme Co',
-    image: 'https://randomuser.me/api/portraits/women/4.jpg',
-  },
-  {
-    testimonial: "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: 'Chris Brown',
-    designation: 'COO',
-    company: 'DEF Corp',
-    image: 'https://randomuser.me/api/portraits/men/5.jpg',
-  },
-  {
-    testimonial: "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: 'Lisa Wang',
-    designation: 'CTO',
-    company: '456 Enterprises',
-    image: 'https://randomuser.me/api/portraits/women/6.jpg',
   },
 ];
 
@@ -232,4 +214,4 @@ const projects = [
   },
 ];
 
-export { services, education, testimonials, projects, skills, experiences };
+export { services, education, projects, skills, experiences };
