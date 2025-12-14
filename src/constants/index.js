@@ -98,9 +98,9 @@ const education = [
 const experiences = [
   {
     title: 'Junior Software Developer',
-    company_name: 'eDelta Enterprise Solutions Pvt. Ltd.',
+    company_name: 'eDelta Corporation (Surat)',
     iconBg: '#383E56',
-    date: 'July 2023 - Present',
+    date: 'July 2024 - Present',
     points: [
       {
         title: 'E-commerce Protection Platforms (ProtectAllPlans)',
@@ -124,9 +124,9 @@ const experiences = [
   },
   {
     title: 'Software Engineering Intern',
-    company_name: 'eDelta Enterprise Solutions Pvt. Ltd.',
+    company_name: 'eDelta Enterprise Solutions Pvt. Ltd. (Ahmedabad)',
     iconBg: '#E6DEDD',
-    date: 'Jan 2023 - June 2023',
+    date: 'Dec 2023 - June 2024',
     points: [
       {
         title: 'No-Code AI Studio Platform',
