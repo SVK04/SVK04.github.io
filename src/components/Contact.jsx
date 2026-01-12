@@ -63,7 +63,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="John Doe"
-              className="bg-surface-dim py-3 px-4 rounded-lg text-text-primary placeholder:text-text-secondary focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm border border-border"
+              className="bg-surface-dim py-3 px-4 rounded-lg text-text-primary placeholder:text-text-secondary/40 placeholder:italic focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm border border-border"
             />
           </label>
 
@@ -75,7 +75,7 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="johndoe@example.com"
-              className="bg-surface-dim py-3 px-4 rounded-lg text-text-primary placeholder:text-text-secondary focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm border border-border"
+              className="bg-surface-dim py-3 px-4 rounded-lg text-text-primary placeholder:text-text-secondary/40 placeholder:italic focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm border border-border"
             />
           </label>
 
@@ -87,7 +87,7 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="What's on your mind?"
-              className="bg-surface-dim py-3 px-4 rounded-lg text-text-primary placeholder:text-text-secondary focus:outline-none focus:ring-2 focus:ring-primary transition resize-none shadow-sm border border-border"
+              className="bg-surface-dim py-3 px-4 rounded-lg text-text-primary placeholder:text-text-secondary/40 placeholder:italic focus:outline-none focus:ring-2 focus:ring-primary transition resize-none shadow-sm border border-border"
             />
           </label>
 

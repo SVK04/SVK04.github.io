@@ -2,9 +2,14 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload, SpotLight, useGLTF } from '@react-three/drei';
 import CanvasLoader from '../Loader';
+import { useCachedGLTF } from '../../hooks/useCachedGLTF';
+
+// Preload the model immediately when this module is imported
+// This starts loading/parsing while the intro animation plays
+useGLTF.preload('./gaming_desktop_pc/scene.gltf');
 
 const Computers = ({ isMobile }) => {
-  const computer = useGLTF('./gaming_desktop_pc/scene.gltf');
+  const computer = useCachedGLTF('./gaming_desktop_pc/scene.gltf');
 
   return (
     <mesh>

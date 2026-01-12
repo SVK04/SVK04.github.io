@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+import { VitePWA } from "vite-plugin-pwa";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -12,6 +13,29 @@ export default defineConfig({
     react({
       fastRefresh: true,
       jsxRuntime: "automatic",
+    }),
+    VitePWA({
+      registerType: "autoUpdate",
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,gltf,bin,pdf}"],
+        runtimeCaching: [
+          {
+            urlPattern: /.*\/planet\/.*\.(gltf|bin|png|jpg|jpeg)/,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "3d-models",
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+              },
+            },
+          },
+        ],
+      },
+      devOptions: {
+        enabled: true,
+        type: "module",
+      },
     }),
     ViteImageOptimizer({
       png: { quality: 80 },
