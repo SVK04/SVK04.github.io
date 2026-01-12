@@ -18,9 +18,10 @@ export default defineConfig({
       registerType: "autoUpdate",
       workbox: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg,gltf,bin,pdf}"],
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10MB
         runtimeCaching: [
           {
-            urlPattern: /.*\/planet\/.*\.(gltf|bin|png|jpg|jpeg)/,
+            urlPattern: /.*\.(?:gltf|bin|glb|png|jpg|jpeg)$/,
             handler: "CacheFirst",
             options: {
               cacheName: "3d-models",
