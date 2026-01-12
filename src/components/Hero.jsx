@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { styles } from '../style';
-const ComputersCanvas = React.lazy(() => import('./canvas/Computers.jsx'));
+import ComputersCanvas from './canvas/Computers.jsx';
 
 const texts = ['Node.js Developer.', 'React.js Developer.', 'JavaScript Developer.', 'React Native Developer.'];
 
@@ -34,6 +34,29 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, textIndex]);
 
+  /*
+   * Defer 3D model loading to prioritize text animation smoothness.
+   * We use session storage to only delay this on the FIRST visit.
+   * On subsequent visits, we show it faster since the user expects the content.
+   */
+  const [showComputer, setShowComputer] = useState(() => {
+    // Check if user has already seen the intro in this session
+    return sessionStorage.getItem('intro_seen') === 'true';
+  });
+
+  useEffect(() => {
+    // If already showing (from previous session), no need to wait
+    if (showComputer) return;
+
+    // Otherwise, wait 3 seconds to let the intro animation play smoothly
+    const timer = setTimeout(() => {
+      setShowComputer(true);
+      sessionStorage.setItem('intro_seen', 'true');
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [showComputer]);
+
   return (
     <section className="relative w-full h-screen mx-auto min-h-screen">
       <div
@@ -59,9 +82,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <Suspense fallback={null}>
-        <ComputersCanvas />
-      </Suspense>
+      <Suspense fallback={null}>{showComputer && <ComputersCanvas />}</Suspense>
 
       <div
         className="absolute xs:-bottom-1 bottom-24

@@ -46,18 +46,21 @@ const About = () => {
         for enterprise clients.
       </motion.p>
       <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-start">
-        <a href={resume} download="resume.pdf" target="_blank" rel="noopener noreferrer">
-          <button
-            className="text-white bg-brand-primary hover:opacity-90 font-medium py-2 px-4 rounded-lg mt-4 transition-all shadow-md"
-            style={{ zIndex: 1 }}
-          >
-            Download CV
-          </button>
+        <a
+          href={resume}
+          download="Vaibhav_Kaul_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-brand-primary hover:opacity-90 text-white font-medium py-2 px-6 rounded-lg mt-4 transition-all shadow-md inline-flex items-center justify-center whitespace-nowrap min-w-[150px]"
+          style={{ zIndex: 1 }}
+        >
+          Download CV
         </a>
-        <a href="#contact">
-          <button className="text-white bg-brand-primary hover:opacity-90 font-medium py-2 px-4 rounded-lg mt-4 transition-all shadow-md">
-            Get In Touch
-          </button>
+        <a
+          href="#contact"
+          className="bg-brand-primary hover:opacity-90 text-white font-medium py-2 px-6 rounded-lg mt-4 transition-all shadow-md inline-flex items-center justify-center whitespace-nowrap min-w-[150px]"
+        >
+          Get In Touch
         </a>
       </div>
 
