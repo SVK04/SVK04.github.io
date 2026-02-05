@@ -1,7 +1,10 @@
+'use client';
+
 import React, { useEffect, useState, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { styles } from '../style';
-import ComputersCanvas from './canvas/Computers.jsx';
+import dynamic from 'next/dynamic';
+const ComputersCanvas = dynamic(() => import('./canvas/Computers.jsx'), { ssr: false });
 
 const texts = ['Node.js Developer.', 'React.js Developer.', 'JavaScript Developer.', 'React Native Developer.'];
 
@@ -39,23 +42,22 @@ const Hero = () => {
    * We use session storage to only delay this on the FIRST visit.
    * On subsequent visits, we show it faster since the user expects the content.
    */
-  const [showComputer, setShowComputer] = useState(() => {
-    // Check if user has already seen the intro in this session
-    return sessionStorage.getItem('intro_seen') === 'true';
-  });
+  const [showComputer, setShowComputer] = useState(false);
 
   useEffect(() => {
-    // If already showing (from previous session), no need to wait
-    if (showComputer) return;
-
-    // Otherwise, wait 3 seconds to let the intro animation play smoothly
-    const timer = setTimeout(() => {
+    // Check if user has already seen the intro in this session
+    const seen = sessionStorage.getItem('intro_seen') === 'true';
+    if (seen) {
       setShowComputer(true);
-      sessionStorage.setItem('intro_seen', 'true');
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, [showComputer]);
+    } else {
+      // Otherwise, wait 3 seconds to let the intro animation play smoothly
+      const timer = setTimeout(() => {
+        setShowComputer(true);
+        sessionStorage.setItem('intro_seen', 'true');
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <section className="relative w-full h-screen mx-auto min-h-screen">

@@ -1,17 +1,26 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
-    "baseUrl": ".",               // project root
-    "paths": {
-      "*": ["src/*"]              // map any import to src
-    },
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "strict": true,
-    "jsx": "react-jsx",
-    "ignoreDeprecations": "6.0"  // silences baseUrl deprecation waacrning
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": false,
+    "strict": false,
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "target": "es6"
   },
-  "include": ["src"]
+  "include": ["next-env.d.ts", "**/*.js", "**/*.jsx", ".next/types/**/*.ts", "src"],
+  "exclude": ["node_modules"]
 }

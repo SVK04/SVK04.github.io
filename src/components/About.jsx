@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'motion/react';
 import { styles } from '../style';
@@ -21,6 +23,9 @@ const ServiceCard = ({ index, title, icon }) => {
     <motion.div
       variants={fadeIn('right', 'spring', 0.5 * index, 0.75)}
       whileHover={{ scale: 1.05, rotate: [0, 2, -2, 0] }}
+      viewport={{ once: true, amount: 0.25 }}
+      whileInView="show"
+      initial="hidden"
       className="xs:w-[250px] w-full p-[1px] rounded-[20px] shadow-card green-pink-gradient"
     >
       <div className="glass-card rounded-[20px] py-5 px-12 min-h-[280px] flex flex-col justify-evenly items-center">
@@ -34,7 +39,7 @@ const ServiceCard = ({ index, title, icon }) => {
 const About = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <motion.div variants={textVariant()} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }}>
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>About Me</h2>
       </motion.div>

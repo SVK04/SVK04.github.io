@@ -1,3 +1,5 @@
+'use client';
+
 import { motion, AnimatePresence } from 'motion/react';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -16,43 +18,40 @@ const ThemeTransition = () => {
           */}
           <motion.div
             className="fixed inset-0 z-[100] pointer-events-none overflow-hidden"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { delay: 0.6, duration: 0.2 } }} // Fade out container at very end
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.4 } }}
           >
             <motion.div
-              className="absolute w-[200vw] h-[200vw] bg-gradient-to-tr from-[#050816] via-[#3f4eb8] to-[#f8f9fb]"
+              className={`absolute w-[300vw] h-[300vw] ${
+                isTransitioning ? 'bg-brand-primary' : 'bg-transparent'
+              } shadow-[0_0_100px_rgba(0,0,0,0.5)]`}
               initial={{
                 x: '100%',
                 y: '-100%',
                 rotate: 45,
-                transformOrigin: 'center',
               }}
               animate={{
-                x: '-40%',
-                y: '40%',
+                x: '-50%',
+                y: '50%',
                 transition: {
                   duration: 0.8,
-                  ease: [0.6, 0.05, -0.01, 0.9], // Custom easing for dramatic swoop
+                  ease: [0.22, 1, 0.36, 1], // Quintic easing
                 },
               }}
               exit={{
-                x: '-150%',
-                y: '150%',
+                x: '-200%',
+                y: '200%',
                 transition: {
-                  duration: 0.6,
+                  duration: 0.7,
                   ease: 'easeInOut',
                 },
               }}
               style={{
-                left: '-50%',
-                top: '-50%',
-                // The gradient represents: Dark Theme BG -> Primary Brand -> Light Theme BG
+                left: '-100%',
+                top: '-100%',
               }}
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-white text-6xl font-black -rotate-45 tracking-wider opacity-20">SWITCHING</div>
-              </div>
-            </motion.div>
+            />
           </motion.div>
         </>
       )}

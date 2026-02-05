@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload, SpotLight, useGLTF } from '@react-three/drei';
@@ -26,9 +28,10 @@ const Computers = ({ isMobile }) => {
   );
 };
 const ComputersCanvas = () => {
-  const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width:500px)').matches);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setIsMobile(window.matchMedia('(max-width:500px)').matches);
     const mediaQuery = window.matchMedia('(max-width:500px)');
 
     const handleMediaQueryChange = e => setIsMobile(e.matches);

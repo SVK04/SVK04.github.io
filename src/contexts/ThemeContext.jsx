@@ -1,42 +1,39 @@
+'use client';
+
 import { createContext, useContext, useEffect, useState } from 'react';
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
-    // Check localStorage first
-    if (typeof window !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    // Default to system preference or dark
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'dark'; // Default to dark as per original design
-  });
-
+  const [theme, setTheme] = useState('dark');
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Sync theme cookie on every change
+    document.cookie = `theme=${theme}; path=/; max-age=31536000; SameSite=Lax`;
+
     const root = window.document.documentElement;
     root.classList.remove('light', 'dark');
     root.classList.add(theme);
-    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    // Start transition
     setIsTransitioning(true);
 
-    // Wait for the "cover" animation to complete (e.g. 500ms) before changing theme
     setTimeout(() => {
       setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
-    }, 500);
+    }, 400);
 
-    // End transition after total animation time (e.g. 1500ms)
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 1500);
+    }, 1000);
   };
 
   const setLightTheme = () => setTheme('light');

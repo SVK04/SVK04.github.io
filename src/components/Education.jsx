@@ -1,3 +1,4 @@
+'use client';
 import { motion } from 'motion/react';
 import { SectionWrapper } from '../hoc';
 import { Timeline, TimelineItem } from './Timeline';
