@@ -9,6 +9,9 @@ export const ThemeProvider = ({ children }) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
+    // Initialize theme from localStorage on mount.
+    // We don't use 'theme' in the dependency array or the condition
+    // to avoid the exhaustive-deps warning. React bails out if value is same.
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       setTheme(savedTheme);
@@ -16,12 +19,10 @@ export const ThemeProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    // Sync theme cookie on every change
-    document.cookie = `theme=${theme}; path=/; max-age=31536000; SameSite=Lax`;
-
     const root = window.document.documentElement;
     root.classList.remove('light', 'dark');
     root.classList.add(theme);
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

@@ -26,17 +26,6 @@ import dineoutImg from './DineOut.png';
 import postgresSqlImg from './postgresql.svg';
 import vkLogoImg from './vk-logo.png';
 
-const getSrc = img => {
-  if (!img) return '';
-  if (typeof img === 'string') return img;
-  if (img.src) return img.src;
-  if (img.default) {
-    if (typeof img.default === 'string') return img.default;
-    if (img.default.src) return img.default.src;
-  }
-  return String(img); // Fallback to string representation if all else fails
-};
-
 export const logo = logoImg;
 export const backend = backendImg;
 export const creator = creatorImg;

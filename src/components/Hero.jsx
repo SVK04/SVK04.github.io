@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { styles } from '../style';
 import dynamic from 'next/dynamic';

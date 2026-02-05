@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { motion } from 'motion/react';
 import { styles } from '../style';
 import { experiences } from '../constants';
@@ -16,18 +15,24 @@ import {
   IconCode,
 } from '@tabler/icons-react';
 
-const getExperienceIcon = title => {
-  const t = title.toLowerCase();
-  if (t.includes('backend') || t.includes('node') || t.includes('server')) return IconServer;
-  if (t.includes('mobile') || t.includes('react native') || t.includes('android') || t.includes('ios'))
-    return IconDeviceMobile;
-  if (t.includes('frontend') || t.includes('web') || t.includes('react')) return IconBrowser;
-  if (t.includes('developer') || t.includes('engineer')) return IconCode;
-  return IconBriefcase;
+const iconMap = {
+  IconServer,
+  IconDeviceMobile,
+  IconBrowser,
+  IconCode,
+  IconBriefcase,
 };
 
 const ExperienceIcon = ({ title, ...props }) => {
-  const Icon = getExperienceIcon(title);
+  const t = title.toLowerCase();
+  let Icon = iconMap.IconBriefcase;
+
+  if (t.includes('backend') || t.includes('node') || t.includes('server')) Icon = iconMap.IconServer;
+  else if (t.includes('mobile') || t.includes('react native') || t.includes('android') || t.includes('ios'))
+    Icon = iconMap.IconDeviceMobile;
+  else if (t.includes('frontend') || t.includes('web') || t.includes('react')) Icon = iconMap.IconBrowser;
+  else if (t.includes('developer') || t.includes('engineer')) Icon = iconMap.IconCode;
+
   return <Icon {...props} />;
 };
 

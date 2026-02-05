@@ -1,5 +1,4 @@
 import './globals.css';
-import { cookies } from 'next/headers';
 import Script from 'next/script';
 import { Providers } from '../components/Providers';
 
@@ -70,13 +69,25 @@ export const metadata = {
   manifest: '/site.webmanifest',
 };
 
-export default async function RootLayout({ children }) {
-  const cookieStore = await cookies();
-  const theme = cookieStore.get('theme')?.value || 'dark';
-
+export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={theme}>
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased font-sans">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (!theme && supportDarkMode) theme = 'dark';
+                  if (!theme) theme = 'light';
+                  document.documentElement.classList.add(theme);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <Script id="service-worker-cleanup">
           {`
             if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {

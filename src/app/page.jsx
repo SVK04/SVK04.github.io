@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import Script from 'next/script';
 import dynamic from 'next/dynamic';
 import { useTheme } from '../contexts/ThemeContext';
