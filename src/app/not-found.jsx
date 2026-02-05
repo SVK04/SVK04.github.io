@@ -1,5 +1,7 @@
+'use client';
+
 import { motion } from 'motion/react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 
 const NotFound = () => {
   return (
@@ -14,7 +16,7 @@ const NotFound = () => {
         <p className="text-xl sm:text-2xl text-gray-300 mb-8">Oops! The page you’re looking for doesn’t exist.</p>
 
         <Link
-          to="/"
+          href="/"
           className="inline-block px-6 py-3 text-white bg-[#915eff] hover:bg-[#7e4de3] transition-colors rounded-full font-medium"
         >
           Go Back Home

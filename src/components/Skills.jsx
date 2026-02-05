@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { SectionWrapper } from '../hoc';
 import { styles } from '../style';
@@ -64,7 +66,7 @@ const Skills = () => {
 
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <motion.div variants={textVariant()} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }}>
         <p className={styles.sectionSubText}>My Technical Proficiency</p>
         <h2 className={styles.sectionHeadText}>Skills.</h2>
       </motion.div>
@@ -96,7 +98,8 @@ const Skills = () => {
             <motion.div
               key={skill.name}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: idx * 0.05, duration: 0.3 }}
               whileHover={{ scale: 1.05, y: -5 }}
               className="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-4 group cursor-default relative overflow-hidden"

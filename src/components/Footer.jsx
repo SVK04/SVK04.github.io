@@ -1,3 +1,6 @@
+'use client';
+
+import React from 'react';
 import { IconBrandGithub, IconBrandLinkedinFilled, IconBrandInstagram } from '@tabler/icons-react';
 
 const Footer = () => {

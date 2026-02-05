@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'motion/react';
 import { styles } from '../style';
@@ -31,7 +33,13 @@ const ExperienceIcon = ({ title, ...props }) => {
 
 const ExperienceCard = ({ experience, index }) => {
   return (
-    <motion.div variants={fadeIn('up', 'spring', index * 0.2, 0.75)} className="w-full max-w-5xl mx-auto">
+    <motion.div
+      variants={fadeIn('up', 'spring', index * 0.2, 0.75)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.25 }}
+      className="w-full max-w-5xl mx-auto"
+    >
       <div className="glass-card p-8 sm:p-10 rounded-[24px] hover:border-brand-primary/50 transition-all duration-300 relative group overflow-hidden">
         {/* Glow Effect */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-primary/20 transition-all duration-500"></div>
