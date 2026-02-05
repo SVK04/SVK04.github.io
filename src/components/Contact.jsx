@@ -1,8 +1,11 @@
+'use client';
+
 import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import emailjs from '@emailjs/browser';
 import { styles } from '../style';
-import { EarthCanvas } from './canvas';
+import dynamic from 'next/dynamic';
+const EarthCanvas = dynamic(() => import('./canvas/Earth'), { ssr: false });
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 import { useNotification } from './Notification';
@@ -24,14 +27,14 @@ const Contact = () => {
 
     emailjs
       .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
           from_email: form.email,
           message: form.message,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       )
       .then(
         () => {

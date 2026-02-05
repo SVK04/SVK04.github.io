@@ -1,5 +1,7 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 import { navLinks } from '../constants';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTheme } from '../contexts/ThemeContext';
@@ -36,7 +38,7 @@ const Navbar = () => {
       <div className="glass-card rounded-2xl px-6 py-3 flex justify-between items-center shadow-lg border border-white/20 dark:border-white/10">
         {/* Logo */}
         <Link
-          to="/"
+          href="/"
           className="flex items-center gap-2"
           onClick={() => {
             setActive('');

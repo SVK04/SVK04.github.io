@@ -52,6 +52,37 @@
   --shadow-opacity: 0.1;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --color-scheme: dark;
+
+    /* Core Colors - Dark Mode */
+    --color-primary: 99, 102, 241;
+    /* indigo-500 */
+    --color-secondary: 170, 170, 204;
+    --color-tertiary: 35, 38, 49;
+    /* #232631 */
+
+    --color-background: 5, 8, 22;
+    /* deep dark blue/black */
+    --color-surface: 16, 13, 37;
+    --color-surface-dim: 28, 28, 55;
+
+    --color-text-primary: 255, 255, 255;
+    --color-text-secondary: 223, 217, 255;
+
+    --color-border: 53, 56, 73;
+
+    /* Gradient/Accent Base */
+    --color-accent-start: 139, 92, 246;
+    --color-accent-end: 236, 72, 153;
+
+    /* Shadow */
+    --shadow-color: 0, 0, 0;
+    --shadow-opacity: 0.3;
+  }
+}
+
 .dark {
   --color-scheme: dark;
 

@@ -1,9 +1,15 @@
-/* eslint-disable global-require */
+import forms from '@tailwindcss/forms';
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./src/**/*.{html,js,jsx}', './node_modules/react-tailwindcss-datepicker/dist/index.esm.js'],
+export default {
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './app/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+    './node_modules/react-tailwindcss-datepicker/dist/index.esm.js'
+  ],
   plugins: [
-    require('@tailwindcss/forms'),
+    forms,
   ],
   theme: {
     extend: {
@@ -22,19 +28,19 @@ module.exports = {
       colors: {
         'bg-light': '#f8f9fb',
         'brand-primary': '#3F4EB8',
-        
+
         /* Semantic Colors */
         primary: 'rgb(var(--color-primary) / <alpha-value>)',
         secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
         tertiary: 'rgb(var(--color-tertiary) / <alpha-value>)',
-        
+
         background: 'rgb(var(--color-background) / <alpha-value>)',
         surface: 'rgb(var(--color-surface) / <alpha-value>)',
         'surface-dim': 'rgb(var(--color-surface-dim) / <alpha-value>)',
-        
+
         'text-primary': 'rgb(var(--color-text-primary) / <alpha-value>)',
         'text-secondary': 'rgb(var(--color-text-secondary) / <alpha-value>)',
-        
+
         border: 'rgb(var(--color-border) / <alpha-value>)',
 
         'gray-50': 'rgb(248, 249, 251)',
