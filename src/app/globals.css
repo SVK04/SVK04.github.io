@@ -1,158 +1,324 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* General Reset and Global Styles */
-* {
+/* ─── Global Reset ─────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  scroll-behavior: smooth;
-  color-scheme: var(--color-scheme);
-  /* Smooth Theme Transition for all elements */
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
 }
 
+html {
+  scroll-behavior: smooth;
+  color-scheme: var(--color-scheme, dark);
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Design Tokens: Dark Mode (Default) ───────────────────────────────────── */
 :root {
+  --color-scheme: dark;
+
+  --color-background:    8, 10, 15;      /* #080a0f */
+  --color-surface:       12, 16, 22;     /* #0c1016 — slightly warmer than pure black */
+  --color-surface-dim:   20, 26, 38;     /* #141a26 */
+  --color-border:        28, 36, 54;     /* #1c2436 */
+
+  --color-text-primary:  230, 233, 242;  /* #e6e9f2 — slightly warm white */
+  --color-text-secondary: 96, 112, 138;  /* #60708a — blue-tinted gray */
+
+  --color-accent:        59, 130, 246;   /* #3b82f6 electric blue */
+  --color-primary:       59, 130, 246;
+  --color-secondary:     96, 112, 138;
+  --color-tertiary:      20, 26, 38;
+
+  /* ── Gradient mesh blob colors (dark mode) */
+  --blob-1: rgba(59,  130, 246, 0.09);   /* blue   — top-right anchor */
+  --blob-2: rgba(124, 58,  237, 0.07);   /* violet — bottom-left anchor */
+  --blob-3: rgba(20,  184, 166, 0.04);   /* teal   — mid-right accent */
+  --blob-4: rgba(59,  130, 246, 0.04);   /* blue   — bottom fade */
+
+  /* ── Noise / grain opacity */
+  --noise-opacity: 0.032;
+
+  /* ── Grid dot color */
+  --grid-dot: rgba(28, 36, 54, 0.9);
+  --grid-line: rgba(28, 36, 54, 0.3);
+}
+
+/* ─── Light Mode ──────────────────────────────────────────────────────────── */
+.light {
   --color-scheme: light;
 
-  /* Core Colors - Light Mode */
-  --color-primary: 63, 78, 184;
-  /* brand-primary #3F4EB8 */
-  --color-secondary: 102, 109, 128;
-  /* gray-600 */
-  --color-tertiary: 255, 255, 255;
-  /* white card for light mode */
+  /* Warm cool-white — like high-end SaaS / paper */
+  --color-background:    248, 249, 252;  /* #f8f9fc — cool paper */
+  --color-surface:       255, 255, 255;
+  --color-surface-dim:   242, 245, 251;  /* #f2f5fb */
+  --color-border:        213, 221, 238;  /* #d5ddee — blue-tinted border */
 
-  --color-background: 248, 249, 251;
-  /* bg-light */
-  --color-surface: 255, 255, 255;
-  /* white */
-  --color-surface-dim: 243, 244, 246;
-  /* gray-100/tertiary */
+  --color-text-primary:  14, 22, 44;     /* #0e162c — deep navy-black */
+  --color-text-secondary: 92, 108, 140;  /* #5c6c8c */
 
-  --color-text-primary: 33, 37, 41;
-  /* dark */
-  --color-text-secondary: 75, 85, 99;
-  /* gray-600 */
+  --color-accent:        37, 99, 235;    /* #2563eb */
+  --color-primary:       37, 99, 235;
+  --color-secondary:     92, 108, 140;
+  --color-tertiary:      242, 245, 251;
 
-  --color-border: 229, 231, 235;
-  /* gray-200 */
+  /* ── Gradient mesh blob colors (light mode) */
+  --blob-1: transparent;
+  --blob-2: transparent;
+  --blob-3: transparent;
+  --blob-4: transparent;
 
-  /* Gradient/Accent Base */
-  --color-accent-start: 63, 78, 184;
-  --color-accent-end: 139, 92, 246;
-  /* purple-500 */
+  /* ── Noise / grain opacity — lighter in light mode */
+  --noise-opacity: 0;
 
-  /* Shadow */
-  --shadow-color: 0, 0, 0;
-  --shadow-opacity: 0.1;
+  /* ── Grid dot color */
+  --grid-dot: rgba(14, 22, 44, 0.05);
+  --grid-line: transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --color-scheme: dark;
-
-    /* Core Colors - Dark Mode */
-    --color-primary: 99, 102, 241;
-    /* indigo-500 */
-    --color-secondary: 170, 170, 204;
-    --color-tertiary: 35, 38, 49;
-    /* #232631 */
-
-    --color-background: 5, 8, 22;
-    /* deep dark blue/black */
-    --color-surface: 16, 13, 37;
-    --color-surface-dim: 28, 28, 55;
-
-    --color-text-primary: 255, 255, 255;
-    --color-text-secondary: 223, 217, 255;
-
-    --color-border: 53, 56, 73;
-
-    /* Gradient/Accent Base */
-    --color-accent-start: 139, 92, 246;
-    --color-accent-end: 236, 72, 153;
-
-    /* Shadow */
-    --shadow-color: 0, 0, 0;
-    --shadow-opacity: 0.3;
+@media (prefers-color-scheme: light) {
+  :root:not(.dark) {
+    --color-scheme: light;
+    --color-background:    248, 249, 252;
+    --color-surface:       255, 255, 255;
+    --color-surface-dim:   242, 245, 251;
+    --color-border:        213, 221, 238;
+    --color-text-primary:  14, 22, 44;
+    --color-text-secondary: 92, 108, 140;
+    --color-accent:        37, 99, 235;
+    --color-primary:       37, 99, 235;
+    --color-secondary:     92, 108, 140;
+    --color-tertiary:      242, 245, 251;
+    --blob-1: transparent;
+    --blob-2: transparent;
+    --blob-3: transparent;
+    --blob-4: transparent;
+    --noise-opacity: 0;
+    --grid-dot: rgba(14, 22, 44, 0.05);
+    --grid-line: transparent;
   }
 }
 
-.dark {
-  --color-scheme: dark;
+/* ─── Background Gradient Mesh ─────────────────────────────────────────────── */
+/*
+  Absolutely-positioned ambient glow blobs that sit behind all content.
+  Placed in the page as <div class="mesh-blob mesh-blob-N">.
+  Parent must be position:fixed, inset-0, overflow:hidden, z-index 0.
+*/
 
-  /* Core Colors - Dark Mode */
-  --color-primary: 99, 102, 241;
-  /* indigo-500 */
-  --color-secondary: 170, 170, 204;
-  --color-tertiary: 35, 38, 49;
-  /* #232631 */
-
-  --color-background: 5, 8, 22;
-  /* deep dark blue/black */
-  --color-surface: 16, 13, 37;
-  --color-surface-dim: 28, 28, 55;
-
-  --color-text-primary: 255, 255, 255;
-  --color-text-secondary: 223, 217, 255;
-
-  --color-border: 53, 56, 73;
-
-  /* Gradient/Accent Base */
-  --color-accent-start: 139, 92, 246;
-  --color-accent-end: 236, 72, 153;
-
-  /* Shadow */
-  --shadow-color: 0, 0, 0;
-  --shadow-opacity: 0.3;
+.mesh-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  will-change: transform;
 }
 
-/* Gradients */
-.black-gradient {
-  background: linear-gradient(to right, #434343, #000000);
+/* Top-right — primary blue glow (like a light source from above) */
+.mesh-blob-1 {
+  width: 700px;
+  height: 600px;
+  top: -200px;
+  right: -180px;
+  background: radial-gradient(circle, var(--blob-1) 0%, transparent 70%);
+  animation: blob-drift-1 18s ease-in-out infinite;
 }
 
-.violet-gradient {
-  background: linear-gradient(90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+/* Bottom-left — violet/purple glow (cool shadow depth) */
+.mesh-blob-2 {
+  width: 600px;
+  height: 700px;
+  bottom: -200px;
+  left: -160px;
+  background: radial-gradient(circle, var(--blob-2) 0%, transparent 70%);
+  animation: blob-drift-2 22s ease-in-out infinite;
 }
 
-.green-pink-gradient {
-  background: linear-gradient(90deg, #00cea8 2%, #bf61ff 98%);
+/* Mid-right — teal/amber accent glow */
+.mesh-blob-3 {
+  width: 480px;
+  height: 420px;
+  top: 45%;
+  right: -80px;
+  background: radial-gradient(circle, var(--blob-3) 0%, transparent 70%);
+  animation: blob-drift-3 28s ease-in-out infinite;
 }
 
-/* Text Gradients */
-.orange-text-gradient,
-.green-text-gradient,
-.blue-text-gradient,
-.pink-text-gradient {
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-emphasis-color: transparent;
+/* Bottom-center — subtle blue underlay */
+.mesh-blob-4 {
+  width: 900px;
+  height: 300px;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, var(--blob-4) 0%, transparent 65%);
+  filter: blur(60px);
 }
 
-.orange-text-gradient {
-  background: linear-gradient(to top, #f12711, #f5af19);
+/* Slow, very subtle drift animations — barely perceptible, feels alive */
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0px,   0px)  scale(1);    }
+  33%       { transform: translate(-30px, 20px) scale(1.04); }
+  66%       { transform: translate(20px,  -15px) scale(0.97); }
 }
 
-.green-text-gradient {
-  background: linear-gradient(to top, #11998e, #38ef7d);
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0px,  0px)  scale(1);    }
+  40%       { transform: translate(25px, -20px) scale(1.05); }
+  70%       { transform: translate(-15px, 15px) scale(0.96); }
 }
 
-.blue-text-gradient {
-  background: linear-gradient(to top, #2f80ed, #56ccf2);
+@keyframes blob-drift-3 {
+  0%, 100% { transform: translate(0px,  0px)  scale(1);    }
+  50%       { transform: translate(-20px, 30px) scale(1.06); }
 }
 
-.pink-text-gradient {
-  background: linear-gradient(to top, #ec008c, #fc6767);
+/* ─── Noise / Grain Texture Overlay ────────────────────────────────────────── */
+/*
+  SVG turbulence noise tile — adds organic film-grain texture.
+  Rendered as a fixed overlay; opacity controlled by --noise-opacity.
+*/
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--noise-opacity, 0.032);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
 }
 
-/* Canvas Loader */
+/* ─── Enhanced Grid Overlay ─────────────────────────────────────────────────── */
+/*
+  Combines fine dot-grid with faint large-interval graph lines.
+  Creates depth — like a high-res engineering blueprint.
+*/
+.grid-overlay {
+  background-image:
+    radial-gradient(circle, var(--grid-dot) 1px, transparent 1px),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size:
+    30px 30px,
+    150px 150px,
+    150px 150px;
+  opacity: 0.55;
+}
+
+/* ─── Terminal / Code Card ──────────────────────────────────────────────────── */
+.terminal-card {
+  background: rgb(var(--color-surface));
+  border: 1px solid rgb(var(--color-border));
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+}
+
+/* Glow on hover — dark mode */
+.terminal-card:hover {
+  border-color: rgba(var(--color-accent), 0.3);
+  box-shadow:
+    0 0 0 1px rgba(var(--color-accent), 0.08),
+    0 8px 40px rgba(var(--color-accent), 0.08),
+    0 2px 8px  rgba(0, 0, 0, 0.4);
+}
+
+/* Elevated look for light mode */
+.light .terminal-card {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 4px 20px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(var(--color-border), 0.6);
+}
+
+.light .terminal-card:hover {
+  border-color: rgba(var(--color-accent), 0.4);
+  box-shadow:
+    0 0 0 1px rgba(var(--color-accent), 0.12),
+    0 8px 32px rgba(var(--color-accent), 0.08),
+    0 2px 8px  rgba(0, 0, 0, 0.06);
+}
+
+/* ─── Accent Glow Utilities ─────────────────────────────────────────────────── */
+.accent-glow {
+  box-shadow: 0 0 24px rgba(var(--color-accent), 0.15);
+}
+
+/* ─── Section Border ────────────────────────────────────────────────────────── */
+.section-border {
+  border-top: 1px solid rgb(var(--color-border));
+}
+
+/* ─── Monospace Tag Chip ────────────────────────────────────────────────────── */
+.chip {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.85rem;
+  border: 1px solid rgba(var(--color-text-secondary), 0.4);
+  background-color: rgba(var(--color-surface-dim), 0.4);
+  padding: 0.25rem 0.65rem;
+  color: rgba(var(--color-text-primary), 0.9);
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.chip:hover {
+  border-color: rgba(var(--color-accent), 0.45);
+  color: rgb(var(--color-text-primary));
+  background-color: rgba(var(--color-accent), 0.04);
+}
+
+/* Light mode specific chip styling so keywords pop */
+.light .chip {
+  color: rgb(var(--color-text-primary));
+  font-weight: 500;
+  background-color: rgba(var(--color-accent), 0.06);
+  border-color: rgba(var(--color-accent), 0.25);
+}
+
+.light .chip:hover {
+  color: rgb(var(--color-accent));
+  background-color: rgba(var(--color-accent), 0.12);
+  border-color: rgba(var(--color-accent), 0.4);
+}
+
+/* ─── Metric Accent Bar ─────────────────────────────────────────────────────── */
+.metric-bar {
+  border-left: 2px solid rgb(var(--color-accent));
+  padding-left: 1rem;
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes slideDown {
+  0%   { opacity: 0; transform: translateY(-16px) translateX(-50%); }
+  100% { opacity: 1; transform: translateY(0)    translateX(-50%); }
+}
+
+@keyframes fadeInUp {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0);    }
+}
+
+.animate-blink      { animation: blink     1s step-start infinite; }
+.animate-slideDown  { animation: slideDown 0.3s ease forwards;     }
+.animate-fade-in-up { animation: fadeInUp  0.4s ease forwards;     }
+
+/* ─── Backward-compatibility (kept for canvas/Providers components) ─────────── */
 .canvas-loader {
   font-size: 10px;
   width: 1em;
@@ -165,131 +331,40 @@
 }
 
 @keyframes mulShdSpin {
-
-  0%,
-  100% {
-    box-shadow: 0em -2.6em 0em 0em #ffffff, 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.5), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
-  }
-
-  12.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7), 1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
-  }
-
-  25% {
-    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7), 2.5em 0em 0 0em #ffffff, 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-  }
+  0%,  100% { box-shadow: 0em -2.6em 0em 0em #fff, 1.8em -1.8em 0 0em rgba(255,255,255,.2), 2.5em 0em 0 0em rgba(255,255,255,.2), 1.75em 1.75em 0 0em rgba(255,255,255,.2), 0em 2.5em 0 0em rgba(255,255,255,.2), -1.8em 1.8em 0 0em rgba(255,255,255,.2), -2.6em 0em 0 0em rgba(255,255,255,.5), -1.8em -1.8em 0 0em rgba(255,255,255,.7); }
+  12.5%     { box-shadow: 0em -2.6em 0em 0em rgba(255,255,255,.7), 1.8em -1.8em 0 0em #fff, 2.5em 0em 0 0em rgba(255,255,255,.2), 1.75em 1.75em 0 0em rgba(255,255,255,.2), 0em 2.5em 0 0em rgba(255,255,255,.2), -1.8em 1.8em 0 0em rgba(255,255,255,.2), -2.6em 0em 0 0em rgba(255,255,255,.2), -1.8em -1.8em 0 0em rgba(255,255,255,.5); }
+  25%       { box-shadow: 0em -2.6em 0em 0em rgba(255,255,255,.5), 1.8em -1.8em 0 0em rgba(255,255,255,.7), 2.5em 0em 0 0em #fff, 1.75em 1.75em 0 0em rgba(255,255,255,.2), 0em 2.5em 0 0em rgba(255,255,255,.2), -1.8em 1.8em 0 0em rgba(255,255,255,.2), -2.6em 0em 0 0em rgba(255,255,255,.2), -1.8em -1.8em 0 0em rgba(255,255,255,.2); }
 }
 
-@keyframes slideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px) translateX(-50%);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) translateX(-50%);
-  }
-}
-
-.animate-slideDown {
-  animation: slideDown 0.3s ease forwards;
-}
-
-/* Glassmorphism */
+/* ─── Glass card (legacy) ───────────────────────────────────────────────────── */
 .glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  /* Light mode default */
+  background: rgba(var(--color-surface), 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  transition: all 0.3s ease;
+  border: 1px solid rgb(var(--color-border));
 }
 
-.dark .glass-card {
-  background: rgba(17, 25, 40, 0.7);
-  /* Dark mode default */
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  /* More subtle border */
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-/* Vibrant Gradient Text */
+/* ─── Gradient text (legacy) ────────────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  background-size: 200% auto;
-  animation: gradientTextAnim 5s ease infinite;
 }
 
-@keyframes gradientTextAnim {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+.light .gradient-text {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
-/* New Animations */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-20px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
+/* ─── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: rgb(var(--color-background)); }
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-border));
+  border-radius: 0;
+  transition: background 0.2s ease;
 }
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes glow-pulse {
-  0% {
-    box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
-  }
-
-  50% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
-  }
-
-  100% {
-    box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
-  }
-}
-
-.animate-glow-pulse {
-  animation: glow-pulse 3s infinite;
-}
-
-.animate-gradientPulse {
-  background-size: 100% 200%;
-  animation: gradientPulse 4s linear infinite;
-}
-
-@keyframes gradientPulse {
-
-  0%,
-  100% {
-    background-position: 0% 0%;
-  }
-
-  50% {
-    background-position: 0% 100%;
-  }
-}
+::-webkit-scrollbar-thumb:hover { background: rgba(var(--color-accent), 0.5); }

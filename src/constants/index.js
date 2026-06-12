@@ -1,217 +1,202 @@
-import { movie, todolist, dineout } from '../assets';
+// ─── Navigation ────────────────────────────────────────────────────────────────
 
 export const navLinks = [
+  { id: 'status', title: 'Status' },
+  { id: 'projects', title: 'Projects' },
+  { id: 'experience', title: 'Experience' },
+  { id: 'stack', title: 'Stack' },
+  { id: 'telemetry', title: 'Telemetry' },
+];
+
+// ─── Projects (Architecture-first case studies) ─────────────────────────────
+
+export const projects = [
   {
-    id: 'about',
-    title: 'About',
+    id: 'protectall',
+    name: 'ProtectAllPlans',
+    company: 'eDelta Corporation',
+    tagline:
+      'Cross-platform warranty management layer for Shopify, BigCommerce, and WooCommerce — centralizing plan selection, dynamic pricing, and storefront injection.',
+    stack: ['Next.js', 'Node.js', 'TypeScript', 'PostgreSQL', 'Shopify API', 'BigCommerce Widget API', 'CSV Pipelines'],
+    metric:
+      'Reduced bulk product-plan assignment time from minutes to under 5 seconds — a 90% processing time reduction via optimized CSV ingestion pipelines.',
+    focus: 'Performance Optimization',
+    focusTag: 'performance',
+    githubUrl: null,
   },
   {
-    id: 'skills',
-    title: 'Skills',
+    id: 'voicenow',
+    name: 'VoiceNow AI Platform & SDK',
+    company: 'eDelta Corporation',
+    tagline:
+      'Full-stack real-time voice orchestration system with a published, framework-agnostic NPM SDK and automated CI/CD release pipeline.',
+    stack: [
+      'Python',
+      'Uvicorn',
+      'WebSockets',
+      'VAD',
+      'STT',
+      'GPT-4o',
+      'ElevenLabs',
+      'LangChain',
+      'PGVector',
+      'Logto',
+      'AWS S3',
+    ],
+    metric:
+      'Architected end-to-end VAD → STT → LLM → TTS pipeline. Published VoiceNow SDK to NPM with Semantic Release CI/CD via GitHub Actions.',
+    focus: 'System Design',
+    focusTag: 'system-design',
+    githubUrl: null,
   },
   {
-    id: 'experience',
-    title: 'Experience',
+    id: 'xunified',
+    name: 'XUnified — Omnichannel Engagement',
+    company: 'eDelta Corporation',
+    tagline:
+      'Serverless multi-channel communication infrastructure spanning WhatsApp, Facebook Messenger, and Instagram with a unified React live-chat interface.',
+    stack: [
+      'AWS Lambda',
+      'API Gateway',
+      'Twilio',
+      'Dialogflow',
+      'PostgreSQL',
+      'Python',
+      'React',
+      'WhatsApp Business API',
+    ],
+    metric:
+      'Designed scalable serverless bot architecture with unified cross-channel RDS schema enabling shared conversation history across three messaging platforms.',
+    focus: 'Distributed Systems',
+    focusTag: 'distributed',
+    githubUrl: null,
   },
   {
-    id: 'education',
-    title: 'Education',
-  },
-  {
-    id: 'project',
-    title: 'Projects',
-  },
-  {
-    id: 'contact',
-    title: 'Contact',
+    id: 'society',
+    name: 'Society Management ERP',
+    company: 'Side Project',
+    tagline:
+      'Multi-tenant SaaS ERP for residential societies — real-time fund tracking, automated notice dispatch, and role-based access across Resident, Admin, and Super-Admin tiers.',
+    stack: ['Next.js', 'Express', 'PostgreSQL', 'Prisma', 'Socket.IO', 'TypeScript', 'AWS'],
+    metric:
+      'Engineered multi-tenant data isolation mechanics with RBAC and real-time financial ledger, replacing manual spreadsheet workflows for committee management.',
+    focus: 'Database Efficiency',
+    focusTag: 'database',
+    githubUrl: null,
   },
 ];
 
-const services = [
-  {
-    title: 'Full Stack Engineer',
-    icon: 'frontend',
-  },
-  {
-    title: 'AI & Voice Architect',
-    icon: 'mobile',
-  },
-  {
-    title: 'Cloud-Native Developer',
-    icon: 'backend',
-  },
-];
+// ─── Work Experience ────────────────────────────────────────────────────────
 
-const skills = [
-  // Frontend
-  { name: 'HTML/CSS', level: 95, category: 'frontend' },
-  { name: 'JavaScript', level: 90, category: 'frontend' },
-  { name: 'TypeScript', level: 85, category: 'frontend' },
-  { name: 'React', level: 90, category: 'frontend' },
-  { name: 'Next.js', level: 85, category: 'frontend' },
-  { name: 'Tailwind CSS', level: 90, category: 'frontend' },
-  // { name: 'Angular', level: 70, category: 'frontend' },
-
-  // Backend
-  { name: 'Node.js', level: 85, category: 'backend' },
-  { name: 'Python', level: 85, category: 'backend' },
-  { name: 'Express', level: 80, category: 'backend' },
-  { name: 'Socket.IO', level: 80, category: 'backend' },
-  { name: 'PostgreSQL', level: 75, category: 'backend' },
-  // { name: 'MongoDB', level: 60, category: 'backend' },
-  { name: 'GraphQL', level: 70, category: 'backend' },
-
-  // Tools
-  { name: 'Git/GitHub', level: 90, category: 'tools' },
-  { name: 'Docker', level: 75, category: 'tools' },
-  { name: 'AWS', level: 75, category: 'tools' },
-  { name: 'VS Code', level: 95, category: 'tools' },
-];
-
-const education = [
+export const experiences = [
   {
-    title: 'BTech in Computer Engineering',
-    company_name: 'Dharmsinh Desai University, Nadiad (Gujarat)',
-    icon: 'college',
-    iconBg: '#383E56',
-    date: 'Passed in 2024',
-    points: ['CPI: 7.65'],
-  },
-  {
-    title: 'Higher Secondary Education',
-    company_name: 'Bright Day School,Vasna, Vadodara',
-    icon: 'school',
-    iconBg: '#E6DEDD',
-    date: 'Passed in 2020',
-    points: ['Result-89.8%'],
-  },
-  {
-    title: 'Secondary Education',
-    company_name: 'Bright Day School,Vasna, Vadodara',
-    icon: 'school',
-    iconBg: '#383E56',
-    date: 'Passed in 2018',
-    points: ['Result-86%'],
-  },
-];
-
-const experiences = [
-  {
-    title: 'Junior Software Developer',
-    company_name: 'eDelta Corporation (Surat)',
-    iconBg: '#383E56',
-    date: 'July 2024 - Present',
-    points: [
+    id: 'edelta-corp',
+    title: 'Software Developer',
+    company: 'eDelta Corporation',
+    location: 'Surat, Gujarat',
+    date: 'Jun 2024 — Present',
+    projects: [
       {
-        title: 'E-commerce Protection Platforms (ProtectAllPlans)',
+        title: 'ProtectAllPlans — E-commerce Protection Platform',
         description:
-          'Designed and developed ProtectAllPlans, a cross-platform protection system for Shopify, BigCommerce, and WordPress. Built CSV-based import pipelines and implemented Shopify Cart Transformer logic.',
-        tags: ['Shopify', 'BigCommerce', 'WordPress', 'Next.js', 'CSV'],
+          'Architected warranty selection, dynamic pricing logic, and CSV ingestion pipelines for Shopify, BigCommerce, and WooCommerce. Implemented Shopify Cart Transformers and Theme App Extensions for dynamic UI rendering on product pages.',
+        metric: '90% reduction in bulk processing time — minutes → under 5 seconds',
+        tags: ['Next.js', 'Node.js', 'Shopify', 'BigCommerce', 'CSV Pipelines', 'TypeScript'],
       },
       {
-        title: 'VoiceNow AI Voice Platform & SDK',
+        title: 'VoiceNow AI Platform & SDK',
         description:
-          'Built a full-stack AI voice assistant platform with Python WebSocket backend (VAD -> STT -> LLM -> TTS). Designed and published the framework-agnostic VoiceNow SDK.',
-        tags: ['Python', 'WebSockets', 'VAD', 'LLM', 'AI'],
+          'Built Python/Uvicorn WebSocket backend orchestrating real-time audio pipeline (VAD → STT → GPT-4o → TTS). Integrated PGVector-based RAG pipelines, Logto authentication, and AWS S3 for cross-platform knowledge ingestion. Designed and published the framework-agnostic VoiceNow SDK to NPM.',
+        metric: 'Designed & published VoiceNow NPM SDK with automated Semantic Release CI/CD',
+        tags: ['Python', 'WebSockets', 'LangChain', 'GPT-4o', 'ElevenLabs', 'PGVector', 'GitHub Actions'],
       },
       {
-        title: 'Omnichannel Engagement & Serverless Bots',
+        title: 'XUnified Omnichannel & Serverless Bots',
         description:
-          'Engineered multi-channel communication APIs for WhatsApp, FB, Instagram. Designed Serverless Voice Bot architecture using AWS Lambda and API Gateway.',
-        tags: ['AWS Lambda', 'API Gateway', 'PostgreSQL', 'Twilio'],
+          'Engineered multi-channel communication APIs for WhatsApp, Facebook, and Instagram. Designed serverless voice bot architecture on AWS Lambda + API Gateway, integrating Dialogflow/LLM backends. Built unified React live-chat interface with cross-channel conversation history.',
+        metric: 'Unified multi-channel schema enabling shared conversation history across 3 platforms',
+        tags: ['AWS Lambda', 'API Gateway', 'Twilio', 'Dialogflow', 'Python', 'React'],
       },
     ],
   },
   {
+    id: 'edelta-ent',
     title: 'Software Engineering Intern',
-    company_name: 'eDelta Enterprise Solutions Pvt. Ltd. (Ahmedabad)',
-    iconBg: '#E6DEDD',
-    date: 'Dec 2023 - June 2024',
-    points: [
+    company: 'eDelta Enterprise Solutions Pvt. Ltd.',
+    location: 'Ahmedabad, Gujarat',
+    date: 'Dec 2023 — Jun 2024',
+    projects: [
       {
-        title: 'No-Code AI Studio Platform',
+        title: 'No-Code AI Studio — Visual Bot Builder',
         description:
-          'Designed core architecture of a no-code AI chatbot builder. Implemented a node-and-edge graph system enabling drag-and-drop flow creation.',
-        tags: ['Backend', 'No-Code', 'Graph Systems', 'System Design'],
+          'Designed core architecture of a drag-and-drop AI chatbot flow builder using React Flow. Implemented node-and-edge graph system enabling interactive bot logic design through customizable nodes and edges.',
+        metric: 'Established robust execution & validation logic forming the core automation engine',
+        tags: ['React Flow', 'Node.js', 'Graph Systems', 'System Design', 'Drag-and-Drop'],
       },
       {
-        title: 'Platform Automation',
+        title: 'React Chat Widget & Platform Integration',
         description:
-          'Established backend support for node execution and flow validation, forming the base of the platform automation.',
-        tags: ['Automation', 'Backend', 'Validation'],
+          'Developed standalone React chat widget connecting to centralized platform backend for real-time conversation rendering. Established secure backend validation and real-time WebSocket conversation layer.',
+        metric: 'Built real-time WebSocket conversation layer with cross-platform compatibility',
+        tags: ['React', 'WebSockets', 'Node.js', 'Real-time Systems'],
       },
     ],
   },
 ];
 
-const projects = [
-  {
-    name: 'DineOut',
-    description:
-      'Web-based system allow customers to browse menus, place orders, and pay for food items online, all from the comfort of their own homes.',
-    tags: [
-      {
-        name: 'reactjs',
-        color: 'bg-blue-600',
-      },
-      {
-        name: 'C Sharp',
-        color: 'bg-green-600',
-      },
-      {
-        name: 'tailwind',
-        color: 'bg-pink-600',
-      },
-      {
-        name: 'SQL',
-        color: 'bg-purple-600',
-      },
-    ],
-    image: dineout,
-    source_code_link: 'https://github.com/SVK04/DineOutApp-API-NetCore-ReactJs',
-  },
-  {
-    name: 'Todo App',
-    description:
-      "Flutter-Based System to list everything that you have to do, with the most important tasks at the top of the list, and the least important tasks at the bottom to make sure that your tasks are written down all in one place so you don't forget anything important.",
-    tags: [
-      {
-        name: 'Dart',
-        color: 'bg-blue-600',
-      },
-      {
-        name: 'Swift',
-        color: 'bg-green-600',
-      },
-      {
-        name: 'flutter',
-        color: 'bg-pink-600',
-      },
-    ],
-    image: todolist,
-    source_code_link: 'https://github.com/SVK04/CE152_CE148_SDP_Todo_App_Flutter/tree/master/final',
-  },
-  {
-    name: 'Movie Ticket Booking',
-    description:
-      'A comprehensive Movie booking platform that allows users to book movies and offers curated recommendations for popular Theaters.',
-    tags: [
-      {
-        name: '.NETCore',
-        color: 'bg-blue-600',
-      },
-      {
-        name: 'ASP.NET',
-        color: 'bg-green-600',
-      },
-      {
-        name: 'C Sharp',
-        color: 'bg-pink-600',
-      },
-    ],
-    image: movie,
-    source_code_link: '#',
-  },
-];
+// ─── Stack Radar ─────────────────────────────────────────────────────────────
 
-export { services, education, projects, skills, experiences };
+export const stack = {
+  LANGUAGES: ['TypeScript', 'JavaScript', 'Python'],
+  FRAMEWORKS: ['Next.js', 'React', 'Node.js', 'Express', 'Socket.IO', 'Uvicorn'],
+  'AI & VOICE': [
+    'GPT-4o',
+    'Gemini 2.0 Flash',
+    'LangChain',
+    'ElevenLabs',
+    'VAD / STT / TTS',
+    'PGVector',
+    'RAG Pipelines',
+  ],
+  'INFRA & TOOLS': [
+    'PostgreSQL',
+    'AWS Lambda',
+    'AWS S3',
+    'Docker',
+    'GitHub Actions',
+    'Semantic Release',
+    'Twilio',
+    'Logto',
+  ],
+};
+
+// ─── Telemetry / Accomplishments ─────────────────────────────────────────────
+
+export const telemetry = {
+  stats: [
+    { label: 'EXPERIENCE', value: '2+', sub: 'Years of professional engineering' },
+    { label: 'PERF. DELTA', value: '90%', sub: 'Bulk processing time reduction' },
+    { label: 'DEGREE', value: 'B.Tech', sub: 'Computer Science Technology, 2024' },
+    { label: 'PLATFORMS', value: '3+', sub: 'Cross-platform deployments shipped' },
+  ],
+  education: {
+    degree: 'B.Tech — Computer Science Technology',
+    institution: 'Dharmsinh Desai University',
+    location: 'Nadiad, Gujarat',
+    cpi: '7.65',
+    year: '2024',
+  },
+  milestones: [
+    'Published VoiceNow SDK to NPM registry with automated Semantic Release versioning',
+    'Implemented GitHub Actions CI/CD pipeline for multi-environment production deployments',
+    'Architected multi-tenant data isolation mechanics for residential society SaaS ERP',
+    'Reduced e-commerce bulk synchronization pipeline from minutes to under 5 seconds',
+    'Designed serverless voice bot infrastructure on AWS Lambda handling multi-channel message routing',
+  ],
+};
+
+// ─── Kept for backward-compatibility (unused in new design) ─────────────────
+
+export const services = [];
+export const skills = [];
+export const education = [];

@@ -1,19 +1,12 @@
 'use client';
 
-import { Suspense } from 'react';
 import Script from 'next/script';
-import dynamic from 'next/dynamic';
-import { useTheme } from '../contexts/ThemeContext';
-import { About, Contact, Education, Experience, Hero, Navbar, Skills, Works, Footer } from '../components';
-
-// Import canvases dynamically to avoid SSR issues with Three.js
-const StarsCanvas = dynamic(() => import('../components/canvas/Stars.jsx'), { ssr: false });
-const LightBackground = dynamic(() => import('../components/canvas/LightBackground.jsx'), { ssr: false });
+import { Hero, Works, Experience, Skills, About, Footer, Navbar } from '../components';
 
 export default function Home() {
-  const { theme } = useTheme();
   return (
     <div className="relative z-0 min-h-screen bg-background text-text-primary overflow-x-hidden">
+      {/* Structured data for SEO */}
       <Script
         id="structured-data"
         type="application/ld+json"
@@ -21,30 +14,73 @@ export default function Home() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Person',
-            name: 'Vaibhav Kaul',
+            name: 'Vaibhav Virendar Kaul',
             url: 'https://svk04.github.io',
-            jobTitle: 'Senior Full Stack Developer',
-            knowsAbout: ['Next.js', 'React', 'Node.js', 'JavaScript', 'Web Performance', 'Three.js'],
-            sameAs: [
-              'https://github.com/SVK04',
-              // Add other social links if available
+            jobTitle: 'Software Developer',
+            worksFor: {
+              '@type': 'Organization',
+              name: 'eDelta Corporation',
+            },
+            alumniOf: {
+              '@type': 'CollegeOrUniversity',
+              name: 'Dharmsinh Desai University',
+            },
+            knowsAbout: [
+              'Next.js',
+              'Node.js',
+              'Python',
+              'AI Voice Systems',
+              'WebSockets',
+              'PostgreSQL',
+              'AWS Lambda',
+              'TypeScript',
             ],
+            sameAs: ['https://github.com/SVK04', 'https://www.linkedin.com/in/vaibhav-kaul-448889246/'],
           }),
         }}
       />
-      <Suspense fallback={null}>{theme === 'dark' ? <StarsCanvas /> : <LightBackground />}</Suspense>
 
-      <div className="relative z-10">
+      {/*
+        ── Gradient Mesh Background Layer ──────────────────────────────────────
+        Fixed to viewport; sits at z-index 0, behind content (z-[1]).
+        The outer wrapper's bg-background provides the base dark/light color;
+        these blobs paint ON TOP of that base, creating ambient depth.
+        Colors are driven entirely by CSS custom properties (--blob-N),
+        so dark ↔ light mode switching is instant and seamless.
+      */}
+      <div
+        className="fixed inset-0 overflow-hidden pointer-events-none select-none"
+        style={{ zIndex: 0 }}
+        aria-hidden="true"
+      >
+        {/* Primary — blue glow, top-right anchor (like a studio light from above) */}
+        <div className="mesh-blob mesh-blob-1" />
+        {/* Secondary — violet/purple depth, bottom-left */}
+        <div className="mesh-blob mesh-blob-2" />
+        {/* Accent — teal (dark) / amber (light) mid-right energy */}
+        <div className="mesh-blob mesh-blob-3" />
+        {/* Base — wide, flat blue underlay at the bottom */}
+        <div className="mesh-blob mesh-blob-4" />
+        {/* Film grain / noise texture for organic depth */}
+        <div className="noise-overlay" />
+      </div>
+
+      {/* Content layer — above the gradient mesh */}
+      <div className="relative" style={{ zIndex: 1 }}>
         <Navbar />
         <main>
+          {/* 00 — System Status (The Hook) */}
           <Hero />
-          <About />
-          <Skills />
-          <Experience />
-          <Education />
+          {/* 01 — Architecture Case Studies */}
           <Works />
-          <Contact />
+          {/* 02 — Professional History */}
+          <Experience />
+          {/* 03 — Stack Radar */}
+          <Skills />
+          {/* 04 — Telemetry / Accomplishments */}
+          <About />
         </main>
+        {/* // Identity — The Reel */}
         <Footer />
       </div>
     </div>

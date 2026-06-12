@@ -1,114 +1,205 @@
 'use client';
 
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { styles } from '../style';
-import dynamic from 'next/dynamic';
-const ComputersCanvas = dynamic(() => import('./canvas/Computers.jsx'), { ssr: false });
 
-const texts = ['Node.js Developer.', 'React.js Developer.', 'JavaScript Developer.', 'React Native Developer.'];
+// ─── Hero Data ─────────────────────────────────────────────────────────────
+
+const ACTIVE_RND = [
+  {
+    label: 'eDelta Corp',
+    type: 'work',
+    desc: 'VoiceNow AI Platform — real-time voice orchestration (VAD → STT → GPT-4o → TTS pipeline)',
+  },
+  {
+    label: 'eDelta Corp',
+    type: 'work',
+    desc: 'ProtectAllPlans — cross-platform e-commerce warranty infrastructure (Shopify · BigCommerce · WooCommerce)',
+  },
+  {
+    label: 'Side Project',
+    type: 'side',
+    desc: 'Society Management ERP — multi-tenant RBAC with real-time financial ledger & automated notice dispatch',
+  },
+];
+
+const ARCH_INTERESTS = [
+  'Real-time voice orchestration & WebSocket infrastructure',
+  'Micro-SaaS architecture & multi-tenant data isolation mechanics',
+  'Serverless event scheduling & distributed systems design',
+  'High-performance tooling theory & Rust-based compiler internals',
+];
+
+const CURRENT_STACK = [
+  'Next.js',
+  'Node.js',
+  'Python',
+  'TypeScript',
+  'PostgreSQL',
+  'AWS',
+  'LangChain',
+  'GPT-4o',
+  'WebSockets',
+  'Docker',
+  'Twilio',
+];
+
+// ─── Sub-components ────────────────────────────────────────────────────────
+
+const TreeLine = ({ isLast }) => (
+  <span className="font-mono text-text-secondary/40 text-sm shrink-0 select-none mt-0.5">{isLast ? '└──' : '├──'}</span>
+);
+
+const TypeBadge = ({ type }) => {
+  const isWork = type === 'work';
+  return (
+    <span
+      className={`font-mono text-xs px-2 py-0.5 border shrink-0 leading-none ${
+        isWork ? 'border-accent/40 text-accent/80' : 'border-purple-400/40 text-purple-400/80'
+      }`}
+    >
+      {isWork ? 'eDelta Corp' : 'Side Project'}
+    </span>
+  );
+};
+
+const BlinkCursor = () => (
+  <span className="inline-block w-[7px] h-[14px] bg-accent ml-1 align-middle animate-blink" aria-hidden="true" />
+);
+
+// ─── Hero Section ──────────────────────────────────────────────────────────
 
 const Hero = () => {
-  const [dynamicText, setDynamicText] = useState('');
-  const [textIndex, setTextIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const currentText = texts[textIndex];
-    let typingSpeed = isDeleting ? 50 : 100;
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting && charIndex < currentText.length) {
-        setDynamicText(currentText.substring(0, charIndex + 1));
-        setCharIndex(prev => prev + 1);
-      } else if (isDeleting && charIndex > 0) {
-        setDynamicText(currentText.substring(0, charIndex - 1));
-        setCharIndex(prev => prev - 1);
-      } else if (!isDeleting && charIndex === currentText.length) {
-        // Pause before deleting
-        setTimeout(() => setIsDeleting(true), 1000);
-      } else if (isDeleting && charIndex === 0) {
-        setIsDeleting(false);
-        setTextIndex(prev => (prev + 1) % texts.length);
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, textIndex]);
-
-  /*
-   * Defer 3D model loading to prioritize text animation smoothness.
-   * We use session storage to only delay this on the FIRST visit.
-   * On subsequent visits, we show it faster since the user expects the content.
-   */
-  const [showComputer, setShowComputer] = useState(false);
-
-  useEffect(() => {
-    // Check if user has already seen the intro in this session
-    const seen = sessionStorage.getItem('intro_seen') === 'true';
-    if (seen) {
-      setShowComputer(true);
-    } else {
-      // Otherwise, wait 3 seconds to let the intro animation play smoothly
-      const timer = setTimeout(() => {
-        setShowComputer(true);
-        sessionStorage.setItem('intro_seen', 'true');
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
+    setMounted(true);
   }, []);
 
   return (
-    <section className="relative w-full h-screen mx-auto min-h-screen">
+    <section id="status" className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Dot-grid overlay */}
+      <div className="absolute inset-0 grid-overlay pointer-events-none" aria-hidden="true" />
+
+      {/* Accent radial bleed — bottom right */}
       <div
-        className={`${styles.paddingX} absolute
-      insert-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start
-      gap-5`}
-      >
-        <div
-          className="flex flex-col 
-        justify-center items-center mt-5"
+        className="absolute bottom-0 right-0 w-[480px] h-[480px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at 100% 100%, rgba(59,130,246,0.07) 0%, transparent 70%)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative max-w-6xl mx-auto px-6 pt-28 pb-24 w-full">
+        {/* Status badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : -8 }}
+          transition={{ duration: 0.35 }}
+          className="flex items-center gap-2.5 mb-10"
         >
-          <div className="w-5 h-5 rounded-full bg-brand-primary animate-pulse" />
-          <div className="w-1 sm:h-80 h-40 violet-gradient" />
-        </div>
-        <div>
-          <h1 className={`${styles.heroHeadText} text-text-primary`}>
-            Hi, I am <span className="gradient-text">Vaibhav Kaul</span>
-          </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I am a <span className="text-brand-primary font-semibold">{dynamicText}</span>
-            <span className="animate-pulse text-brand-primary">|</span>
-          </p>
-        </div>
-      </div>
+          <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)] animate-pulse" />
+          <span className="font-mono text-sm text-text-secondary tracking-[0.15em] uppercase">
+            System Status // Online
+          </span>
+        </motion.div>
 
-      <Suspense fallback={null}>{showComputer && <ComputersCanvas />}</Suspense>
-
-      <div
-        className="absolute xs:-bottom-1 bottom-24
-      w-full flex justify-center items-center cursor-pointers"
-      >
-        <a href="#about">
-          <div
-            className="w-[35px] h-[64px]
-          rounded-3xl border-4 border-text-secondary flex
-          justify-center items-start p-2 cursor-pointer"
-          >
-            <motion.div
-              animate={{
-                y: [0, 24, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: 'loop',
-              }}
-              className="w-3 h-3 bg-text-secondary rounded-full mb-1 cursor-pointer"
-            />
+        {/* Terminal card */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : 16 }}
+          transition={{ duration: 0.45, delay: 0.1 }}
+          className="terminal-card"
+          role="region"
+          aria-label="Current focus dashboard"
+        >
+          {/* Fake window chrome */}
+          <div className="flex items-center gap-2 px-5 py-3 border-b border-[rgb(var(--color-border))]">
+            <div className="flex gap-1.5" aria-hidden="true">
+              <span className="w-3 h-3 rounded-full bg-[rgb(var(--color-border))]" />
+              <span className="w-3 h-3 rounded-full bg-[rgb(var(--color-border))]" />
+              <span className="w-3 h-3 rounded-full bg-[rgb(var(--color-border))]" />
+            </div>
+            <span className="font-mono text-sm text-text-secondary/60 ml-2 select-none">~&nbsp;/current-focus</span>
           </div>
-        </a>
+
+          <div className="p-6 md:p-8 space-y-8">
+            {/* ── ACTIVE_RND ────────────────────────────────── */}
+            <div>
+              <p className="font-mono text-sm text-accent tracking-[0.15em] uppercase mb-3 font-medium">ACTIVE_RND</p>
+              <div className="space-y-2.5 pl-2">
+                {ACTIVE_RND.map((item, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <TreeLine isLast={i === ACTIVE_RND.length - 1} />
+                    <div className="flex flex-wrap items-baseline gap-2">
+                      <TypeBadge type={item.type} />
+                      <span className="font-mono text-base text-text-primary leading-relaxed">{item.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="border-t border-[rgb(var(--color-border))]" aria-hidden="true" />
+
+            {/* ── ARCH_INTERESTS ────────────────────────────── */}
+            <div>
+              <p className="font-mono text-sm text-accent tracking-[0.15em] uppercase mb-3 font-medium">
+                ARCH_INTERESTS
+              </p>
+              <div className="space-y-2 pl-2">
+                {ARCH_INTERESTS.map((interest, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <TreeLine isLast={i === ARCH_INTERESTS.length - 1} />
+                    <span className="font-mono text-base text-text-secondary leading-relaxed">{interest}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="border-t border-[rgb(var(--color-border))]" aria-hidden="true" />
+
+            {/* ── CURRENT_STACK ─────────────────────────────── */}
+            <div>
+              <p className="font-mono text-sm text-accent tracking-[0.15em] uppercase mb-3 font-medium">
+                CURRENT_STACK
+              </p>
+              <div className="pl-2 flex flex-wrap gap-2 items-center">
+                {CURRENT_STACK.map(tech => (
+                  <span key={tech} className="chip hover:cursor-default">
+                    {tech}
+                  </span>
+                ))}
+                <BlinkCursor />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: mounted ? 1 : 0 }}
+          transition={{ duration: 0.5, delay: 0.65 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <a
+            href="#projects"
+            className="flex flex-col items-center gap-1.5 text-text-secondary hover:text-accent transition-colors duration-150 group"
+            aria-label="Scroll to projects"
+          >
+            <span className="font-mono text-xs tracking-[0.2em] uppercase">scroll</span>
+            <motion.span
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+              className="text-base leading-none"
+            >
+              ↓
+            </motion.span>
+          </a>
+        </motion.div>
       </div>
     </section>
   );

@@ -7,37 +7,40 @@ const baseUrl = 'https://svk04.github.io';
 export const metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Vaibhav Kaul | Full Stack Developer & Next.js Expert',
+    default: 'Vaibhav Kaul — Software Developer',
     template: '%s | Vaibhav Kaul',
   },
   description:
-    'Portfolio of Vaibhav Kaul - A Senior Full Stack Developer specializing in Node.js, React.js, and high-performance Next.js applications.',
+    'Software Developer building AI voice platforms, cross-platform e-commerce infrastructure, and serverless architectures. TypeScript, Node.js, Python, Next.js.',
   keywords: [
     'Vaibhav Kaul',
-    'Full Stack Developer',
-    'Next.js Expert',
+    'Vaibhav Virendar Kaul',
+    'Software Developer',
+    'Full Stack Engineer',
     'Node.js Developer',
-    'React Developer',
-    'Web Performance',
+    'AI Voice Platform',
+    'Next.js Developer',
+    'WebSocket Engineer',
     'Portfolio 2026',
   ],
-  authors: [{ name: 'Vaibhav Kaul', url: baseUrl }],
-  creator: 'Vaibhav Kaul',
-  publisher: 'Vaibhav Kaul',
+  authors: [{ name: 'Vaibhav Virendar Kaul', url: baseUrl }],
+  creator: 'Vaibhav Virendar Kaul',
+  publisher: 'Vaibhav Virendar Kaul',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Vaibhav Kaul | Full Stack Developer Portfolio',
-    description: 'Explore the high-performance web applications and creative solutions built by Vaibhav Kaul.',
+    title: 'Vaibhav Kaul — Software Developer',
+    description:
+      'Software Developer building AI voice platforms, cross-platform e-commerce infrastructure, and serverless architectures.',
     url: baseUrl,
-    siteName: 'Vaibhav Kaul Portfolio',
+    siteName: 'Vaibhav Kaul',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Vaibhav Kaul Portfolio',
+        alt: 'Vaibhav Kaul — Software Developer',
       },
     ],
     locale: 'en_US',
@@ -45,8 +48,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vaibhav Kaul | Full Stack Developer',
-    description: 'Senior Developer specializing in React, Node.js, and Next.js performance.',
+    title: 'Vaibhav Kaul — Software Developer',
+    description: 'Building AI voice platforms, e-commerce infrastructure, and serverless architectures.',
     creator: '@svk04',
     images: ['/og-image.png'],
   },
@@ -72,39 +75,47 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Font preconnect for Inter + JetBrains Mono */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className="antialiased font-sans">
+        {/*
+          Inline theme-persistence script — runs synchronously before first paint
+          to prevent flash of wrong theme.
+        */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
                   var theme = localStorage.getItem('theme');
-                  var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  if (!theme && supportDarkMode) theme = 'dark';
-                  if (!theme) theme = 'light';
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (!theme) theme = prefersDark ? 'dark' : 'light';
                   document.documentElement.classList.add(theme);
                 } catch (e) {}
               })();
             `,
           }}
         />
+
+        {/* Service Worker cleanup — removes stale PWA registrations */}
         <Script id="service-worker-cleanup">
           {`
             if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
               navigator.serviceWorker.getRegistrations().then((registrations) => {
                 for (const registration of registrations) {
-                  registration.unregister().then(() => {
-                    console.log('Stale Service Worker unregistered');
-                    window.location.reload();
-                  });
+                  registration.unregister();
                 }
               });
             }
-            if (typeof window !== 'undefined') {
-              if (localStorage.getItem('vite-pwa-version')) localStorage.clear();
+            if (typeof window !== 'undefined' && localStorage.getItem('vite-pwa-version')) {
+              localStorage.clear();
             }
           `}
         </Script>
+
         <Providers>{children}</Providers>
       </body>
     </html>
