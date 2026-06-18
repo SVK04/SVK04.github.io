@@ -3,11 +3,6 @@
 import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import emailjs from '@emailjs/browser';
-import { styles } from '../style';
-import dynamic from 'next/dynamic';
-const EarthCanvas = dynamic(() => import('./canvas/Earth'), { ssr: false });
-import { SectionWrapper } from '../hoc';
-import { slideIn } from '../utils/motion';
 import { useNotification } from './Notification';
 
 const Contact = () => {
@@ -49,65 +44,81 @@ const Contact = () => {
   };
 
   return (
-    <div className="xl:mt-12 flex flex-col-reverse xl:flex-row gap-10 overflow-hidden">
+    <section id="contact" className="border-t border-[rgb(var(--color-border))] max-w-6xl mx-auto px-6 py-24">
+      {/* Section header */}
       <motion.div
-        variants={slideIn('left', 'tween', 0.2, 1)}
-        className="flex-[0.75] glass-card p-8 rounded-2xl relative overflow-hidden"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4 }}
+        className="mb-12"
       >
-        <p className={styles.sectionSubText}>Get in Touch</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
+        <p className="font-mono text-xs text-accent tracking-widest uppercase mb-2">{'//'} 05&nbsp;&nbsp;Contact</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-text-primary">Get in Touch</h2>
+        <p className="text-text-secondary text-base mt-3 max-w-xl leading-relaxed">
+          Whether it&apos;s a project inquiry, architecture consultation, or just a technical discussion, my inbox is
+          open.
+        </p>
+      </motion.div>
 
-        <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col gap-8">
-          <label className="flex flex-col">
-            <span className="text-text-primary font-medium mb-3">Your Name</span>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
+        className="max-w-2xl border border-[rgb(var(--color-border))] p-6 md:p-8 bg-[rgb(var(--color-surface))] hover:border-accent/30 transition-colors duration-200"
+      >
+        <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <label className="flex flex-col gap-2">
+            <span className="font-mono text-xs text-text-secondary/80 tracking-widest uppercase">Name</span>
             <input
               type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
               placeholder="John Doe"
-              className="bg-surface-dim py-3 px-4 rounded-lg text-text-primary placeholder:text-text-secondary/40 placeholder:italic focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm border border-border"
+              required
+              className="bg-transparent border border-[rgb(var(--color-border))] py-3 px-4 text-text-primary placeholder:text-text-secondary/25 placeholder:italic focus:outline-none focus:border-accent transition-colors duration-150 font-sans"
             />
           </label>
 
-          <label className="flex flex-col">
-            <span className="text-text-primary font-medium mb-3">Your Email</span>
+          <label className="flex flex-col gap-2">
+            <span className="font-mono text-xs text-text-secondary/80 tracking-widest uppercase">Email</span>
             <input
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="johndoe@example.com"
-              className="bg-surface-dim py-3 px-4 rounded-lg text-text-primary placeholder:text-text-secondary/40 placeholder:italic focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm border border-border"
+              placeholder="john@example.com"
+              required
+              className="bg-transparent border border-[rgb(var(--color-border))] py-3 px-4 text-text-primary placeholder:text-text-secondary/25 placeholder:italic focus:outline-none focus:border-accent transition-colors duration-150 font-sans"
             />
           </label>
 
-          <label className="flex flex-col">
-            <span className="text-text-primary font-medium mb-3">Your Message</span>
+          <label className="flex flex-col gap-2">
+            <span className="font-mono text-xs text-text-secondary/80 tracking-widest uppercase">Message</span>
             <textarea
-              rows="6"
+              rows="5"
               name="message"
               value={form.message}
               onChange={handleChange}
               placeholder="What's on your mind?"
-              className="bg-surface-dim py-3 px-4 rounded-lg text-text-primary placeholder:text-text-secondary/40 placeholder:italic focus:outline-none focus:ring-2 focus:ring-primary transition resize-none shadow-sm border border-border"
+              required
+              className="bg-transparent border border-[rgb(var(--color-border))] py-3 px-4 text-text-primary placeholder:text-text-secondary/25 placeholder:italic focus:outline-none focus:border-accent transition-colors duration-150 font-sans resize-none"
             />
           </label>
 
           <button
             type="submit"
-            className="bg-brand-primary hover:opacity-90 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-all duration-300 w-fit focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+            disabled={loading}
+            className="mt-4 border border-[rgb(var(--color-border))] bg-[rgb(var(--color-background))] hover:bg-[rgb(var(--color-border))] text-text-primary font-mono text-xs tracking-widest uppercase py-4 px-8 transition-colors duration-200 focus:outline-none focus:border-accent self-start disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
           >
-            {loading ? 'Sending...' : 'Send'}
+            {loading ? 'Sending...' : 'Transmit Message'}
           </button>
         </form>
       </motion.div>
-
-      <motion.div variants={slideIn('right', 'tween', 0.2, 1)} className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]">
-        <EarthCanvas />
-      </motion.div>
-    </div>
+    </section>
   );
 };
 
-export default SectionWrapper(Contact, 'contact');
+export default Contact;

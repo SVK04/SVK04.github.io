@@ -6,6 +6,8 @@ export const navLinks = [
   { id: 'experience', title: 'Experience' },
   { id: 'stack', title: 'Stack' },
   { id: 'telemetry', title: 'Telemetry' },
+  { id: 'contact', title: 'Contact' },
+  { id: 'resume', title: 'Resume', external: true, path: '/resume.pdf' },
 ];
 
 // ─── Projects (Architecture-first case studies) ─────────────────────────────

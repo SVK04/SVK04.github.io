@@ -1,7 +1,7 @@
 'use client';
 
 import Script from 'next/script';
-import { Hero, Works, Experience, Skills, About, Footer, Navbar } from '../components';
+import { Hero, Works, Experience, Skills, About, Contact, Footer, Navbar } from '../components';
 
 export default function Home() {
   return (
@@ -79,6 +79,8 @@ export default function Home() {
           <Skills />
           {/* 04 — Telemetry / Accomplishments */}
           <About />
+          {/* 05 — Contact */}
+          <Contact />
         </main>
         {/* // Identity — The Reel */}
         <Footer />

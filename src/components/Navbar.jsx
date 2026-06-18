@@ -45,21 +45,32 @@ const Navbar = () => {
         <ul className="hidden sm:flex items-center gap-8 list-none">
           {navLinks.map(link => (
             <li key={link.id}>
-              <a
-                href={`#${link.id}`}
-                onClick={() => setActive(link.title)}
-                className={`font-mono text-sm tracking-widest uppercase transition-colors duration-150 relative ${
-                  active === link.title ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary'
-                }`}
-              >
-                {link.title}
-                {active === link.title && (
-                  <motion.span
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-0.5 left-0 right-0 h-px bg-accent"
-                  />
-                )}
-              </a>
+              {link.external ? (
+                <a
+                  href={link.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`font-mono text-sm tracking-widest uppercase transition-colors duration-150 text-text-secondary hover:text-text-primary`}
+                >
+                  {link.title}
+                </a>
+              ) : (
+                <a
+                  href={`#${link.id}`}
+                  onClick={() => setActive(link.title)}
+                  className={`font-mono text-sm tracking-widest uppercase transition-colors duration-150 relative ${
+                    active === link.title ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary'
+                  }`}
+                >
+                  {link.title}
+                  {active === link.title && (
+                    <motion.span
+                      layoutId="nav-indicator"
+                      className="absolute -bottom-0.5 left-0 right-0 h-px bg-accent"
+                    />
+                  )}
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -99,16 +110,28 @@ const Navbar = () => {
             <ul className="list-none px-6 py-5 flex flex-col gap-4">
               {navLinks.map(link => (
                 <li key={link.id}>
-                  <a
-                    href={`#${link.id}`}
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      setActive(link.title);
-                    }}
-                    className="font-mono text-sm tracking-widest uppercase text-text-secondary hover:text-text-primary transition-colors duration-150 block"
-                  >
-                    {link.title}
-                  </a>
+                  {link.external ? (
+                    <a
+                      href={link.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="font-mono text-sm tracking-widest uppercase text-text-secondary hover:text-text-primary transition-colors duration-150 block"
+                    >
+                      {link.title}
+                    </a>
+                  ) : (
+                    <a
+                      href={`#${link.id}`}
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setActive(link.title);
+                      }}
+                      className="font-mono text-sm tracking-widest uppercase text-text-secondary hover:text-text-primary transition-colors duration-150 block"
+                    >
+                      {link.title}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
