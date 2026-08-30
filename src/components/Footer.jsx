@@ -2,7 +2,6 @@
 
 import { motion } from 'motion/react';
 import { IconBrandGithub, IconBrandLinkedinFilled, IconDownload } from '@tabler/icons-react';
-import { resume } from '../assets/';
 
 // ─── Social / contact links ─────────────────────────────────────────────────
 
@@ -57,12 +56,10 @@ const Footer = () => (
 
         {/* Role + location */}
         <div className="flex flex-wrap items-center gap-3 mb-10">
-          <span className="font-mono text-sm text-text-secondary border border-[rgb(var(--color-border))] px-3 py-1">
-            Software Developer
+          <span className="font-mono text-sm text-text-secondary border border-[rgb(var(--color-border))] px-3 py-1 rounded">
+            Full Stack Engineer | Node.js · TypeScript · Next.js · Python · AWS
           </span>
-          <span className="font-mono text-sm text-text-secondary/60">
-            Vadodara, Gujarat, India&nbsp;&nbsp;·&nbsp;&nbsp;Open to Remote
-          </span>
+          <span className="font-mono text-sm text-text-secondary/70">Vadodara, Gujarat, India</span>
         </div>
 
         {/* CTA links */}
@@ -74,7 +71,7 @@ const Footer = () => (
               href={href}
               target={external ? '_blank' : undefined}
               rel={external ? 'noopener noreferrer' : undefined}
-              className={`flex items-center gap-2 font-mono text-sm border px-4 py-2 transition-colors duration-150 ${
+              className={`flex items-center gap-2 font-mono text-sm border px-4 py-2 transition-colors duration-150 rounded ${
                 variant === 'accent'
                   ? 'border-accent/50 text-accent hover:bg-accent/8 hover:border-accent'
                   : 'border-[rgb(var(--color-border))] text-text-secondary hover:border-accent/40 hover:text-accent'
@@ -88,11 +85,11 @@ const Footer = () => (
           {/* Resume — accent-bordered call-to-action */}
           <a
             id="resume-download-link"
-            href={resume}
+            href="/resume.pdf"
             download="Vaibhav_Kaul_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 font-mono text-sm border border-accent/50 text-accent px-4 py-2 hover:bg-accent/5 hover:border-accent transition-colors duration-150"
+            className="flex items-center gap-2 font-mono text-sm border border-accent/50 text-accent px-4 py-2 hover:bg-accent/5 hover:border-accent transition-colors duration-150 rounded"
           >
             <IconDownload size={14} aria-hidden="true" />
             Resume.pdf
@@ -103,7 +100,7 @@ const Footer = () => (
       {/* Bottom bar */}
       <div className="border-t border-[rgb(var(--color-border))] mt-16 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
         <p className="font-mono text-xs text-text-secondary/50">© {new Date().getFullYear()} Vaibhav Virendar Kaul</p>
-        <p className="font-mono text-xs text-text-secondary/50">Built with Next.js & Tailwind CSS</p>
+        <p className="font-mono text-xs text-text-secondary/50">Built with Next.js &amp; Tailwind CSS</p>
       </div>
     </div>
   </footer>

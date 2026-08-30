@@ -7,32 +7,34 @@ const baseUrl = 'https://svk04.github.io';
 export const metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Vaibhav Kaul — Software Developer',
+    default: 'Vaibhav Kaul — Backend & AI Engineer',
     template: '%s | Vaibhav Kaul',
   },
   description:
-    'Software Developer building AI voice platforms, cross-platform e-commerce infrastructure, and serverless architectures. TypeScript, Node.js, Python, Next.js.',
+    'Backend & AI Engineer building scalable APIs, real-time systems, and cloud-native applications with Node.js, Python, PostgreSQL, and AWS.',
   keywords: [
     'Vaibhav Kaul',
-    'Vaibhav Virendar Kaul',
-    'Software Developer',
-    'Full Stack Engineer',
+    'Backend Engineer',
+    'AI Engineer',
     'Node.js Developer',
-    'AI Voice Platform',
-    'Next.js Developer',
-    'WebSocket Engineer',
-    'Portfolio 2026',
+    'Python Developer',
+    'FastAPI',
+    'WebSockets',
+    'AWS Lambda',
+    'PostgreSQL',
+    'PGVector',
+    'TypeScript',
   ],
-  authors: [{ name: 'Vaibhav Virendar Kaul', url: baseUrl }],
-  creator: 'Vaibhav Virendar Kaul',
-  publisher: 'Vaibhav Virendar Kaul',
+  authors: [{ name: 'Vaibhav Kaul', url: baseUrl }],
+  creator: 'Vaibhav Kaul',
+  publisher: 'Vaibhav Kaul',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Vaibhav Kaul — Software Developer',
+    title: 'Vaibhav Kaul — Backend & AI Engineer',
     description:
-      'Software Developer building AI voice platforms, cross-platform e-commerce infrastructure, and serverless architectures.',
+      'Backend & AI Engineer building scalable APIs, real-time systems, and cloud-native applications with Node.js, Python, PostgreSQL, and AWS.',
     url: baseUrl,
     siteName: 'Vaibhav Kaul',
     images: [
@@ -40,7 +42,7 @@ export const metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Vaibhav Kaul — Software Developer',
+        alt: 'Vaibhav Kaul — Backend & AI Engineer',
       },
     ],
     locale: 'en_US',
@@ -48,8 +50,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vaibhav Kaul — Software Developer',
-    description: 'Building AI voice platforms, e-commerce infrastructure, and serverless architectures.',
+    title: 'Vaibhav Kaul — Backend & AI Engineer',
+    description: 'Building scalable APIs, real-time systems, and cloud-native applications.',
     creator: '@svk04',
     images: ['/og-image.png'],
   },
@@ -76,15 +78,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Font preconnect for Inter + JetBrains Mono */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="antialiased font-sans">
-        {/*
-          Inline theme-persistence script — runs synchronously before first paint
-          to prevent flash of wrong theme.
-        */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -100,7 +97,6 @@ export default function RootLayout({ children }) {
           }}
         />
 
-        {/* Service Worker cleanup — removes stale PWA registrations */}
         <Script id="service-worker-cleanup">
           {`
             if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {

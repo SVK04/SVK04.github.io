@@ -1,19 +1,24 @@
 {
-    "name": "Vaibhav Kaul | Portfolio",
-    "short_name": "Vaibhav",
-    "icons": [
-        {
-            "src": "/favicon-32x32.png",
-            "sizes": "32x32",
-            "type": "image/png"
-        },
-        {
-            "src": "/favicon-16x16.png",
-            "sizes": "16x16",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#3F4EB8",
-    "background_color": "#F8F9FB",
-    "display": "standalone"
+  "name": "Vaibhav Kaul — Backend & AI/Cloud Engineer",
+  "short_name": "Vaibhav Kaul",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#06b6d4",
+  "background_color": "#090d16",
+  "display": "standalone"
 }
