@@ -1,7 +1,7 @@
 export const dynamic = 'force-static';
 
 export default function sitemap() {
-  const baseUrl = 'https://svk04.github.io';
+  const baseUrl = 'https://vaibhav-kaul.web.app';
 
   return [
     {

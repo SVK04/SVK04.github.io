@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { IconBrandGithub, IconBrandLinkedin, IconDownload, IconArrowDown } from '@tabler/icons-react';
 
@@ -66,12 +65,6 @@ const BlinkCursor = () => (
 // ─── Hero Section ──────────────────────────────────────────────────────────
 
 const Hero = () => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
     <section
       id="work"
@@ -94,7 +87,7 @@ const Hero = () => {
           {/* ── LEFT COLUMN: Identity, Positioning & CTAs ─────────────── */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : 12 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
             className="lg:col-span-6 flex flex-col justify-center"
           >
@@ -177,8 +170,8 @@ const Hero = () => {
           {/* ── RIGHT COLUMN: Technical Terminal Dashboard ───────────── */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : 16 }}
-            transition={{ duration: 0.45, delay: 0.15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.1 }}
             className="lg:col-span-6"
           >
             <div

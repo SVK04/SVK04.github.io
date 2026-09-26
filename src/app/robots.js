@@ -7,6 +7,6 @@ export default function robots() {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://svk04.github.io/sitemap.xml',
+    sitemap: 'https://vaibhav-kaul.web.app/sitemap.xml',
   };
 }

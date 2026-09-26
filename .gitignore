@@ -16,6 +16,10 @@ node_modules
 /build
 out
 
+# backup
+backup/
+_backup/
+
 # misc
 .DS_Store
 .env.local

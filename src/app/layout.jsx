@@ -2,7 +2,7 @@ import './globals.css';
 import Script from 'next/script';
 import { Providers } from '../components/Providers';
 
-const baseUrl = 'https://svk04.github.io';
+const baseUrl = 'https://vaibhav-kaul.web.app';
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
@@ -74,6 +74,47 @@ export const metadata = {
   manifest: '/site.webmanifest',
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${baseUrl}/#website`,
+      name: 'Vaibhav Kaul',
+      alternateName: ['Vaibhav Kaul Portfolio', 'Vaibhav Kaul — Backend & AI Engineer'],
+      url: baseUrl,
+    },
+    {
+      '@type': 'Person',
+      '@id': `${baseUrl}/#person`,
+      name: 'Vaibhav Kaul',
+      url: baseUrl,
+      jobTitle: 'Backend & AI Engineer',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Easy Cater Services Platform Private Limited',
+      },
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Dharmsinh Desai University',
+      },
+      knowsAbout: [
+        'Node.js',
+        'Python',
+        'FastAPI',
+        'WebSockets',
+        'AWS Lambda',
+        'PostgreSQL',
+        'PGVector',
+        'TypeScript',
+        'LangChain',
+        'React',
+      ],
+      sameAs: ['https://github.com/SVK04', 'https://www.linkedin.com/in/vaibhav-kaul-448889246/'],
+    },
+  ],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -82,6 +123,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="antialiased font-sans">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <script
           dangerouslySetInnerHTML={{
             __html: `
