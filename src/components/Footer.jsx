@@ -99,8 +99,8 @@ const Footer = () => (
 
       {/* Bottom bar */}
       <div className="border-t border-[rgb(var(--color-border))] mt-16 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
-        <p className="font-mono text-xs text-text-secondary/50">© {new Date().getFullYear()} Vaibhav Virendar Kaul</p>
-        <p className="font-mono text-xs text-text-secondary/50">Built with Next.js &amp; Tailwind CSS</p>
+        <p className="font-mono text-xs text-text-secondary">© {new Date().getFullYear()} Vaibhav Virendar Kaul</p>
+        <p className="font-mono text-xs text-text-secondary">Built with Next.js &amp; Tailwind CSS</p>
       </div>
     </div>
   </footer>

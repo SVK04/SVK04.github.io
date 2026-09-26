@@ -3,6 +3,7 @@
 # Logs
 logs
 *.log
+*.report.html
 
 # dependencies
 node_modules

@@ -2,7 +2,6 @@
 
 import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import emailjs from '@emailjs/browser';
 import { useNotification } from './Notification';
 import { IconBrandLinkedin, IconBrandGithub, IconSend } from '@tabler/icons-react';
 
@@ -17,12 +16,13 @@ const Contact = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
 
-    emailjs
-      .send(
+    try {
+      const emailjs = (await import('@emailjs/browser')).default;
+      await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         {
@@ -31,17 +31,14 @@ const Contact = () => {
           message: form.message,
         },
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          showNotification.success('Message transmitted successfully!');
-          setForm({ name: '', email: '', message: '' });
-        },
-        error => {
-          showNotification.error('Failed to send message', error.text || 'Please try again later.');
-        }
-      )
-      .finally(() => setLoading(false));
+      );
+      showNotification.success('Message transmitted successfully!');
+      setForm({ name: '', email: '', message: '' });
+    } catch (error) {
+      showNotification.error('Failed to send message', error?.text || 'Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
