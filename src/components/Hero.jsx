@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'motion/react';
 import { IconBrandGithub, IconBrandLinkedin, IconDownload, IconArrowDown } from '@tabler/icons-react';
 
 // ─── Hero Data ─────────────────────────────────────────────────────────────
@@ -85,12 +82,7 @@ const Hero = () => {
       <div className="relative max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
           {/* ── LEFT COLUMN: Identity, Positioning & CTAs ─────────────── */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="lg:col-span-6 flex flex-col justify-center"
-          >
+          <div className="lg:col-span-6 flex flex-col justify-center animate-fade-in-up">
             {/* Status Pill */}
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[rgb(var(--color-border))] bg-surface/80 text-xs font-mono text-text-secondary">
@@ -165,15 +157,10 @@ const Hero = () => {
                 <span>Resume</span>
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* ── RIGHT COLUMN: Technical Terminal Dashboard ───────────── */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.1 }}
-            className="lg:col-span-6"
-          >
+          <div className="lg:col-span-6 animate-fade-in-up [animation-delay:150ms]">
             <div
               className="terminal-card rounded-lg shadow-xl overflow-hidden"
               role="region"
@@ -259,7 +246,7 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
