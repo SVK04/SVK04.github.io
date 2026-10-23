@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import { experiences } from '../constants';
+import SectionHeading from './SectionHeading';
 
 // ─── Single Experience Card ─────────────────────────────────────────────────
 const ExperienceCard = ({ exp, index }) => (
@@ -103,15 +104,14 @@ const Experience = () => (
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
-      className="mb-14"
     >
-      <p className="font-mono text-xs text-accent tracking-widest uppercase mb-2">
-        {'//'} 02&nbsp;&nbsp;Professional History
-      </p>
-      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-text-primary">Engineering Experience</h2>
-      <p className="text-text-secondary text-base mt-2 max-w-xl leading-relaxed">
-        Production backend architectures, real-time voice infrastructure, and high-throughput data pipelines.
-      </p>
+      <SectionHeading
+        eyebrow={'// 02  Professional History'}
+        title="Engineering Experience"
+        kinetic="Experience"
+        descriptionClassName="max-w-xl"
+        description="Production backend architectures, real-time voice infrastructure, and high-throughput data pipelines."
+      />
     </motion.div>
 
     {/* Vertical Editorial Timeline */}

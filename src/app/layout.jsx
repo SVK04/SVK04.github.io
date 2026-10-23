@@ -2,6 +2,7 @@ import './globals.css';
 import Script from 'next/script';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { Providers } from '../components/Providers';
+import { caseStudies, projects } from '../constants';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -111,6 +112,14 @@ const jsonLd = {
         '@type': 'CollegeOrUniversity',
         name: 'Dharmsinh Desai University',
       },
+      description:
+        'Backend & full stack engineer building production APIs, real-time WebSocket systems, AWS serverless platforms, e-commerce integrations and LLM/RAG voice pipelines.',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Vadodara',
+        addressRegion: 'Gujarat',
+        addressCountry: 'IN',
+      },
       knowsAbout: [
         'Node.js',
         'Python',
@@ -122,9 +131,43 @@ const jsonLd = {
         'TypeScript',
         'LangChain',
         'React',
+        'Express.js',
+        'Next.js',
+        'REST APIs',
+        'Amazon RDS',
+        'AWS S3',
+        'Amazon EventBridge',
+        'API Gateway',
+        'Docker',
+        'Redis',
+        'Prisma',
+        'Retrieval-Augmented Generation',
+        'Large Language Models',
+        'Speech-to-Text and Text-to-Speech pipelines',
+        'Serverless architecture',
+        'Real-time systems',
+        'Shopify app development',
+        'BigCommerce integrations',
+        'GIS routing and live location tracking',
       ],
       sameAs: ['https://github.com/SVK04', 'https://www.linkedin.com/in/vaibhav-kaul-448889246/'],
     },
+    // One CreativeWork per case study, authored by the Person above.
+    ...caseStudies.map(study => {
+      const project = projects.find(p => p.id === study.id);
+      return {
+        '@type': 'CreativeWork',
+        '@id': `${baseUrl}/#project-${study.id}`,
+        name: project?.name,
+        url: `${baseUrl}/#project-${study.id}`,
+        abstract: study.problem,
+        keywords: study.stack
+          .flatMap(group => group.items)
+          .filter(item => !item.startsWith('TODO'))
+          .join(', '),
+        author: { '@id': `${baseUrl}/#person` },
+      };
+    }),
   ],
 };
 

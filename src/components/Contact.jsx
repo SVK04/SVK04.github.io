@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { useNotification } from './Notification';
+import SectionHeading from './SectionHeading';
 import { IconBrandLinkedin, IconBrandGithub, IconSend } from '@tabler/icons-react';
 
 const Contact = () => {
@@ -49,13 +50,14 @@ const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="mb-14"
       >
-        <p className="font-mono text-xs text-accent tracking-widest uppercase mb-2">{'//'} 05&nbsp;&nbsp;Contact</p>
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-text-primary">Get in Touch</h2>
-        <p className="text-text-secondary text-base mt-2 max-w-xl leading-relaxed">
-          Open to backend engineering roles, AI infrastructure projects, and technical discussions.
-        </p>
+        <SectionHeading
+          eyebrow={'// 05  Contact'}
+          title="Get in Touch"
+          kinetic="Contact"
+          descriptionClassName="max-w-xl"
+          description="Open to backend engineering roles, AI infrastructure projects, and technical discussions."
+        />
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">

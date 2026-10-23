@@ -9,6 +9,46 @@ export const navLinks = [
   { id: 'resume', title: 'Resume', external: true, path: '/resume.pdf' },
 ];
 
+// ─── Hero ────────────────────────────────────────────────────────────────────
+
+export const hero = {
+  name: 'Vaibhav Kaul',
+  role: 'Backend & Full Stack Engineer',
+  location: 'Vadodara, Gujarat, India',
+  valueStatement:
+    'I build production APIs, real-time systems and AI pipelines with Node.js, Python, PostgreSQL and AWS, and I measure the result.',
+  metrics: [
+    { value: '10×', label: 'faster catalog APIs', sub: '~2s → ~200ms at Easy Cater' },
+    { value: '~90%', label: 'less bulk-ingestion time', sub: 'minutes → under 5s on ProtectALL' },
+    { value: '2+ yrs', label: 'shipping to production', sub: 'backend, real-time & AI systems' },
+  ],
+  coreStack: ['Node.js', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'AWS Lambda', 'WebSockets', 'PGVector'],
+  resume: { href: '/resume.pdf', fileName: 'Vaibhav_Kaul_Resume.pdf' },
+  socials: [
+    { label: 'GitHub', href: 'https://github.com/SVK04' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vaibhav-kaul-448889246/' },
+  ],
+  activeWork: [
+    { company: 'Easy Cater', task: 'Production backend: 10× API speedup (~2s to ~200ms), GIS routing & live tracking' },
+    { company: 'eDelta Corp', task: 'VoiceNow — real-time voice pipeline (VAD → STT → LLM → TTS) & published NPM SDK' },
+    {
+      company: 'eDelta Corp',
+      task: 'ProtectALL — automated CSV ingestion (min to <5s, ~90% reduction) & Cart Transformers',
+    },
+    {
+      company: 'eDelta Corp',
+      task: 'XUnified — WhatsApp, FB, IG & Telegram APIs with OpenAI/Gemini AI agents & Dialogflow',
+    },
+    { company: 'Independent', task: 'Voxia — local voice AI pipeline using self-hosted LLM, STT, and TTS models' },
+  ],
+  architectureFocus: [
+    'Real-time WebSocket streaming architectures & microservices',
+    'Serverless workflows on AWS Lambda, API Gateway & EventBridge',
+    'PostgreSQL, PGVector vector search & LangChain RAG pipelines',
+    'GIS routing integration, live location tracking & order state machines',
+  ],
+};
+
 // ─── Selected Work ────────────────────────────────────────────────────────────
 
 export const projects = [
@@ -54,8 +94,36 @@ export const projects = [
     githubUrl: null,
   },
   {
-    id: 'protectall',
+    id: 'easycater-delivery',
     number: '02',
+    isFeatured: false,
+    name: 'Easy Cater – Delivery Platform Backend',
+    company: 'Easy Cater Services Platform',
+    period: 'June 2026 — Present',
+    tagline:
+      'Production backend for a food-delivery platform: 10× faster catalog APIs, GIS routing with live driver tracking, and an end-to-end order lifecycle state machine.',
+    whatIBuilt:
+      'Reduced redundant database calls in restaurant and catalog APIs, integrated the existing GIS server and routing services with the Delivery Backend, built location update and tracking APIs across the Delivery and User backends, and implemented order workflows from placement to delivery.',
+    whatWasHard:
+      'Keeping live rider movement smooth between location updates while coordinating one order lifecycle across the User, Merchant and Delivery applications.',
+    metricValue: '10× Faster',
+    metricLabel: 'Catalog APIs (~2s → ~200ms)',
+    metricSub: 'Removed redundant database calls and streamlined data retrieval',
+    architectureFlow: [
+      { step: 'User / Merchant / Driver Apps', sub: 'Three Clients' },
+      { step: 'User & Delivery Backends', sub: 'Node.js APIs' },
+      { step: 'Order State Machine', sub: 'Placement → Delivery' },
+      { step: 'GIS Routing Server', sub: 'Routes & ETA' },
+      { step: 'Live Tracking', sub: 'Smooth Rider Movement' },
+    ],
+    stack: ['Node.js', 'GIS Routing', 'Location APIs', 'State Machines', 'Database Optimization'],
+    focus: 'Delivery Backend',
+    focusTag: 'performance',
+    githubUrl: null,
+  },
+  {
+    id: 'protectall',
+    number: '03',
     isFeatured: false,
     name: 'ProtectALL – E-commerce Protection & Warranty Platform',
     company: 'eDelta Corporation',
@@ -92,7 +160,7 @@ export const projects = [
   },
   {
     id: 'xunified',
-    number: '03',
+    number: '04',
     isFeatured: false,
     name: 'XUnified – Omnichannel & AI Platform',
     company: 'eDelta Corporation',
@@ -130,7 +198,7 @@ export const projects = [
   },
   {
     id: 'society-management',
-    number: '04',
+    number: '05',
     isFeatured: false,
     name: 'Society Management System – SaaS ERP',
     company: 'Side Project',
@@ -156,7 +224,7 @@ export const projects = [
   },
   {
     id: 'voxia',
-    number: '05',
+    number: '06',
     isFeatured: false,
     name: 'Voxia – Local Voice AI Pipeline',
     company: 'Independent Project',
@@ -182,6 +250,10 @@ export const projects = [
     githubUrl: 'https://github.com/SVK04',
   },
 ];
+
+// ─── Case Studies ────────────────────────────────────────────────────────────
+// Kept in their own file so the detail view can load lazily (see CaseStudy.jsx).
+export { caseStudies } from './caseStudies';
 
 // ─── Professional Experience ─────────────────────────────────────────────────
 
@@ -317,6 +389,14 @@ export const engineeringSignals = [
   {
     category: 'BACKEND',
     code: '01',
+    highlight: true,
+    // Case studies that prove this card; links jump to the project cards.
+    proof: [
+      { label: 'VoiceNow · WebSocket voice service', href: '#project-voicenow' },
+      { label: 'Easy Cater · 10× faster APIs', href: '#project-easycater-delivery' },
+      { label: 'ProtectALL · CSV ingestion pipeline', href: '#project-protectall' },
+      { label: 'XUnified · channel layer', href: '#project-xunified' },
+    ],
     description: 'Server-side API architecture, microservices, and real-time communication protocols.',
     technologies: ['Node.js', 'TypeScript', 'Python', 'FastAPI', 'Express.js', 'REST APIs', 'WebSockets', 'Socket.IO'],
   },
@@ -369,7 +449,12 @@ export const telemetry = {
   bio: 'Backend & AI Engineer with 2+ years of experience building production APIs, real-time systems, web applications, and cloud platforms using Node.js, TypeScript, Python, PostgreSQL, React, Next.js, and AWS. Experienced in API integrations, WebSockets, serverless systems, e-commerce platforms, LLM applications, RAG workflows, and real-time location systems.',
   stats: [
     { label: 'EXPERIENCE', value: '2+', sub: 'Years building backend APIs & cloud platforms' },
-    { label: 'API SPEEDUP', value: '2s → 200ms', sub: 'Easy Cater restaurant & catalog API optimization' },
+    {
+      label: 'API SPEEDUP',
+      value: '2s → 200ms',
+      sub: 'Easy Cater restaurant & catalog API optimization',
+      highlight: true,
+    },
     { label: 'BULK INGESTION', value: '~90%', sub: 'ProtectALL CSV ingestion time reduction (min → <5s)' },
     { label: 'CREDENTIALS', value: 'B.Tech', sub: 'Dharmsinh Desai University, CPI: 7.65 (Graduated 2024)' },
   ],
