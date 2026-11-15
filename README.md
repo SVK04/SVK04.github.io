@@ -1,29 +1,54 @@
-# Personal Portfolio Website  
+# Vaibhav Kaul — Portfolio
 
-Welcome to my **Personal Portfolio Website**, built using **ReactJS**! This project showcases my skills, experience, and projects as a developer.  
+Personal portfolio site for Vaibhav Kaul, Backend & AI Engineer. Live at **<https://vaibhav-kaul.web.app>**.
 
-## Features  
-- **About Me Section**: A brief introduction about who I am and what I do.  
-- **Skills Section**: Highlights of my technical expertise and tools I am proficient with.  
-- **Projects Section**: Showcasing the projects I have worked on, including descriptions and links to repositories or live demos.  
-- **Contact Section**: An easy way for visitors to get in touch with me through a contact form or social media links.  
-- **Responsive Design**: Fully responsive and optimized for all devices, from desktop to mobile.  
+## Sections
 
-## Tech Stack  
-- **Frontend**: ReactJS, JavaScript, HTML5, CSS3  
-- **Styling**: Tailwind CSS (or another CSS framework, if applicable)  
-- **Hosting**: [GitHub Pages](https://pages.github.com/)  
+- **Hero** — introduction and headline
+- **Work** — selected projects with architecture flows and tech stacks
+- **Experience** — professional history
+- **Stack** — technical skills
+- **About** — background and engineering signals
+- **Contact** — form that sends email through EmailJS
+- Light and dark themes, with the choice saved in the browser
 
-## Getting Started  
+## Tech stack
 
-### Prerequisites  
-Make sure you have the following installed on your machine:  
-- Node.js  
-- Yarn or npm  
+- [Next.js](https://nextjs.org/) (App Router), exported as a static site
+- React 19
+- Tailwind CSS 3
+- [Motion](https://motion.dev/) for animations
+- [EmailJS](https://www.emailjs.com/) for the contact form
+- Firebase Hosting
 
-### Installation  
+## Getting started
 
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/SVK04/SVK04.github.io.git
-   cd SVK04.github.io
+Requires Node.js 22+ and Yarn.
+
+```bash
+git clone https://github.com/SVK04/SVK04.github.io.git
+cd SVK04.github.io
+yarn install
+cp .env.example .env   # fill in your EmailJS keys
+yarn dev
+```
+
+Then open <http://localhost:3000>.
+
+## Scripts
+
+| Command          | What it does                         |
+| ---------------- | ------------------------------------ |
+| `yarn dev`       | Start the dev server                 |
+| `yarn build`     | Build the static site into `out/`    |
+| `yarn lint`      | Run ESLint                           |
+| `yarn format`    | Format `src` with Prettier           |
+| `yarn seo-audit` | Run Lighthouse against the live site |
+
+## Editing content
+
+Projects, experience, skills and nav links live in `src/constants/index.js`. Edit that file to update the site's content. The resume is `public/resume.pdf`.
+
+## Deployment
+
+Every push to `master` builds the site and deploys it to Firebase Hosting through GitHub Actions (`.github/workflows/deploy.yml`). The EmailJS keys come from repository secrets: `EMAILJS_SERVICE_ID`, `EMAILJS_TEMPLATE_ID` and `EMAILJS_PUBLIC_KEY`.

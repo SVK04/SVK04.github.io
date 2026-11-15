@@ -1,0 +1,34 @@
+# Vaibhav Kaul
+
+> Full stack engineer with a backend focus (2+ years in production) based in Vadodara, Gujarat, India. Builds production APIs, real-time WebSocket systems, AWS serverless platforms, e-commerce integrations and LLM/RAG voice pipelines with Node.js, TypeScript, Python, PostgreSQL and AWS.
+
+Currently a Software Developer (Full Stack / Backend focus) at Easy Cater Services Platform (June 2026 – present). Previously Software Developer at eDelta Corporation (June 2024 – May 2026) and Software Engineering Intern at eDelta Enterprise Solutions (Dec 2023 – June 2024). B.Tech in Computer Engineering, Dharmsinh Desai University (2024).
+
+Headline results:
+
+- Restaurant and catalog APIs sped up 10× (~2s → ~200ms) by removing redundant database calls (Easy Cater)
+- Bulk product-plan assignment cut from minutes to under 5 seconds (~90% less time) with validated CSV ingestion pipelines (ProtectALL)
+- Real-time VAD → STT → LLM → TTS voice pipeline over WebSockets, plus the private TypeScript SDK clients embed it with (VoiceNow)
+
+Core stack: Node.js, TypeScript, Python, FastAPI, Express.js, REST APIs, WebSockets, AWS Lambda, API Gateway, Amazon RDS, AWS S3, EventBridge, Docker, PostgreSQL, PGVector, Redis, Prisma, LangChain, RAG, GPT-4o, Gemini, React, Next.js.
+
+## Case studies
+
+Each case study covers the problem, role and ownership, an architecture diagram, stack, data model, key decisions and trade-offs, challenges and results.
+
+- [VoiceNow – Real-Time AI Voice Platform & SDK](https://vaibhav-kaul.web.app/#project-voicenow): Python WebSocket voice microservice (VAD → STT → LLM → TTS), LangChain + PGVector RAG with S3 ingestion, serverless management APIs on AWS Lambda and RDS, organization-level auth, private TypeScript SDK released with Semantic Release
+- [Easy Cater – Delivery Platform Backend](https://vaibhav-kaul.web.app/#project-easycater-delivery): 10× faster catalog APIs, GIS routing integration, live driver tracking with smooth movement, order lifecycle state machine across User, Merchant and Delivery apps
+- [ProtectALL – E-commerce Protection & Warranty Platform](https://vaibhav-kaul.web.app/#project-protectall): shared warranty pricing across Shopify (Cart Transformers, Theme App Extensions), BigCommerce (Widget API) and WooCommerce; validated CSV ingestion pipelines
+- [XUnified – Omnichannel & AI Platform](https://vaibhav-kaul.web.app/#project-xunified): WhatsApp, Facebook, Instagram and Telegram behind one channel layer; configurable GPT/Gemini agents with knowledge sources; Dialogflow; AI Studio no-code bot builder
+
+## Profiles
+
+- [Portfolio](https://vaibhav-kaul.web.app/): full site with experience, stack and contact form
+- [Resume (PDF)](https://vaibhav-kaul.web.app/resume.pdf)
+- [GitHub](https://github.com/SVK04)
+- [LinkedIn](https://www.linkedin.com/in/vaibhav-kaul-448889246/)
+
+## Optional
+
+- [Society Management System](https://vaibhav-kaul.web.app/#project-society-management): multi-tenant residential ERP on Next.js, Express.js, Prisma and PostgreSQL with RBAC and an immutable transaction ledger
+- [Voxia](https://vaibhav-kaul.web.app/#project-voxia): self-hosted VAD → STT → LLM → TTS voice pipeline using local models

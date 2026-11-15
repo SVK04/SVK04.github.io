@@ -13,275 +13,141 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: var(--color-scheme, dark);
+  color-scheme: light;
 }
 
 body {
-  font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  font-family:
+    var(--font-inter),
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-text-primary));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Design Tokens: Dark Mode (Default) ───────────────────────────────────── */
+/* ─── Design Tokens (single theme: ink on warm paper, one red accent) ─────── */
 :root {
-  --color-scheme: dark;
+  --color-background: 243, 239, 230; /* #f3efe6 — paper */
+  --color-surface: 250, 247, 240; /* #faf7f0 — raised panels */
+  --color-surface-dim: 234, 229, 217; /* #eae5d9 — recessed panels, bars */
+  --color-border: 214, 207, 192; /* #d6cfc0 — hairline rules */
 
-  --color-background:    8, 12, 20;      /* #080c14 — deep obsidian slate */
-  --color-surface:       13, 19, 32;     /* #0d1320 — elevated card background */
-  --color-surface-dim:   19, 27, 44;     /* #131b2c */
-  --color-border:        30, 41, 59;     /* #1e293b — clean slate-800 border */
+  --color-text-primary: 21, 19, 16; /* #151310 — ink */
+  --color-text-secondary: 82, 76, 68; /* #524c44 */
+  --color-text-muted: 107, 101, 91; /* #6b655b — still 5:1 on paper */
 
-  --color-text-primary:  241, 245, 249;  /* #f1f5f9 — crisp slate-100 */
-  --color-text-secondary: 148, 163, 184; /* #94a3b8 — slate-400 */
-  --color-text-muted:    100, 116, 139;  /* #64748b — slate-500 */
-
-  --color-accent:        6, 182, 212;    /* #06b6d4 — electric cyan */
-  --color-primary:       6, 182, 212;
-  --color-secondary:     148, 163, 184;
-  --color-tertiary:      19, 27, 44;
-
-  /* Ambient mesh colors (dark) */
-  --blob-1: rgba(6, 182, 212, 0.07);     /* cyan top-right */
-  --blob-2: rgba(59, 130, 246, 0.05);    /* cobalt bottom-left */
-  --blob-3: rgba(16, 185, 129, 0.03);    /* emerald accent */
-  --blob-4: rgba(6, 182, 212, 0.02);
-
-  --grid-dot: rgba(51, 65, 85, 0.40);
-  --grid-line: rgba(51, 65, 85, 0.12);
+  --color-accent: 199, 53, 18; /* #c73512 — 4.6:1 on paper, 5.3:1 under white */
+  --color-accent-bright: 255, 106, 69; /* #ff6a45 — accent for text on ink */
+  --color-primary: 199, 53, 18;
+  --color-secondary: 82, 76, 68;
+  --color-tertiary: 234, 229, 217;
 }
 
-/* ─── Design Tokens: Light Mode ───────────────────────────────────────────── */
-.light {
-  --color-scheme: light;
-
-  --color-background:    248, 250, 252;  /* #f8fafc — clean technical paper */
-  --color-surface:       255, 255, 255;  /* #ffffff */
-  --color-surface-dim:   241, 245, 249;  /* #f1f5f9 */
-  --color-border:        226, 232, 240;  /* #e2e8f0 */
-
-  --color-text-primary:  15, 23, 42;     /* #0f172a — deep slate-900 */
-  --color-text-secondary: 71, 85, 105;   /* #475569 — slate-600 */
-  --color-text-muted:    148, 163, 184;  /* #94a3b8 */
-
-  --color-accent:        2, 132, 199;    /* #0284c7 — high-contrast sky-600 */
-  --color-primary:       2, 132, 199;
-  --color-secondary:     71, 85, 105;
-  --color-tertiary:      241, 245, 249;
-
-  --blob-1: rgba(2, 132, 199, 0.03);
-  --blob-2: rgba(59, 130, 246, 0.02);
-  --blob-3: transparent;
-  --blob-4: transparent;
-
-  --grid-dot: rgba(15, 23, 42, 0.07);
-  --grid-line: rgba(15, 23, 42, 0.04);
+::selection {
+  background-color: rgb(var(--color-accent));
+  color: #fff;
 }
 
-/* ─── Ambient Glow Mesh ────────────────────────────────────────────────────── */
-.mesh-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  pointer-events: none;
-  will-change: transform;
+:focus-visible {
+  outline: 2px solid rgb(var(--color-accent));
+  outline-offset: 3px;
 }
 
-.mesh-blob-1 {
-  width: 650px;
-  height: 550px;
-  top: -150px;
-  right: -120px;
-  background: radial-gradient(circle, var(--blob-1) 0%, transparent 70%);
+@layer components {
+  /* Page gutter shared by every section */
+  .wrap {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Small uppercase section label */
+  .label {
+    @apply text-sm font-medium uppercase tracking-[0.12em] text-text-muted;
+  }
+
+  /* ─── Buttons ───────────────────────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-text-primary px-7 py-4 text-base font-semibold text-text-primary transition-colors duration-150;
+  }
+
+  .btn:hover {
+    @apply bg-text-primary text-background;
+  }
+
+  .btn--fill {
+    @apply border-accent bg-accent text-white;
+  }
+
+  .btn--fill:hover {
+    @apply border-text-primary bg-text-primary text-white;
+  }
+
+  .btn--sm {
+    @apply px-5 py-2.5 text-sm;
+  }
+
+  /* On the ink-colored closing section */
+  .btn--on-ink {
+    @apply border-background text-background;
+  }
+
+  .btn--on-ink:hover {
+    @apply bg-background text-text-primary;
+  }
+
+  .btn--on-ink.btn--fill {
+    @apply border-accent text-white;
+  }
+
+  .btn--on-ink.btn--fill:hover {
+    @apply border-background bg-background text-text-primary;
+  }
 }
 
-.mesh-blob-2 {
-  width: 550px;
-  height: 650px;
-  bottom: 10%;
-  left: -120px;
-  background: radial-gradient(circle, var(--blob-2) 0%, transparent 70%);
+/* Hide the default disclosure marker when a <summary> is styled as a button */
+summary.btn {
+  list-style: none;
 }
 
-.mesh-blob-3 {
-  width: 450px;
-  height: 450px;
-  top: 50%;
-  right: -60px;
-  background: radial-gradient(circle, var(--blob-3) 0%, transparent 70%);
+summary.btn::-webkit-details-marker {
+  display: none;
 }
 
-/* ─── Blueprint Grid Pattern ──────────────────────────────────────────────── */
-.grid-overlay {
-  background-image:
-    radial-gradient(circle, var(--grid-dot) 1px, transparent 1px),
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size:
-    28px 28px,
-    140px 140px,
-    140px 140px;
-}
-
-/* ─── Engineering Card Styles ──────────────────────────────────────────────── */
-.eng-card {
-  background-color: rgba(var(--color-surface), 1);
-  border: 1px solid rgba(var(--color-border), 1);
-  transition: all 0.2s ease-in-out;
-}
-
-.eng-card:hover {
-  border-color: rgba(var(--color-accent), 0.35);
-  box-shadow: 0 4px 24px -2px rgba(var(--color-accent), 0.08);
-}
-
-.light .eng-card {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03);
-}
-
-.light .eng-card:hover {
-  border-color: rgba(var(--color-accent), 0.5);
-  box-shadow: 0 8px 24px -2px rgba(2, 132, 199, 0.12);
-}
-
-/* ─── Terminal Dashboard Card ──────────────────────────────────────────────── */
-.terminal-card {
-  background: rgba(var(--color-surface), 0.95);
-  border: 1px solid rgba(var(--color-border), 1);
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  transition: all 0.25s ease;
-}
-
-.terminal-card:hover {
-  border-color: rgba(var(--color-accent), 0.4);
-  box-shadow: 0 0 30px rgba(var(--color-accent), 0.08);
-}
-
-/* ─── Monospace Tag Chips ─────────────────────────────────────────────────── */
+/* ─── Tag chips (case study stack lists) ──────────────────────────────────── */
 .chip {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  border: 1px solid rgba(var(--color-border), 1);
-  background-color: rgba(var(--color-surface-dim), 0.7);
-  padding: 0.2rem 0.55rem;
-  color: rgba(var(--color-text-secondary), 1);
-  border-radius: 4px;
-  transition: all 0.15s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-}
-
-.chip:hover {
-  border-color: rgba(var(--color-accent), 0.5);
-  color: rgba(var(--color-text-primary), 1);
-  background-color: rgba(var(--color-accent), 0.08);
-}
-
-.light .chip {
-  background-color: rgba(241, 245, 249, 0.95);
-  border-color: #cbd5e1;
-  color: #334155;
-}
-
-.light .chip:hover {
-  background-color: rgba(2, 132, 199, 0.1);
-  border-color: rgba(2, 132, 199, 0.4);
-  color: #0284c7;
-}
-
-/* ─── Architecture Flow Visualizer ────────────────────────────────────────── */
-.arch-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.75rem 1rem;
-  background-color: rgba(var(--color-surface-dim), 0.5);
-  border: 1px solid rgba(var(--color-border), 0.8);
-  border-radius: 6px;
-}
-
-.light .arch-container {
-  background-color: #f1f5f9;
-  border-color: #e2e8f0;
-}
-
-.arch-node {
-  font-family: 'JetBrains Mono', monospace;
+  padding: 0.2rem 0.6rem;
   font-size: 0.75rem;
-  padding: 0.3rem 0.6rem;
-  background: rgba(var(--color-surface), 1);
-  border: 1px solid rgba(var(--color-border), 1);
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
+  color: rgb(var(--color-text-secondary));
+  background-color: rgb(var(--color-surface));
+  border: 1px solid rgb(var(--color-border));
+  border-radius: 999px;
 }
 
-.light .arch-node {
-  background: #ffffff;
-  border-color: #cbd5e1;
+/* ─── Architecture diagram ────────────────────────────────────────────────── */
+.arch-svg-edge-label {
+  paint-order: stroke;
+  stroke: rgb(var(--color-surface));
+  stroke-width: 4px;
+  stroke-linejoin: round;
 }
 
-.arch-arrow {
-  color: rgba(var(--color-accent), 0.8);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  user-select: none;
-}
+/* ─── Reduced motion: stop CSS animation and smooth scrolling ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-/* ─── Metric Highlight Block ──────────────────────────────────────────────── */
-.metric-highlight {
-  border-left: 2px solid rgba(var(--color-accent), 1);
-  padding: 0.75rem 1rem;
-  background-color: rgba(var(--color-accent), 0.05);
-  border-radius: 0 6px 6px 0;
-}
-
-.light .metric-highlight {
-  background-color: rgba(2, 132, 199, 0.06);
-}
-
-/* ─── Primary CTA Button ─────────────────────────────────────────────────── */
-.btn-primary {
-  background-color: rgb(var(--color-accent));
-  color: #080c14;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  box-shadow: 0 0 20px rgba(var(--color-accent), 0.25);
-}
-
-.btn-primary:hover {
-  opacity: 0.92;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 25px rgba(var(--color-accent), 0.4);
-}
-
-.light .btn-primary {
-  background-color: #0284c7;
-  color: #ffffff;
-  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.25);
-}
-
-.light .btn-primary:hover {
-  background-color: #0369a1;
-  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
-}
-
-/* ─── Custom Scrollbar ────────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(var(--color-background), 1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(var(--color-border), 1);
-  border-radius: 2px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--color-accent), 1);
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
