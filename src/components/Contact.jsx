@@ -1,167 +1,53 @@
-'use client';
+import Image from 'next/image';
+import { contact, hero, resume, socials } from '../constants';
+import ContactForm from './ContactForm';
 
-import { useState, useRef } from 'react';
-import { motion } from 'motion/react';
-import { useNotification } from './Notification';
-import SectionHeading from './SectionHeading';
-import { IconBrandLinkedin, IconBrandGithub, IconSend } from '@tabler/icons-react';
+// Closing section and footer in one: the page ends on the ask. Server
+// component; only <ContactForm> is client JS.
+const Contact = () => (
+  <footer id="contact" className="mt-24 scroll-mt-16 bg-text-primary text-background sm:mt-28">
+    <div className="wrap pb-10 pt-20 sm:pt-28">
+      <h2 className="font-serif text-[clamp(3.1rem,9.5vw,8.5rem)] leading-[0.95] tracking-[-0.03em]">
+        {contact.headline.lead}
+        <br />
+        <em className="text-accent-bright">{contact.headline.accent}</em>
+      </h2>
 
-const Contact = () => {
-  const formRef = useRef();
-  const showNotification = useNotification();
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  };
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const emailjs = (await import('@emailjs/browser')).default;
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          from_email: form.email,
-          message: form.message,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      );
-      showNotification.success('Message transmitted successfully!');
-      setForm({ name: '', email: '', message: '' });
-    } catch (error) {
-      showNotification.error('Failed to send message', error?.text || 'Please try again later.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <section id="contact" className="max-w-6xl mx-auto px-6 py-24 border-b border-[rgb(var(--color-border))]">
-      {/* Section Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4 }}
-      >
-        <SectionHeading
-          eyebrow={'// 05  Contact'}
-          title="Get in Touch"
-          kinetic="Contact"
-          descriptionClassName="max-w-xl"
-          description="Open to backend engineering roles, AI infrastructure projects, and technical discussions."
-        />
-      </motion.div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-        {/* Left Info Column */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
-          className="lg:col-span-5 space-y-6"
-        >
-          <div className="p-6 rounded-xl border border-[rgb(var(--color-border))] bg-surface space-y-4">
-            <h3 className="font-mono text-xs font-semibold text-accent uppercase tracking-wider">
-              {'//'} Direct Communication
-            </h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
-              Prefer direct outreach? Connect with me on LinkedIn or review my open-source code repositories.
-            </p>
-
-            <div className="pt-2 space-y-3 font-mono text-xs">
-              <a
-                href="https://www.linkedin.com/in/vaibhav-kaul-448889246/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-text-secondary hover:text-accent transition-colors"
-              >
-                <IconBrandLinkedin size={15} />
-                <span>linkedin.com/in/vaibhav-kaul</span>
+      <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+        <div>
+          {hero.photo && (
+            <Image
+              src={hero.photo.src}
+              alt={hero.photo.alt}
+              width={144}
+              height={144}
+              className="mb-8 h-28 w-28 rounded-2xl object-cover sm:h-36 sm:w-36"
+            />
+          )}
+          <p className="max-w-[30ch] text-lg leading-normal text-background/80 sm:text-xl">{contact.text}</p>
+          <div className="mt-8 flex flex-wrap gap-3.5">
+            {socials.map(s => (
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="btn btn--on-ink">
+                {s.label}
               </a>
-
-              <a
-                href="https://github.com/SVK04"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-text-secondary hover:text-accent transition-colors"
-              >
-                <IconBrandGithub size={15} />
-                <span>github.com/SVK04</span>
-              </a>
-            </div>
+            ))}
+            <a href={resume.href} download={resume.fileName} className="btn btn--on-ink">
+              Resume (PDF)
+            </a>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Right Form Column */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.45, delay: 0.1 }}
-          className="lg:col-span-7 rounded-xl border border-[rgb(var(--color-border))] p-6 sm:p-8 bg-surface shadow-sm"
-        >
-          <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
-            <label className="flex flex-col gap-1.5">
-              <span className="font-mono text-xs text-text-secondary tracking-wider uppercase">Name</span>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Your Name"
-                required
-                className="bg-surface-dim/40 border border-[rgb(var(--color-border))] py-3 px-4 text-text-primary placeholder:text-text-muted/50 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all font-sans rounded-md text-sm"
-              />
-            </label>
-
-            <label className="flex flex-col gap-1.5">
-              <span className="font-mono text-xs text-text-secondary tracking-wider uppercase">Email</span>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="you@company.com"
-                required
-                className="bg-surface-dim/40 border border-[rgb(var(--color-border))] py-3 px-4 text-text-primary placeholder:text-text-muted/50 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all font-sans rounded-md text-sm"
-              />
-            </label>
-
-            <label className="flex flex-col gap-1.5">
-              <span className="font-mono text-xs text-text-secondary tracking-wider uppercase">Message</span>
-              <textarea
-                rows="4"
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Project requirements, roles, or questions..."
-                required
-                className="bg-surface-dim/40 border border-[rgb(var(--color-border))] py-3 px-4 text-text-primary placeholder:text-text-muted/50 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all font-sans resize-none rounded-md text-sm"
-              />
-            </label>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="mt-2 btn-primary font-mono text-xs tracking-widest uppercase py-3 px-6 rounded-md self-start disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
-            >
-              <IconSend size={13} />
-              <span>{loading ? 'Transmitting...' : 'Transmit Message'}</span>
-            </button>
-          </form>
-        </motion.div>
+        <ContactForm />
       </div>
-    </section>
-  );
-};
+
+      <div className="mt-20 flex flex-col justify-between gap-2 text-sm text-background/60 sm:flex-row">
+        <p>
+          © {new Date().getFullYear()} {hero.name}
+        </p>
+        <p>{contact.location}</p>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Contact;

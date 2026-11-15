@@ -1,7 +1,7 @@
 // ─── Case Studies ────────────────────────────────────────────────────────────
 // One entry per project `id`, all with the same sections. Any string starting
-// with "TODO:" (or a result value of 'TODO') is a placeholder the site shows as
-// a visible TODO. Replace it with a real fact, never a guess, before release.
+// with "TODO:" (or a result value of 'TODO') is a placeholder: the site hides
+// that item until it is replaced with a real fact (never a guess).
 //
 // Diagram format: nodes sit on a grid (`col`, `row`, from 0). `highlight` marks
 // the parts I owned. Edges go `from` → `to`; `both: true` draws two arrowheads.
@@ -19,7 +19,7 @@ export const caseStudies = [
         'Engineered the streaming VAD → STT → LLM → TTS audio pipeline',
         'Implemented organization-level authentication',
         'Built LangChain + PGVector RAG with AWS S3 knowledge-base ingestion',
-        'Developed and published the VoiceNow TypeScript SDK to NPM with Semantic Release CI/CD',
+        'Built the VoiceNow TypeScript SDK (a private company package) with Semantic Release CI/CD',
       ],
     },
     architecture: {
@@ -87,7 +87,7 @@ export const caseStudies = [
         tradeoff: 'TODO: note any limit you hit (index type, recall, latency)',
       },
       {
-        decision: 'Ship the client as a published TypeScript SDK with Semantic Release',
+        decision: 'Ship the client as a versioned TypeScript SDK with Semantic Release',
         why: 'Integrators install a versioned package; versions and changelogs come from commits automatically.',
         tradeoff: 'Public API changes need disciplined commit messages and semver care.',
       },
@@ -100,14 +100,11 @@ export const caseStudies = [
       },
     ],
     results: [
-      { value: 'NPM', label: 'VoiceNow SDK published with automated versioning and CI/CD' },
+      { value: 'SDK', label: 'Private TypeScript SDK with automated versioning and CI/CD' },
       { value: 'TODO', label: 'TODO: add end-to-end voice response latency' },
       { value: 'TODO', label: 'TODO: add concurrent sessions or call volume' },
     ],
-    links: [
-      { label: 'NPM package', href: null, note: 'TODO: add the public NPM package URL' },
-      { label: 'Source', href: null, note: 'Private (company project)' },
-    ],
+    links: [{ label: 'Source', href: null, note: 'Private (company project)' }],
   },
   {
     id: 'easycater-delivery',
@@ -133,10 +130,12 @@ export const caseStudies = [
         { id: 'merchant', label: 'Merchant App', sub: 'restaurants', col: 0, row: 1 },
         { id: 'driver', label: 'Delivery App', sub: 'riders', col: 0, row: 2 },
         { id: 'userBe', label: 'User Backend', sub: 'catalog & orders', col: 1, row: 0, highlight: true },
-        { id: 'deliveryBe', label: 'Delivery Backend', sub: 'tracking', col: 1, row: 2, highlight: true },
+        // Order sits between the two backends and GIS gets its own column, so
+        // the live-location edge runs beside the order node and no edges cross.
+        { id: 'order', label: 'Order State Machine', sub: 'placed → delivered', col: 1, row: 1, highlight: true },
         { id: 'db', label: 'Database', sub: 'restaurants & catalog', col: 2, row: 0 },
-        { id: 'order', label: 'Order State Machine', sub: 'placed → delivered', col: 2, row: 1, highlight: true },
-        { id: 'gis', label: 'GIS / Routing', sub: 'existing server', col: 2, row: 2 },
+        { id: 'deliveryBe', label: 'Delivery Backend', sub: 'tracking', col: 2, row: 2, highlight: true },
+        { id: 'gis', label: 'GIS / Routing', sub: 'existing server', col: 3, row: 2 },
       ],
       edges: [
         { from: 'user', to: 'userBe', label: 'browse/order' },

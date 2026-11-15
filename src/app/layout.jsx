@@ -1,6 +1,6 @@
 import './globals.css';
 import Script from 'next/script';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, Instrument_Serif } from 'next/font/google';
 import { Providers } from '../components/Providers';
 import { caseStudies, projects } from '../constants';
 
@@ -10,10 +10,13 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const jetbrainsMono = JetBrains_Mono({
+// Display face for headlines and big figures
+const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
   display: 'swap',
-  variable: '--font-jetbrains-mono',
+  variable: '--font-serif',
 });
 
 const baseUrl = 'https://vaibhav-kaul.web.app';
@@ -21,13 +24,14 @@ const baseUrl = 'https://vaibhav-kaul.web.app';
 export const metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Vaibhav Kaul — Backend & AI Engineer',
+    default: 'Vaibhav Kaul — Full Stack Engineer (Backend Focus)',
     template: '%s | Vaibhav Kaul',
   },
   description:
-    'Backend & AI Engineer building scalable APIs, real-time systems, and cloud-native applications with Node.js, Python, PostgreSQL, and AWS.',
+    'Full stack engineer with a backend focus, building production APIs, real-time systems and web apps with Node.js, Python, PostgreSQL, React, Next.js and AWS.',
   keywords: [
     'Vaibhav Kaul',
+    'Full Stack Engineer',
     'Backend Engineer',
     'AI Engineer',
     'Node.js Developer',
@@ -46,9 +50,9 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Vaibhav Kaul — Backend & AI Engineer',
+    title: 'Vaibhav Kaul — Full Stack Engineer (Backend Focus)',
     description:
-      'Backend & AI Engineer building scalable APIs, real-time systems, and cloud-native applications with Node.js, Python, PostgreSQL, and AWS.',
+      'Full stack engineer with a backend focus, building production APIs, real-time systems and web apps with Node.js, Python, PostgreSQL, React, Next.js and AWS.',
     url: baseUrl,
     siteName: 'Vaibhav Kaul',
     images: [
@@ -56,7 +60,7 @@ export const metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Vaibhav Kaul — Backend & AI Engineer',
+        alt: 'Vaibhav Kaul — Full Stack Engineer (Backend Focus)',
       },
     ],
     locale: 'en_US',
@@ -64,8 +68,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vaibhav Kaul — Backend & AI Engineer',
-    description: 'Building scalable APIs, real-time systems, and cloud-native applications.',
+    title: 'Vaibhav Kaul — Full Stack Engineer (Backend Focus)',
+    description: 'Full stack engineer, backend focus: production APIs, real-time systems and web apps.',
     creator: '@svk04',
     images: ['/og-image.png'],
   },
@@ -95,7 +99,7 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': `${baseUrl}/#website`,
       name: 'Vaibhav Kaul',
-      alternateName: ['Vaibhav Kaul Portfolio', 'Vaibhav Kaul — Backend & AI Engineer'],
+      alternateName: ['Vaibhav Kaul Portfolio', 'Vaibhav Kaul — Full Stack Engineer (Backend Focus)'],
       url: baseUrl,
     },
     {
@@ -103,7 +107,7 @@ const jsonLd = {
       '@id': `${baseUrl}/#person`,
       name: 'Vaibhav Kaul',
       url: baseUrl,
-      jobTitle: 'Backend & AI Engineer',
+      jobTitle: 'Full Stack Engineer',
       worksFor: {
         '@type': 'Organization',
         name: 'Easy Cater Services Platform Private Limited',
@@ -173,24 +177,9 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable}`}>
       <body className="antialiased font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  if (!theme) theme = prefersDark ? 'dark' : 'light';
-                  document.documentElement.classList.add(theme);
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
-
         <Script id="service-worker-cleanup">
           {`
             if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {

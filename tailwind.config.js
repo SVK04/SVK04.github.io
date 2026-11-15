@@ -2,37 +2,30 @@ import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-    './app/**/*.{js,jsx,ts,tsx}',
-    './components/**/*.{js,jsx,ts,tsx}',
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './app/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
   plugins: [forms],
-  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        mono: ['var(--font-jetbrains-mono)', '"JetBrains Mono"', '"Fira Code"', 'ui-monospace', 'monospace'],
+        serif: ['var(--font-serif)', '"Instrument Serif"', 'Georgia', 'serif'],
+        // No monospace face in this design: `font-mono` falls back to the sans stack.
+        mono: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
       },
       keyframes: {
-        blink: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0' },
-        },
         'fade-in-up': {
           '0%': { opacity: '0', transform: 'translateY(12px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-          '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+        // Hero comparison bars grow from the left edge
+        'bar-grow': {
+          '0%': { transform: 'scaleX(0)' },
+          '100%': { transform: 'scaleX(1)' },
         },
       },
       animation: {
-        blink: 'blink 1s step-start infinite',
-        'fade-in-up': 'fade-in-up 0.4s ease forwards',
-        'pulse-glow': 'pulseGlow 6s ease-in-out infinite',
+        'fade-in-up': 'fade-in-up 0.5s ease both',
+        'bar-grow': 'bar-grow 0.9s cubic-bezier(0.22, 1, 0.36, 1) both',
       },
       screens: {
         xs: '480px',
@@ -40,6 +33,7 @@ export default {
       colors: {
         /* Semantic tokens */
         accent: 'rgba(var(--color-accent), <alpha-value>)',
+        'accent-bright': 'rgba(var(--color-accent-bright), <alpha-value>)',
         primary: 'rgba(var(--color-primary), <alpha-value>)',
         secondary: 'rgba(var(--color-secondary), <alpha-value>)',
         tertiary: 'rgba(var(--color-tertiary), <alpha-value>)',
@@ -50,11 +44,6 @@ export default {
         'text-secondary': 'rgba(var(--color-text-secondary), <alpha-value>)',
         'text-muted': 'rgba(var(--color-text-muted), <alpha-value>)',
         border: 'rgba(var(--color-border), <alpha-value>)',
-      },
-      boxShadow: {
-        'accent-glow': '0 0 28px rgba(6, 182, 212, 0.18)',
-        'accent-glow-sm': '0 0 14px rgba(6, 182, 212, 0.12)',
-        'card-elevated': '0 4px 20px -2px rgba(0, 0, 0, 0.25)',
       },
     },
   },

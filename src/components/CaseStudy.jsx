@@ -10,7 +10,7 @@ const loadBody = () => import('./CaseStudyBody');
 const CaseStudyBody = dynamic(loadBody, {
   ssr: false,
   loading: () => (
-    <p className="mt-6 font-mono text-xs text-text-muted" role="status">
+    <p className="mt-6 text-sm text-text-muted" role="status">
       Loading case study…
     </p>
   ),
@@ -25,11 +25,7 @@ const CaseStudy = ({ id, projectName }) => {
       className="case-study group mt-6 scroll-mt-24"
       onToggle={e => e.currentTarget.open && setOpened(true)}
     >
-      <summary
-        className="btn-brutal btn-brutal--plain w-fit cursor-pointer select-none list-none px-4 py-2 text-sm"
-        onPointerEnter={loadBody}
-        onFocus={loadBody}
-      >
+      <summary className="btn btn--sm w-fit cursor-pointer select-none" onPointerEnter={loadBody} onFocus={loadBody}>
         <span className="group-open:hidden">Read the case study</span>
         <span className="hidden group-open:inline">Hide the case study</span>
         <span aria-hidden="true" className="transition-transform duration-200 group-open:rotate-180">
