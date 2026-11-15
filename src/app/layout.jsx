@@ -84,10 +84,15 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
+  // Google Search needs a square favicon of at least 48px; the PNG covers
+  // crawlers and browsers that skip SVG icons.
   icons: {
-    icon: '/logo.svg',
-    shortcut: '/logo.svg',
-    apple: '/logo.svg',
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
 };
@@ -98,9 +103,13 @@ const jsonLd = {
     {
       '@type': 'WebSite',
       '@id': `${baseUrl}/#website`,
+      // Site name Google shows above the result. Keep it short; without a
+      // confident signal Google falls back to the parent domain's name
+      // ("Google", since web.app is Firebase). The lowercase hostname is the
+      // last-resort alternate Google's site-name docs recommend.
       name: 'Vaibhav Kaul',
-      alternateName: ['Vaibhav Kaul Portfolio', 'Vaibhav Kaul — Full Stack Engineer (Backend Focus)'],
-      url: baseUrl,
+      alternateName: ['Vaibhav Kaul Portfolio', 'vaibhav-kaul.web.app'],
+      url: `${baseUrl}/`,
     },
     {
       '@type': 'Person',
